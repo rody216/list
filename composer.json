@@ -1,0 +1,23 @@
+{
+	"description": "The rody216 framework",
+	"name": "rody216/framework",
+	"type": "project",
+	"homepage": "https://rody216.com",
+	"license": "MIT",
+	"support": {
+		"forum": "http://rody216.com/",
+		"wiki": "https://github.com/rody216",
+		"slack": "https://rody216.com",
+		"source": "https://github.com/rody216"
+	},
+	"require": {
+		"php": ">=5.3.7"
+	},
+	"suggest": {
+		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
+	},
+	"require-dev": {
+		"mikey179/vfsStream": "1.1.*",
+		"phpunit/phpunit": "4.* || 5.*"
+	}
+}
