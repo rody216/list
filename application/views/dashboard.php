@@ -15,38 +15,20 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content contenedor">
       <!-- Small boxes (Stat box) -->
       <?php if($is_admin == true): ?>
-
-        <div class="row">
-          <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <h3><?php echo $total_products ?></h3>
-
-                <p>Total Emploados</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="<?php echo base_url('employees/') ?>" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-xs-6">
+          <div class="col-lg-8 col-xs-8">
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
                 <h3><?php echo $total_users; ?></h3>
-
-                <p>Total Users</p>
+                <p>Usuarios Registrados</p>
               </div>
               <div class="icon">
                 <i class="ion ion-android-people"></i>
               </div>
-              <a href="<?php echo base_url('users/') ?>" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>
+              <!--<a href="<?php echo base_url('users/') ?>" class="small-box-footer">Más info <i class="fa fa-arrow-circle-right"></i></a>-->
             </div>
           </div>
         </div>

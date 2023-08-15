@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log in</title>
+  <title>BLI-NP Login</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -19,6 +19,8 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo base_url('assets/plugins/iCheck/square/blue.css') ?>">
 
+  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/styles.css') ?>">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -33,11 +35,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo base_url('auth/login'); ?>"><b>Login</b></a>
+    <a href="<?php echo base_url('auth/login'); ?>"><b></b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <h4 class="login-box-msg">Bienvenidos</h4>
+    <?php echo '<img src="./assets/images/fondo_blin.png" class="imagen">';?>
 
     <?php echo validation_errors(); ?>  
 
@@ -58,13 +61,13 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Remember Me
+              <input type="checkbox"> Recordarme
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
         </div>
         <!-- /.col -->
       </div>
