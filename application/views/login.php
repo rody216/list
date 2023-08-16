@@ -40,7 +40,20 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <h4 class="login-box-msg">Bienvenidos</h4>
-    <?php echo '<img src="./assets/images/fondo_blin.png" class="imagen">';?>
+    <img src="./assets/images/fondo_blin.png" class="logo">
+
+    <style>
+      body{
+        height: 0px !important;
+      }
+      .logo{
+        width: 100%;
+      }
+        
+      .login-box-body{
+        border-radius: 5px;
+      }
+    </style>
 
     <?php echo validation_errors(); ?>  
 

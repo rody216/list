@@ -1,14 +1,12 @@
-.imagen {
-    width: 100% !important;
-  }
-  
-  .contenedor{
-    margin-left: 30% !important;
-    margin-top: 10%;
-  }
-  
-  strong .blin-footer{
-    text-align: center;
-  }
-  
-  
+.logo {
+  width: 30%;
+}
+
+.contenedor {
+  margin-left: 30% !important;
+  margin-top: 10%;
+}
+
+.main-footer {
+  text-align: center;
+}
