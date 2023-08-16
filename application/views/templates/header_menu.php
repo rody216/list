@@ -13,6 +13,8 @@
         <span class="sr-only">Toggle navigation</span>
       </a>     
       <div class="hora" id="hora-local"></div> 
+     <!-- <td><?php echo $user_data['username']; ?></td> -->
+     
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->

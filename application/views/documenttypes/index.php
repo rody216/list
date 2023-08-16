@@ -92,8 +92,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Atras</button>
+          <button type="submit" class="btn btn-success">Guardar</button>
         </div>
 
       </form>
@@ -126,8 +126,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Atras</button>
+          <button type="submit" class="btn btn-success">Guardar cambios</button>
         </div>
 
       </form>
@@ -153,8 +153,8 @@
           <p>Estas seguro que deseas eliminar?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Atras</button>
+          <button type="submit" class="btn btn-success">Guardar cambios</button>
         </div>
       </form>
 

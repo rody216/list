@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Manage
-        <small>Users</small>
+        Actualizar Usuario
+        <small>Actualizar</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Users</li>
+        <li class="active">Usuario</li>
       </ol>
     </section>
 
@@ -34,7 +34,6 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Edit User</h3>
             </div>
             <form role="form" action="<?php base_url('users/create') ?>" method="post">
               <div class="box-body">
@@ -42,9 +41,9 @@
                 <?php echo validation_errors(); ?>
 
                 <div class="form-group">
-                  <label for="groups">Groups</label>
+                  <label for="groups">Roll del Usuario</label>
                   <select class="form-control" id="groups" name="groups">
-                    <option value="">Select Groups</option>
+                    <option value="">Seleccionar Roll</option>
                     <?php foreach ($group_data as $k => $v): ?>
                       <option value="<?php echo $v['id'] ?>" <?php if($user_group['id'] == $v['id']) { echo 'selected'; } ?> ><?php echo $v['group_name'] ?></option> 
                     <?php endforeach ?>
@@ -52,44 +51,44 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="username">Username</label>
+                  <label for="username">Nombre del Usuario</label>
                   <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $user_data['username'] ?>" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">Correo Electronico</label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $user_data['email'] ?>" autocomplete="off">
                 </div>                
 
                 <div class="form-group">
-                  <label for="fname">First name</label>
+                  <label for="fname">Nombre</label>
                   <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" value="<?php echo $user_data['firstname'] ?>" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="lname">Last name</label>
+                  <label for="lname">Apellido</label>
                   <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" value="<?php echo $user_data['lastname'] ?>" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="phone">Phone</label>
+                  <label for="phone">Telefono</label>
                   <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="<?php echo $user_data['phone'] ?>" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="gender">Gender</label>
+                  <label for="gender">Genero</label>
                   <div class="radio">
                     <label>
                       <input type="radio" name="gender" id="male" value="1" <?php if($user_data['gender'] == 1) {
                         echo "checked";
                       } ?>>
-                      Male
+                      Masculino
                     </label>
                     <label>
                       <input type="radio" name="gender" id="female" value="2" <?php if($user_data['gender'] == 2) {
                         echo "checked";
                       } ?>>
-                      Female
+                      Femenino
                     </label>
                   </div>
                 </div>
@@ -97,17 +96,17 @@
                 <div class="form-group">
                   <div class="alert alert-info alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      Leave the password field empty if you don't want to change.
+                    Deje el campo de contraseña vacío si no desea cambiar.
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password">Contraseña</label>
                   <input type="text" class="form-control" id="password" name="password" placeholder="Password"  autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="cpassword">Confirm password</label>
+                  <label for="cpassword">Confirmar Contraseña</label>
                   <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
                 </div>
 
@@ -115,8 +114,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Back</a>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Atras</a>
               </div>
             </form>
           </div>

@@ -265,8 +265,8 @@
                 </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                <a href="<?php echo base_url('employees/') ?>" class="btn btn-warning">Regresar</a>
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
               </div>
             </form>
           </div>

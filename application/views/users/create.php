@@ -52,50 +52,50 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="username">Username</label>
+                  <label for="username">Nombre de usuario</label>
                   <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">Correo Electrónico</label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password">Contraseña</label>
                   <input type="text" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="cpassword">Confirm password</label>
+                  <label for="cpassword">Confirmar Contraseña</label>
                   <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm Password" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="fname">First name</label>
+                  <label for="fname">Nombre</label>
                   <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="lname">Last name</label>
+                  <label for="lname">Apellido</label>
                   <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="phone">Phone</label>
+                  <label for="phone">Telefono</label>
                   <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" autocomplete="off">
                 </div>
 
                 <div class="form-group">
-                  <label for="gender">Gender</label>
+                  <label for="gender">Genero</label>
                   <div class="radio">
                     <label>
                       <input type="radio" name="gender" id="male" value="1">
-                      Male
+                      Masculino
                     </label>
                     <label>
                       <input type="radio" name="gender" id="female" value="2">
-                      Female
+                      Femenino
                     </label>
                   </div>
                 </div>
@@ -104,8 +104,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Back</a>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Atras</a>
               </div>
             </form>
           </div>

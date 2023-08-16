@@ -72,10 +72,10 @@
 
                         <td>
                           <?php if(in_array('updateUser', $user_permission)): ?>
-                            <a href="<?php echo base_url('users/edit/'.$v['user_info']['id']) ?>" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo base_url('users/edit/'.$v['user_info']['id']) ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
                           <?php endif; ?>
                           <?php if(in_array('deleteUser', $user_permission)): ?>
-                            <a href="<?php echo base_url('users/delete/'.$v['user_info']['id']) ?>" class="btn btn-default"><i class="fa fa-trash"></i></a>
+                            <a href="<?php echo base_url('users/delete/'.$v['user_info']['id']) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                           <?php endif; ?>
                         </td>
                       <?php endif; ?>
