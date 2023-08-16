@@ -84,4 +84,20 @@ class Model_users extends CI_Model
 		return $query->num_rows();
 	}
 	
+	public function countTotalRecords()
+{
+    $sql = "
+        SELECT 
+        (SELECT COUNT(*) FROM `users`) +
+        (SELECT COUNT(*) FROM `judicial`) +
+        (SELECT COUNT(*) FROM `mmp`) AS total_combined
+    ";
+
+    $query = $this->db->query($sql);
+
+     $row = $query->row();
+    
+    return $row->total_combined;
+}
+
 }
