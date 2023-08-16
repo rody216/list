@@ -78,7 +78,6 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	// 'database' => 'stock',
 	'database' => 'stock',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
