@@ -214,7 +214,7 @@ switch (ENVIRONMENT)
 	if ( ! is_dir($system_path))
 	{
 		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		echo 'La ruta de la carpeta de su sistema no parece estar configurada correctamente. Abra el siguiente archivo y corrija esto.: '.pathinfo(__FILE__, PATHINFO_BASENAME);
 		exit(3); // EXIT_CONFIG
 	}
 
@@ -262,7 +262,7 @@ switch (ENVIRONMENT)
 	else
 	{
 		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		echo 'La ruta de la carpeta de su aplicación no parece estar configurada correctamente. Abra el siguiente archivo y corrija esto.: '.SELF;
 		exit(3); // EXIT_CONFIG
 	}
 
@@ -299,7 +299,7 @@ switch (ENVIRONMENT)
 	else
 	{
 		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		echo 'La ruta de la carpeta de su aplicación no parece estar configurada correctamente. Abra el siguiente archivo y corrija esto.: '.SELF;
 		exit(3); // EXIT_CONFIG
 	}
 

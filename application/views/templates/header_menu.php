@@ -11,9 +11,19 @@
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
-      </a>
-
+      </a>     
+      <div class="hora" id="hora-local"></div> 
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   
+  <script>
+  function mostrarHoraYFechaLocal() {
+  var fecha = new Date();
+  var hora = fecha.toLocaleTimeString();
+  var fechaFormatted = fecha.toLocaleDateString();
+   document.getElementById("hora-local").innerHTML = "Fecha de ingreso: " + fechaFormatted;
+ }
+ //  Actualizar la hora y fecha cada segundo (1000 milisegundos)
+setInterval(mostrarHoraYFechaLocal, 1000);
+</script>

@@ -30,17 +30,17 @@
               <?php endif; ?>
               <?php if(in_array('createDocument', $user_permission)): ?>
               <li id="documentSpoaNav"><a href="<?php echo base_url('documents/spoa') ?>"><i class="fa fa-circle-o"></i>SPOA</a></li>
-              <li id="documentRnmcNav"><a href="<?php echo base_url('documents/rnmc') ?>"><i class="fa fa-circle-o"> RNMC</i> </a></li>
+              <li id="documentRnmcNav"><a href="<?php echo base_url('documents/rnmc') ?>"><i class="fa fa-circle-o">RNMC</i> </a></li>
               <li id="documentMmpNav"><a href="<?php echo base_url('documents/mmp') ?>"><i class="fa fa-circle-o"> MMP</i> </a></li>
-              <li id="documentPonalNav"><a href="<?php echo base_url('documents/ponal') ?>"><i class="fa fa-circle-o"></i> Ponal</a></li>
-              <li id="documentProcuradoriaNav"><a href="<?php echo base_url('documents/procuradoria') ?>"><i class="fa fa-circle-o"> Procuradoria</i> </a></li>
-              <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Procesos</i> </a></li>
-              <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Radicados</i> </a></li>
+              <li id="documentPonalNav"><a href="<?php echo base_url('documents/ponal') ?>"><i class="fa fa-circle-o"></i>Ponal</a></li>
+              <li id="documentProcuradoriaNav"><a href="<?php echo base_url('documents/procuradoria') ?>"><i class="fa fa-circle-o">  Procuradoria</i> </a></li>
+              <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o">  Rama judicial Procesos</i> </a></li>
+              <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o">  Rama judicial Radicados</i> </a></li>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> SIMIT</i> </a></li>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> Contraloria</i> </a></li>
               <li id="documentPropertyNav"><a href="<?php echo base_url('documents/property') ?>"><i class="fa fa-circle-o"></i>Propiedades Inmuebles</a></li>
-              <li id="documentVehiclesNav"><a href="<?php echo base_url('documents/vehicles') ?>"><i class="fa fa-circle-o"> Vehiculos</i> </a></li>
-              <li id="documentBankingNav"><a href="<?php echo base_url('documents/banking') ?>"><i class="fa fa-circle-o"> Datos financieros</i> </a></li>
+              <li id="documentVehiclesNav"><a href="<?php echo base_url('documents/vehicles') ?>"><i class="fa fa-circle-o">  Vehiculos</i> </a></li>
+              <li id="documentBankingNav"><a href="<?php echo base_url('documents/banking') ?>"><i class="fa fa-circle-o">  Datos financieros</i> </a></li>
               <?php if(in_array('createDocumentType', $user_permission) || in_array('updateDocumentType', $user_permission) || in_array('viewDocumentType', $user_permission) || in_array('deleteDocumentType', $user_permission)): ?>
               <li id="createUserNav"><a href="<?php echo base_url('documenttypes/') ?>"><i class="fa fa-circle-o"></i> Tipos de documentos</a></li>
               <?php endif; ?>
