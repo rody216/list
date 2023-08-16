@@ -34,7 +34,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Manage Company Information</h3>
+              <h3 class="box-title">Base Datos de Personal</h3>
             </div>
             <form role="form" action="<?php base_url('company/update') ?>" method="post">
               <div class="box-body">
@@ -42,7 +42,7 @@
                 <?php echo validation_errors(); ?>
 
                 <div class="form-group">
-                  <label for="company_name">Company Name</label>
+                  <label for="company_name">Blinp</label>
                   <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter company name" value="<?php echo $company_data['company_name'] ?>" autocomplete="off">
                 </div>
                 <div class="form-group">

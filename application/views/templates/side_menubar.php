@@ -35,6 +35,7 @@
               <li id="documentPonalNav"><a href="<?php echo base_url('documents/ponal') ?>"><i class="fa fa-circle-o"></i> Ponal</a></li>
               <li id="documentProcuradoriaNav"><a href="<?php echo base_url('documents/procuradoria') ?>"><i class="fa fa-circle-o"> Procuradoria</i> </a></li>
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Procesos</i> </a></li>
+              <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Radicados</i> </a></li>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> SIMIT</i> </a></li>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> Contraloria</i> </a></li>
               <li id="documentPropertyNav"><a href="<?php echo base_url('documents/property') ?>"><i class="fa fa-circle-o"></i>Propiedades Inmuebles</a></li>
