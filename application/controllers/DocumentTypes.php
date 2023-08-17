@@ -22,9 +22,7 @@ class DocumentTypes extends Admin_Controller
 		}
 
 		$result = $this->model_document_types->getDocumentTypeData();
-
 		$this->data['results'] = $result;
-
 		$this->render_template('documenttypes/index', $this->data);
 	}
 
