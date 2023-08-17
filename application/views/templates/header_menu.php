@@ -7,14 +7,22 @@
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>BLI-NP</b></span>
     </a>
+    
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>     
-      <div class="hora" id="hora-local"></div> 
-      <p class="titulo_username"><?php echo isset($user_data['username']) ? $user_data['username'] : ''; ?></p>
+      <div class="hora" id="hora-local"></div>       
+      <p class="titulo_username">
+    <?php
+    echo isset($user_data['firstname']) ? (
+    $user_data['firstname'] . 
+    (isset($user_data['lastname']) ? ' ' . 
+    $user_data['lastname'] : '')) : '';
+    ?>
+
      
     </nav>
   </header>

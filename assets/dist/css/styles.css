@@ -19,8 +19,11 @@
   margin-left: 43%;
 }
 
-.titulo_username{
+.titulo_username {
   color: #f4f4f4;
   text-align: center;
 }
 
+.fa-angle-left:before {
+  padding: 10px;
+}

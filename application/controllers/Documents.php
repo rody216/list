@@ -32,6 +32,7 @@ class Documents extends Admin_Controller
         $this->load->model('model_vehicle_types');
         $this->load->model('model_vehicles');
         $this->load->model('model_banking');
+        $this->load->model('model_users');
 	}
 
     public function search()
@@ -88,6 +89,11 @@ class Documents extends Admin_Controller
         }
         else {
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+           
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
+
             $this->render_template('documents/search', $this->data);
         }
 	}

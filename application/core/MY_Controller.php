@@ -18,6 +18,7 @@ class Admin_Controller extends MY_Controller
 
 
 		$group_data = array();
+	
 		if (empty($this->session->userdata('logged_in'))) {
 			$session_data = array('logged_in' => FALSE);
 			$this->session->set_userdata($session_data);
@@ -28,8 +29,9 @@ class Admin_Controller extends MY_Controller
 
 			$this->data['user_permission'] = unserialize($group_data['permission']);
 			$this->permission = unserialize($group_data['permission']);
+			
 		}
-		$this->data['user_data'] = $group_data;
+		
 	}
 
 	public function logged_in()
@@ -51,6 +53,7 @@ class Admin_Controller extends MY_Controller
 	public function render_template($page = null, $data = array())
 	{
 
+		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/header_menu', $data);
 		$this->load->view('templates/side_menubar', $data);

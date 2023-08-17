@@ -89,7 +89,7 @@
                       <th>Apellidos</th>
                       <th>Nombres</th>
                       <th>Ver resultados</th>
-                      <th>Descargar</th>
+                     <!-- <th>Descargar</th> -->
                     </tr>
                   </thead>
                   <tbody id="employeeTableBody">
@@ -133,7 +133,7 @@
             <td>${lastName}</td>
             <td>${firstName}</td>
             <td class="text-center"><a class="btn btn-success btn-sm" href="${base_url}/documents/employee/${id}" target="_blank"><i class="fa fa-search"></i></a> Ver Más</td>
-            <td class="text-center"><a class="btn btn-success btn-sm" href="${base_url}/documents/report/${id}" target="_blank"><i class="fa fa-print"></i></a> PDF</td>
+           <!-- <td class="text-center"><a class="btn btn-success btn-sm" href="${base_url}/documents/report/${id}" target="_blank"><i class="fa fa-print"></i></a> PDF</td> -->
         </tr>
       `;
     }
