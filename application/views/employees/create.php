@@ -105,7 +105,7 @@
                     <div class="form-group">
                       <label for="document_number">Tipo de sangre</label>
                       <select class="form-control select_group" id="blood_type_id" name="blood_type_id">
-                        <option value="">Seleccione el país</option>
+                        <option value="">Seleccionar</option>
                         <?php foreach ($blood_types as $k => $v): ?>
                           <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                         <?php endforeach ?>

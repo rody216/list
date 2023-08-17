@@ -198,11 +198,11 @@ class Users extends Admin_Controller
 			if($this->input->post('confirm')) {
 					$delete = $this->model_users->delete($id);
 					if($delete == true) {
-		        		$this->session->set_flashdata('success', 'Successfully removed');
+		        		$this->session->set_flashdata('success', 'Usuario Eliminado con Exito');
 		        		redirect('users/', 'refresh');
 		        	}
 		        	else {
-		        		$this->session->set_flashdata('error', 'Error occurred!!');
+		        		$this->session->set_flashdata('error', '¡¡Se produjo un error!!');
 		        		redirect('users/delete/'.$id, 'refresh');
 		        	}
 

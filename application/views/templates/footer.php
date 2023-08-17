@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
 
     </div>
-    <strong>BLI-NP &copy; <?php echo $company_data['blinp.sa'] ?? '' ?><?php echo date('Y') ?>.</strong> Todos los derehos reservados
+    <strong>BLI-NP &copy; <?php echo $company_data['blinp.sa'] ?? '' ?><?php echo date('Y') ?></strong> Todos los derehos reservados.
   </footer>
 
   <!-- Add the sidebar's background. This div must be placed

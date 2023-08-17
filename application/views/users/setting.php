@@ -71,15 +71,15 @@
                 <div class="radio">
                   <label>
                     <input type="radio" name="gender" id="male" value="1" <?php if ($user_data['gender'] == 1) {
-                                                                            echo "checked";
-                                                                          } ?>>
-                    Male
+                     echo "checked";
+                    } ?>>
+                    Macuslino
                   </label>
                   <label>
                     <input type="radio" name="gender" id="female" value="2" <?php if ($user_data['gender'] == 2) {
-                                                                              echo "checked";
-                                                                            } ?>>
-                    Female
+                    echo "checked";
+                    } ?>>
+                    Femenino
                   </label>
                 </div>
               </div>

@@ -78,6 +78,6 @@
       <?php endif; ?>
       <li><a href="<?php echo base_url('auth/logout') ?>"><i class="glyphicon glyphicon-log-out"></i> <span>Cerrar Sesión</span></a></li>
     </ul>
-    <?php echo '<img src="./assets/images/fondo_blin.png" class="logo_imge">';?>
+
   </section>
 </aside>
