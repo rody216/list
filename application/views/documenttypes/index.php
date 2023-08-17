@@ -111,7 +111,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edit DocumentType</h4>
+        <h4 class="modal-title">Editar tipo de documento</h4>
       </div>
 
       <form role="form" action="<?php echo base_url('documenttypes/update') ?>" method="post" id="updateDocumentTypeForm">

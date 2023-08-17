@@ -45,9 +45,9 @@ class Employees extends Admin_Controller
 			$buttons = '';
             if(in_array('updateEmployee', $this->permission)) {
     			// $buttons .= '<a href="'.base_url('employees/update/'.$value['id']).'" class="btn btn-default"><i class="fa fa-pencil"></i></a>';
-    			$buttons .= '<a href="'.base_url('employees/family/'.$value['id']).'" class="btn btn-default"><i class="fa fa-users"></i></a>';
-    			$buttons .= '<a href="'.base_url('documents/employee/'.$value['id']).'" class="btn btn-default"><i class="fa fa-file"></i></a>';
-    			$buttons .= '<a href="'.base_url('documents/report/'.$value['id']).'" target="_blank" class="btn btn-default"><i class="fa fa-print"></i></a>';
+    			$buttons .= '<a href="'.base_url('employees/family/'.$value['id']).'" class="btn btn-succcess"><i class="fa fa-users"> Agregar Familiar</i></a>';
+    			$buttons .= '<a href="'.base_url('documents/employee/'.$value['id']).'" class="btn btn-success"><i class="fa fa-file"></i> PDF</a>';
+    			$buttons .= '<a href="'.base_url('documents/report/'.$value['id']).'" target="_blank" class="btn btn-primary"><i class="fa fa-print"> Imprimir</i></a>';
             }
 
             // if(in_array('deleteEmployee', $this->permission)) {
@@ -314,11 +314,11 @@ class Employees extends Admin_Controller
 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
         		redirect('employees/family/', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
         		redirect('employees/family/', 'refresh');
             }
         }

@@ -132,8 +132,8 @@
             <td>${documentNumber}</td>
             <td>${lastName}</td>
             <td>${firstName}</td>
-            <td class="text-center"><a class="btn btn-default btn-sm" href="${base_url}/documents/employee/${id}" target="_blank"><i class="fa fa-search"></i></a></td>
-            <td class="text-center"><a class="btn btn-default btn-sm" href="${base_url}/documents/report/${id}" target="_blank"><i class="fa fa-print"></i></a></td>
+            <td class="text-center"><a class="btn btn-success btn-sm" href="${base_url}/documents/employee/${id}" target="_blank"><i class="fa fa-search"></i></a> Ver Más</td>
+            <td class="text-center"><a class="btn btn-success btn-sm" href="${base_url}/documents/report/${id}" target="_blank"><i class="fa fa-print"></i></a> PDF</td>
         </tr>
       `;
     }

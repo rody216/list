@@ -119,7 +119,7 @@
                 </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
               </div>
             </form>
           </div>

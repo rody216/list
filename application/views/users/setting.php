@@ -105,8 +105,8 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Guardar cambios</button>
-              <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Atrás</a>
+              <button type="submit" class="btn btn-success">Guardar cambios</button>
+              <a href="<?php echo base_url('users/') ?>" class="btn btn-primary">Atrás</a>
             </div>
           </form>
         </div>
