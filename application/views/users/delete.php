@@ -36,8 +36,8 @@
           <h1>¿Realmente quieres eliminar el usuario?</h1>
 
           <form action="<?php echo base_url('users/delete/'.$id) ?>" method="post">
-            <input type="submit" class="btn btn-primary" name="confirm" value="Confirmar">
-            <a href="<?php echo base_url('users') ?>" class="btn btn-warning">Cancelar</a>
+            <input type="submit" class="btn btn-danger" name="confirm" value="Confirmar">
+            <a href="<?php echo base_url('users') ?>" class="btn btn-success">Cancelar</a>
           </form>
 
         </div>

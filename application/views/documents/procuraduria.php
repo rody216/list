@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Datos de procuradoria
+      Datos de la Procuraduría
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -119,7 +119,7 @@
                 </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
               </div>
             </form>
           </div>
@@ -155,7 +155,7 @@
       $("#employee_id").val('')
 
       $.ajax({
-        url: base_url+'documents/fetchPersonByDocumentNumber/procuradoria/'+document_type_id+'/'+document_number,
+        url: base_url+'documents/fetchPersonByDocumentNumber/procuraduria/'+document_type_id+'/'+document_number,
         method: "POST",
         dataType: "json",
         success: function (response) {

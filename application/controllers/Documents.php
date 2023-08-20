@@ -32,6 +32,7 @@ class Documents extends Admin_Controller
         $this->load->model('model_vehicle_types');
         $this->load->model('model_vehicles');
         $this->load->model('model_banking');
+        $this->load->model('model_users');
 	}
 
     public function search()
@@ -88,6 +89,11 @@ class Documents extends Admin_Controller
         }
         else {
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+           
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
+
             $this->render_template('documents/search', $this->data);
         }
 	}
@@ -216,6 +222,9 @@ class Documents extends Admin_Controller
         else {
             // false case
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
 
             $this->render_template('documents/spoa', $this->data);
         }
@@ -300,7 +309,9 @@ class Documents extends Admin_Controller
 			$this->data['departments'] = $this->model_departments->getDepartments();
 			$this->data['provinces'] = $this->model_provinces->getProvinces();
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
-
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/rnmc', $this->data);
         }
 	}
@@ -368,7 +379,9 @@ class Documents extends Admin_Controller
 			$this->data['departments'] = $this->model_departments->getDepartments();
 			$this->data['provinces'] = $this->model_provinces->getProvinces();
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
-
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/mmp', $this->data);
         }
 	}
@@ -417,7 +430,9 @@ class Documents extends Admin_Controller
         }
         else {
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
-
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/ponal', $this->data);
         }
 	}
@@ -474,7 +489,9 @@ class Documents extends Admin_Controller
         }
         else {
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
-
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/procuradoria', $this->data);
         }
 	}
@@ -565,6 +582,9 @@ class Documents extends Admin_Controller
         }
         else {
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/property', $this->data);
         }
 	}
@@ -616,6 +636,9 @@ class Documents extends Admin_Controller
         else {
             $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
 			$this->data['vehicle_types'] = $this->model_vehicle_types->getAllVehicleTypes();
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/vehicles', $this->data);
         }
 	}
@@ -656,6 +679,9 @@ class Documents extends Admin_Controller
         }
         else {
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/banking', $this->data);
         }
 	}

@@ -71,15 +71,15 @@
                 <div class="radio">
                   <label>
                     <input type="radio" name="gender" id="male" value="1" <?php if ($user_data['gender'] == 1) {
-                                                                            echo "checked";
-                                                                          } ?>>
-                    Male
+                     echo "checked";
+                    } ?>>
+                    Macuslino
                   </label>
                   <label>
                     <input type="radio" name="gender" id="female" value="2" <?php if ($user_data['gender'] == 2) {
-                                                                              echo "checked";
-                                                                            } ?>>
-                    Female
+                    echo "checked";
+                    } ?>>
+                    Femenino
                   </label>
                 </div>
               </div>
@@ -105,8 +105,8 @@
             <!-- /.box-body -->
 
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Guardar cambios</button>
-              <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Atrás</a>
+              <button type="submit" class="btn btn-success">Guardar cambios</button>
+              <a href="<?php echo base_url('users/') ?>" class="btn btn-primary">Atrás</a>
             </div>
           </form>
         </div>

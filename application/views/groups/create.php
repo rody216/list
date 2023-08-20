@@ -41,7 +41,7 @@
                 <?php echo validation_errors(); ?>
                 <div class="form-group">
                   <label for="group_name">Nombre</label>
-                  <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Enter group name">
+                  <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Ingrese el nombre">
                 </div>
                 <div class="form-group">
                   <label for="permission">Permisos</label>
@@ -113,8 +113,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a href="<?php echo base_url('groups/') ?>" class="btn btn-warning">Back</a>
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <a href="<?php echo base_url('groups/') ?>" class="btn btn-primary">Atras</a>
               </div>
             </form>
           </div>

@@ -22,9 +22,7 @@ class DocumentTypes extends Admin_Controller
 		}
 
 		$result = $this->model_document_types->getDocumentTypeData();
-
 		$this->data['results'] = $result;
-
 		$this->render_template('documenttypes/index', $this->data);
 	}
 
@@ -39,11 +37,11 @@ class DocumentTypes extends Admin_Controller
 			$buttons = '';
 
 			if(in_array('viewDocumentType', $this->permission)) {
-				$buttons .= '<button type="button" class="btn btn-default" onclick="editDocumentType('.$value['id'].')" data-toggle="modal" data-target="#editDocumentTypeModal"><i class="fa fa-pencil"></i></button>';	
+				$buttons .= '<button type="button" class="btn btn-success" onclick="editDocumentType('.$value['id'].')" data-toggle="modal" data-target="#editDocumentTypeModal"><i class="fa fa-pencil"></i> Editar</button>';	
 			}
 			
 			if(in_array('deleteDocumentType', $this->permission)) {
-				$buttons .= ' <button type="button" class="btn btn-default" onclick="removeDocumentType('.$value['id'].')" data-toggle="modal" data-target="#removeDocumentTypeModal"><i class="fa fa-trash"></i></button>
+				$buttons .= ' <button type="button" class="btn btn-danger" onclick="removeDocumentType('.$value['id'].')" data-toggle="modal" data-target="#removeDocumentTypeModal"><i class="fa fa-trash"></i> Eliminar</button>
 				';
 			}				
 
@@ -86,11 +84,11 @@ class DocumentTypes extends Admin_Controller
         	$create = $this->model_document_types->create($data);
         	if($create == true) {
         		$response['success'] = true;
-        		$response['messages'] = 'Succesfully created';
+        		$response['messages'] = 'Creado con éxito';
         	}
         	else {
         		$response['success'] = false;
-        		$response['messages'] = 'Error in the database while creating the DocumentType information';			
+        		$response['messages'] = 'Error en la base de datos al eliminar la información de Documento';			
         	}
         }
         else {
@@ -125,11 +123,11 @@ class DocumentTypes extends Admin_Controller
 	        	$update = $this->model_document_types->update($data, $id);
 	        	if($update == true) {
 	        		$response['success'] = true;
-	        		$response['messages'] = 'Succesfully updated';
+	        		$response['messages'] = 'Eliminado exitosamente';
 	        	}
 	        	else {
 	        		$response['success'] = false;
-	        		$response['messages'] = 'Error in the database while updated the DocumentType information';
+	        		$response['messages'] = 'Error en la base de datos al eliminar la información de Documento';
 	        	}
 	        }
 	        else {
@@ -141,7 +139,7 @@ class DocumentTypes extends Admin_Controller
 		}
 		else {
 			$response['success'] = false;
-    		$response['messages'] = 'Error please refresh the page again!!';
+    		$response['messages'] = 'Actualizar la página de nuevo!!';
 		}
 
 		echo json_encode($response);
@@ -160,16 +158,16 @@ class DocumentTypes extends Admin_Controller
 
 			if($delete == true) {
 				$response['success'] = true;
-				$response['messages'] = "Successfully removed";	
+				$response['messages'] = "Eliminado exitosamente";	
 			}
 			else {
 				$response['success'] = false;
-				$response['messages'] = "Error in the database while removing the DocumentType information";
+				$response['messages'] = "Error en la base de datos al eliminar la información de Documento";
 			}
 		}
 		else {
 			$response['success'] = false;
-			$response['messages'] = "Refersh the page again!!";
+			$response['messages'] = "Actualizar la página de nuevo!!";
 		}
 
 		echo json_encode($response);

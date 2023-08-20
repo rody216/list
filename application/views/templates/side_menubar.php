@@ -33,7 +33,7 @@
               <li id="documentRnmcNav"><a href="<?php echo base_url('documents/rnmc') ?>"><i class="fa fa-circle-o">RNMC</i> </a></li>
               <li id="documentMmpNav"><a href="<?php echo base_url('documents/mmp') ?>"><i class="fa fa-circle-o"> MMP</i> </a></li>
               <li id="documentPonalNav"><a href="<?php echo base_url('documents/ponal') ?>"><i class="fa fa-circle-o"></i>Ponal</a></li>
-              <li id="documentProcuradoriaNav"><a href="<?php echo base_url('documents/procuradoria') ?>"><i class="fa fa-circle-o"> Procuradoria</i> </a></li>
+              <li id="documentProcuradoriaNav"><a href="<?php echo base_url('documents/procuraduria') ?>"><i class="fa fa-circle-o"> Procuraduría</i> </a></li>
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Procesos</i> </a></li>
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Radicados</i> </a></li>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> SIMIT</i> </a></li>
@@ -78,6 +78,6 @@
       <?php endif; ?>
       <li><a href="<?php echo base_url('auth/logout') ?>"><i class="glyphicon glyphicon-log-out"></i> <span>Cerrar Sesión</span></a></li>
     </ul>
-    <?php echo '<img src="./assets/images/fondo_blin.png" class="logo_imge">';?>
+
   </section>
 </aside>

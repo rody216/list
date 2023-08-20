@@ -5,12 +5,8 @@ class Users extends Admin_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
 		$this->not_logged_in();
-		
 		$this->data['page_title'] = 'Users';
-		
-
 		$this->load->model('model_users');
 		$this->load->model('model_groups');
 	}
@@ -25,16 +21,14 @@ class Users extends Admin_Controller
 		$user_data = $this->model_users->getUserData();
 
 		$result = array();
+	
 		foreach ($user_data as $k => $v) {
-
 			$result[$k]['user_info'] = $v;
-
 			$group = $this->model_users->getUserGroup($v['id']);
 			$result[$k]['user_group'] = $group;
 		}
 
 		$this->data['user_data'] = $result;
-
 		$this->render_template('users/index', $this->data);
 	}
 
@@ -198,11 +192,11 @@ class Users extends Admin_Controller
 			if($this->input->post('confirm')) {
 					$delete = $this->model_users->delete($id);
 					if($delete == true) {
-		        		$this->session->set_flashdata('success', 'Successfully removed');
+		        		$this->session->set_flashdata('success', 'Usuario Eliminado con Exito');
 		        		redirect('users/', 'refresh');
 		        	}
 		        	else {
-		        		$this->session->set_flashdata('error', 'Error occurred!!');
+		        		$this->session->set_flashdata('error', '¡¡Se produjo un error!!');
 		        		redirect('users/delete/'.$id, 'refresh');
 		        	}
 
@@ -224,11 +218,13 @@ class Users extends Admin_Controller
 
 		$user_data = $this->model_users->getUserData($user_id);
 		$this->data['user_data'] = $user_data;
-
+	
 		$user_group = $this->model_users->getUserGroup($user_id);
 		$this->data['user_group'] = $user_group;
 
         $this->render_template('users/profile', $this->data);
+		$this->render_template('documents/search', $this->data);
+
 	}
 
 	public function setting()
