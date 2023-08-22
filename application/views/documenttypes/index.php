@@ -150,11 +150,11 @@
 
       <form role="form" action="<?php echo base_url('documenttypes/remove') ?>" method="post" id="removeDocumentTypeForm">
         <div class="modal-body">
-          <p>Estas seguro que deseas eliminar?</p>
+          <p>¿Estas seguro que deseas eliminar?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Atras</button>
-          <button type="submit" class="btn btn-success">Guardar cambios</button>
+          <button type="submit" class="btn btn-success">Eliminar</button>
         </div>
       </form>
 

@@ -88,7 +88,7 @@ class DocumentTypes extends Admin_Controller
         	}
         	else {
         		$response['success'] = false;
-        		$response['messages'] = 'Error en la base de datos al eliminar la información de Documento';			
+        		$response['messages'] = 'Error en la base de datos al crear la información de Documento';			
         	}
         }
         else {
@@ -123,11 +123,11 @@ class DocumentTypes extends Admin_Controller
 	        	$update = $this->model_document_types->update($data, $id);
 	        	if($update == true) {
 	        		$response['success'] = true;
-	        		$response['messages'] = 'Eliminado exitosamente';
+	        		$response['messages'] = 'Registro Actualizado correctamente.';
 	        	}
 	        	else {
 	        		$response['success'] = false;
-	        		$response['messages'] = 'Error en la base de datos al eliminar la información de Documento';
+	        		$response['messages'] = 'Error en la base de datos al editar la información de Documento';
 	        	}
 	        }
 	        else {
@@ -158,7 +158,7 @@ class DocumentTypes extends Admin_Controller
 
 			if($delete == true) {
 				$response['success'] = true;
-				$response['messages'] = "Eliminado exitosamente";	
+				$response['messages'] = "Documento Eliminado exitosamente";	
 			}
 			else {
 				$response['success'] = false;

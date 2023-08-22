@@ -45,7 +45,7 @@
                 </tr>
                 <tr>
                   <th>Genero</th>
-                  <td><?php echo ($user_data['gender'] == 1) ? 'Male' : 'Gender'; ?></td>
+                  <td><?php echo ($user_data['gender'] == 1) ? 'Masculino' : 'Gender'; ?></td>
                 </tr>
                 <tr>
                   <th>Telefono</th>

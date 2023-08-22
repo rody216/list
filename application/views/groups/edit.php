@@ -43,11 +43,11 @@
                 <?php echo validation_errors(); ?>
 
                 <div class="form-group">
-                  <label for="group_name">Group Name</label>
+                  <label for="group_name">Nombre del grupo</label>
                   <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Enter group name" value="<?php echo $group_data['group_name']; ?>">
                 </div>
                 <div class="form-group">
-                  <label for="permission">Permission</label>
+                  <label for="permission">Permisos</label>
 
                   <?php $serialize_permission = unserialize($group_data['permission']); ?>
                   
@@ -55,15 +55,15 @@
                     <thead>
                       <tr>
                         <th></th>
-                        <th>Create</th>
-                        <th>Update</th>
-                        <th>View</th>
-                        <th>Delete</th>
+                        <th>Crear</th>
+                        <th>Actualizar</th>
+                        <th>Vista</th>
+                        <th>Borrar</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Users</td>
+                        <td>Usuarios</td>
                         <td><input type="checkbox" class="minimal" name="permission[]" id="permission" class="minimal" value="createUser" <?php if($serialize_permission) {
                           if(in_array('createUser', $serialize_permission)) { echo "checked"; } 
                         } ?> ></td>
@@ -84,7 +84,7 @@
                          ?>></td>
                       </tr>
                       <tr>
-                        <td>Groups</td>
+                        <td>Grupos</td>
                         <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="createGroup" <?php 
                         if($serialize_permission) {
                           if(in_array('createGroup', $serialize_permission)) { echo "checked"; }  
@@ -161,7 +161,7 @@
                         <td> - </td>
                       </tr>
                       <tr>
-                        <td>Profile</td>
+                        <td>Perfil</td>
                         <td> - </td>
                         <td> - </td>
                         <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="viewProfile" <?php if($serialize_permission) {
@@ -170,7 +170,7 @@
                         <td> - </td>
                       </tr>
                       <tr>
-                        <td>Setting</td>
+                        <td>Configuración</td>
                         <td>-</td>
                         <td><input type="checkbox" name="permission[]" id="permission" class="minimal" value="updateSetting" <?php if($serialize_permission) {
                           if(in_array('updateSetting', $serialize_permission)) { echo "checked"; } 
@@ -186,8 +186,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Update Changes</button>
-                <a href="<?php echo base_url('groups/') ?>" class="btn btn-warning">Back</a>
+                <button type="submit" class="btn btn-success">Actualizar cambios</button>
+                <a href="<?php echo base_url('groups/') ?>" class="btn btn-primary">Atras</a>
               </div>
             </form>
           </div>
@@ -209,8 +209,8 @@
     $("#manageGroupNav").addClass('active');
 
     $('input[type="checkbox"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
+      checkboxClass: 'icheckbox_minimal-green',
+      radioClass   : 'iradio_minimal-green'
     });
   });
 </script>
