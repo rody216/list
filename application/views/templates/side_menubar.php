@@ -33,7 +33,7 @@
               <li id="documentRnmcNav"><a href="<?php echo base_url('documents/rnmc') ?>"><i class="fa fa-circle-o"> Rnmc</i> </a></li>
               <li id="documentMmpNav"><a href="<?php echo base_url('documents/mmp') ?>"><i class="fa fa-circle-o"> Mmp</i> </a></li>
               <li id="documentPonalNav"><a href="<?php echo base_url('documents/ponal') ?>"><i class="fa fa-circle-o"></i>Ponal</a></li>
-              <li id="documentProcuradoriaNav"><a href="<?php echo base_url('documents/procuradoria') ?>"><i class="fa fa-circle-o"> Procuradoria</i> </a></li>
+              <li id="documentProcuraduriaNav"><a href="<?php echo base_url('documents/procuraduria') ?>"><i class="fa fa-circle-o"> Procuraduría</i> </a></li>
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Procesos</i> </a></li>
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Radicados</i> </a></li>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> Simit</i> </a></li>

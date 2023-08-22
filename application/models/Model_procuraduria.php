@@ -1,15 +1,15 @@
 <?php 
 
-class Model_procuradoria extends CI_Model
+class Model_procuraduria extends CI_Model
 {
-	private $table = 'procuradoria';
+	private $table = 'procuraduria';
 
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
-	public function getProcuradoriaByEmployeeId($employee_id)
+	public function getProcuraduriaByEmployeeId($employee_id)
 	{
 		$sql = "SELECT *
 				FROM $this->table tab

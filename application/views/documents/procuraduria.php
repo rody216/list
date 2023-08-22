@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Datos de procuradoria
+      Datos de la Procuraduría
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -47,7 +47,7 @@
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="document_number">Numero de documento</label>
+                      <label for="document_number">Número de documento</label>
                       <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" value="77128391"/>
                     </div>
                   </div>
@@ -145,7 +145,7 @@
     $("#description").wysihtml5();
 
     $("#mainEmployeeNav").addClass('active');
-    $("#documentProcuradoriaNav").addClass('active');
+    $("#documentProcuraduriaNav").addClass('active');
 
     //buscar persona
     $("#btnSearchPerson").click(function() {
@@ -155,7 +155,7 @@
       $("#employee_id").val('')
 
       $.ajax({
-        url: base_url+'documents/fetchPersonByDocumentNumber/procuradoria/'+document_type_id+'/'+document_number,
+        url: base_url+'documents/fetchPersonByDocumentNumber/procuraduria/'+document_type_id+'/'+document_number,
         method: "POST",
         dataType: "json",
         success: function (response) {

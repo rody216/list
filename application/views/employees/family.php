@@ -84,7 +84,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label for="document_type_id">¿Es trabajador?</label>
+                    <label for="document_type_id">¿Trabaja en la Empresa?</label>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="1" id="is_employee">
                     </div>
@@ -157,7 +157,7 @@
                     <div class="form-group">
                       <label for="blood_type_id">Tipo de sangre</label>
                       <select class="form-control" id="blood_type_id" name="blood_type_id">
-                        <option value="">Seleccione el país</option>
+                        <option value="">Seleccione el Grupo Sanguíneo.</option>
                         <?php foreach ($blood_types as $k => $v): ?>
                           <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                         <?php endforeach ?>

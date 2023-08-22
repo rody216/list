@@ -25,7 +25,7 @@ class Documents extends Admin_Controller
         $this->load->model('model_rnmc');
         $this->load->model('model_mmp');
         $this->load->model('model_ponal');
-        $this->load->model('model_procuradoria');
+        $this->load->model('model_procuraduria');
         $this->load->model('model_judicial');
         $this->load->model('model_properties');
         $this->load->model('model_ubigeos');
@@ -70,12 +70,10 @@ class Documents extends Admin_Controller
             try {
                 $document_id = $this->input->post('document_id');
 
-                if($document_id == '') {
+              
                     $this->model_spoa->create($data);
-                }
-                else {
-                    $this->model_spoa->edit($data, $document_id);
-                }
+               
+              
                 
                 $this->db->trans_commit();
 
@@ -437,7 +435,7 @@ class Documents extends Admin_Controller
         }
 	}
 
-    public function procuradoria()
+    public function procuraduria()
 	{
 		if(!in_array('createDocument', $this->permission)) {
             redirect('dashboard', 'refresh');
@@ -471,20 +469,20 @@ class Documents extends Admin_Controller
                 $document_id = $this->input->post('document_id');
 
                 if($document_id == '') {
-                    $this->model_procuradoria->create($data);
+                    $this->model_procuraduria->create($data);
                 }
                 else {
-                    $this->model_procuradoria->edit($data, $document_id);
+                    $this->model_procuraduria->edit($data, $document_id);
                 }
                 
                 $this->db->trans_commit();
 
                 $this->session->set_flashdata('success', 'Successfully created');
-        		redirect('documents/procuradoria', 'refresh');
+        		redirect('documents/procuraduria', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
                 $this->session->set_flashdata('errors', 'Error occurred!!');
-        		redirect('documents/procuradoria', 'refresh');
+        		redirect('documents/procuraduria', 'refresh');
             }
         }
         else {
@@ -492,7 +490,7 @@ class Documents extends Admin_Controller
             $user_id = $this->session->userdata('id');
 		    $user_data = $this->model_users->getUserData($user_id);
 		    $this->data['user_data'] = $user_data;
-            $this->render_template('documents/procuradoria', $this->data);
+            $this->render_template('documents/procuraduria', $this->data);
         }
 	}
 
@@ -706,8 +704,8 @@ class Documents extends Admin_Controller
         else if($page == 'ponal') {
             $document = $this->model_ponal->getPonalByEmployeeId($employee['id']);
         }
-        else if($page == 'procuradoria') {
-            $document = $this->model_procuradoria->getProcuradoriaByEmployeeId($employee['id']);
+        else if($page == 'procuraduria') {
+            $document = $this->model_procuraduria->getProcuraduriaByEmployeeId($employee['id']);
         }
         else if($page == 'judicial') {
             $document = $this->model_judicial->getJudicialByEmployeeId($employee['id']);

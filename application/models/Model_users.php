@@ -88,8 +88,11 @@ class Model_users extends CI_Model
 	{
 		$sql = "
         SELECT 
-        (SELECT COUNT(*) FROM `users`) +
-        (SELECT COUNT(*) FROM `judicial`) +
+        (SELECT COUNT(*) FROM `ponal`) +
+        (SELECT COUNT(*) FROM `judicial`) +		
+		(SELECT COUNT(*) FROM `procuradoria`) +
+		(SELECT COUNT(*) FROM `rnmc`) +
+		(SELECT COUNT(*) FROM `spoa`) +		
         (SELECT COUNT(*) FROM `mmp`) AS total_combined
     ";
 
