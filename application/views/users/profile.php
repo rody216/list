@@ -1,6 +1,4 @@
-
-
-  <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -48,7 +46,7 @@
                   <td><?php echo ($user_data['gender'] == 1) ? 'Masculino' : 'Gender'; ?></td>
                 </tr>
                 <tr>
-                  <th>Telefono</th>
+                  <th>Teléfono</th>
                   <td><?php echo $user_data['phone']; ?></td>
                 </tr>
                 <tr>

@@ -62,7 +62,7 @@
               </div>
 
               <div class="form-group">
-                <label for="phone">Telefono</label>
+                <label for="phone">Teléfono</label>
                 <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $user_data['phone'] ?>" autocomplete="off">
               </div>
 
@@ -73,7 +73,7 @@
                     <input type="radio" name="gender" id="male" value="1" <?php if ($user_data['gender'] == 1) {
                      echo "checked";
                     } ?>>
-                    Macuslino
+                    Masculino
                   </label>
                   <label>
                     <input type="radio" name="gender" id="female" value="2" <?php if ($user_data['gender'] == 2) {

@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="phone">Telefono</label>
+                  <label for="phone">Teléfono</label>
                   <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="<?php echo $user_data['phone'] ?>" autocomplete="off">
                 </div>
 
@@ -114,8 +114,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                <a href="<?php echo base_url('users/') ?>" class="btn btn-warning">Atras</a>
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <a href="<?php echo base_url('users/') ?>" class="btn btn-primary">Atras</a>
               </div>
             </form>
           </div>
