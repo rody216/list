@@ -157,14 +157,14 @@
             $("#first_name").val(response.employee.first_name)
             $("#last_name").val(response.employee.last_name)
 
-            if(response.document != null) {
-              $("#document_id").val(response.document.id)
-              $("#notice_number").val(response.document.notice_number)
-              $("#quality").val(response.document.quality)
-              $("#crime").val(response.document.crime)
-              $("#date_issue").val(response.document.date_issue)
-              $("#detail").val(response.document.detail)
-            }
+            // if(response.document != null) {
+            //   $("#document_id").val(response.document.id)
+            //   $("#notice_number").val(response.document.notice_number)
+            //   $("#quality").val(response.document.quality)
+            //   $("#crime").val(response.document.crime)
+            //   $("#date_issue").val(response.document.date_issue)
+            //   $("#detail").val(response.document.detail)
+            // }
           }
         },
         error: function (xhr, status, error) {
