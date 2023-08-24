@@ -13,7 +13,6 @@ class Documents extends Admin_Controller
 		$this->not_logged_in();
 
 		$this->data['page_title'] = 'Employees';
-
 		$this->load->model('model_document_types');
         $this->load->model('model_persons');
         $this->load->model('model_employees');
@@ -26,6 +25,7 @@ class Documents extends Admin_Controller
         $this->load->model('model_mmp');
         $this->load->model('model_ponal');
         $this->load->model('model_procuraduria');
+       
         $this->load->model('model_judicial');
         $this->load->model('model_properties');
         $this->load->model('model_ubigeos');
@@ -69,19 +69,13 @@ class Documents extends Admin_Controller
 
             try {
                 $document_id = $this->input->post('document_id');
-
-              
-                    $this->model_spoa->create($data);
-               
-              
-                
+                $this->model_spoa->create($data);
                 $this->db->trans_commit();
-
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
         		redirect('documents/search', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
         		redirect('documents/search', 'refresh');
             }
         }
@@ -102,25 +96,19 @@ class Documents extends Admin_Controller
         $document_number = $this->input->post('document_number');
         $first_name = $this->input->post('first_name');
         $last_name = $this->input->post('last_name');
-
 		$employees = $this->model_employees->searchEmployees($document_type_id, $document_number, $first_name, $last_name);
-
         $data['employees'] = $employees;
-
         echo json_encode($data);
 	}
 
     public function report($employee_id) {
         $pdf = new TCPDF();
-
         $pdf->SetCreator('Nombre del creador');
         $pdf->SetAuthor('Nombre del autor');
         $pdf->SetTitle('Título del documento');
         $pdf->SetSubject('Asunto del documento');
         $pdf->SetKeywords('palabra clave 1, palabra clave 2, palabra clave 3');
-
-        $pdf->AddPage();
-        
+        $pdf->AddPage();        
         $html = '';
         
         $this->data['employee'] = $this->model_employees->getEmployeeById($employee_id);
@@ -132,9 +120,7 @@ class Documents extends Admin_Controller
         $this->data['vehicles'] = $this->model_vehicles->getVehiclesByEmployeeId($employee_id);
         
         $html = $this->load->view('documents/report', $this->data, true);
-
-        $pdf->writeHTML($html, true, false, true, false, '');
-       
+        $pdf->writeHTML($html, true, false, true, false, '');       
         $pdf->Output('nombre-del-archivo.pdf', 'I');
     }
 
@@ -148,6 +134,7 @@ class Documents extends Admin_Controller
         $this->data['banking'] = $this->model_banking->getBankingByEmployeeId($employee_id);
         $this->data['employee'] = $this->model_employees->getEmployeeById($employee_id);
         $this->data['families'] = $this->model_families->getFamiliesByEmployeeId($employee_id);
+      
 
 		foreach ($this->data['families'] as $key => $value) {
 			$document_info = $value['document_type_name']. ' ' . $value['document_number'];
@@ -209,11 +196,11 @@ class Documents extends Admin_Controller
                 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
         		redirect('documents/spoa', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
         		redirect('documents/spoa', 'refresh');
             }
         }
@@ -294,11 +281,11 @@ class Documents extends Admin_Controller
                 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
         		redirect('documents/rnmc', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
         		redirect('documents/rnmc', 'refresh');
             }
         }
@@ -364,11 +351,11 @@ class Documents extends Admin_Controller
                 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
         		redirect('documents/mmp', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
         		redirect('documents/mmp', 'refresh');
             }
         }
@@ -418,11 +405,11 @@ class Documents extends Admin_Controller
                 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
         		redirect('documents/ponal', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
         		redirect('documents/ponal', 'refresh');
             }
         }
@@ -477,11 +464,11 @@ class Documents extends Admin_Controller
                 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
         		redirect('documents/procuraduria', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
         		redirect('documents/procuraduria', 'refresh');
             }
         }
@@ -491,6 +478,65 @@ class Documents extends Admin_Controller
 		    $user_data = $this->model_users->getUserData($user_id);
 		    $this->data['user_data'] = $user_data;
             $this->render_template('documents/procuraduria', $this->data);
+        }
+	}
+
+    public function contraloria()
+	{
+		if(!in_array('createDocument', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
+
+		$this->form_validation->set_rules('employee_id', 'Id de empleado', 'trim|required');
+		$this->form_validation->set_rules('certificate_number', 'Numero de certificado', 'trim|required');
+		$this->form_validation->set_rules('siri', 'Siri', 'trim|required');
+		$this->form_validation->set_rules('date_issue', 'Fecha de hechos', 'trim|required');
+		$this->form_validation->set_rules('time_issue', 'Hora de hechos', 'trim|required');
+		$this->form_validation->set_rules('results', 'Delito', 'trim|required');
+		$this->form_validation->set_rules('sanction', 'Sanción', 'trim|required');
+		$this->form_validation->set_rules('providence', 'Providencia', 'trim|required');
+		
+        if ($this->form_validation->run() == TRUE) {
+            $data = array(
+        		'employee_id' => $this->input->post('employee_id'),
+        		'certificate_number' => $this->input->post('certificate_number'),
+        		'siri' => $this->input->post('siri'),
+        		'date_issue' => $this->input->post('date_issue'),
+        		'time_issue' => $this->input->post('time_issue'),
+        		'results' => $this->input->post('results'),
+        		'sanction' => $this->input->post('sanction'),
+        		'providence' => $this->input->post('providence'),
+        		'update_date' => date('Y-m-d H:i:s')
+        	);
+
+            $this->db->trans_start();
+
+            try {
+                $document_id = $this->input->post('document_id');
+
+                if($document_id == '') {
+                    $this->model_contraloria->create($data);
+                }
+                else {
+                    $this->model_contraloria->edit($data, $document_id);
+                }
+                
+                $this->db->trans_commit();
+
+                $this->session->set_flashdata('success', 'Creado con éxito');
+        		redirect('documents/contraloria', 'refresh');
+            } catch (Exception $e) {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
+        		redirect('documents/contraloria', 'refresh');
+            }
+        }
+        else {
+			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+            $user_id = $this->session->userdata('id');
+		    $user_data = $this->model_users->getUserData($user_id);
+		    $this->data['user_data'] = $user_data;
+            $this->render_template('documents/contraloria', $this->data);
         }
 	}
 
@@ -706,6 +752,9 @@ class Documents extends Admin_Controller
         }
         else if($page == 'procuraduria') {
             $document = $this->model_procuraduria->getProcuraduriaByEmployeeId($employee['id']);
+        }
+        else if($page == 'contraloria') {
+            $document = $this->model_contraloria->getContraloriaByEmployeeId($employee['id']);
         }
         else if($page == 'judicial') {
             $document = $this->model_judicial->getJudicialByEmployeeId($employee['id']);

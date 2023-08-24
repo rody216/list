@@ -37,7 +37,7 @@
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Procesos</i> </a></li>
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"> Rama judicial Radicados</i> </a></li>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> Simit</i> </a></li>
-              <li id="manageEmployeeNav"><a href="<?php echo base_url('documents/contraloria') ?>"><i class="fa fa-circle-o"> Contraloria</i> </a></li>
+              <li id="manageContraloriaNav"><a href="<?php echo base_url('documents/contraloria') ?>"><i class="fa fa-circle-o"> Contraloria</i> </a></li>
               <li id="documentPropertyNav"><a href="<?php echo base_url('documents/property') ?>"><i class="fa fa-circle-o"></i>Propiedades Inmuebles</a></li>
               <li id="documentVehiclesNav"><a href="<?php echo base_url('documents/vehicles') ?>"><i class="fa fa-circle-o"> Vehiculos</i> </a></li>
               <li id="documentBankingNav"><a href="<?php echo base_url('documents/banking') ?>"><i class="fa fa-circle-o"> Datos financieros</i> </a></li>
