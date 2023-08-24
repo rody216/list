@@ -24,8 +24,7 @@ class Documents extends Admin_Controller
         $this->load->model('model_rnmc');
         $this->load->model('model_mmp');
         $this->load->model('model_ponal');
-        $this->load->model('model_procuraduria');
-       
+        $this->load->model('model_procuraduria');       
         $this->load->model('model_judicial');
         $this->load->model('model_properties');
         $this->load->model('model_ubigeos');
@@ -587,6 +586,56 @@ class Documents extends Admin_Controller
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
 
             $this->render_template('documents/judicial', $this->data);
+        }
+	}
+
+    public function judicial_radicados()
+	{
+		if(!in_array('createDocument', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
+
+		$this->form_validation->set_rules('employee_id', 'Id de empleado', 'trim|required');
+		$this->form_validation->set_rules('processes_number', 'Número de Procesos', 'trim|required');
+		$this->form_validation->set_rules('date_issue', 'Fecha Radificación', 'trim|required');
+		$this->form_validation->set_rules('class', 'Clase', 'trim|required');
+		$this->form_validation->set_rules('status', 'Status', 'trim|required');
+		
+        if ($this->form_validation->run() == TRUE) {
+            $data = array(
+        		'employee_id' => $this->input->post('employee_id'),
+        		'processes_number' => $this->input->post('processes_number'),
+        		'date_issue' => $this->input->post('date_issue'),
+        		'class' => $this->input->post('class'),
+        		'status' => $this->input->post('status')
+        	);
+
+            $this->db->trans_start();
+
+            try {
+                $document_id = $this->input->post('document_id');
+
+                if($document_id == '') {
+                    $this->model_judicial_radicados->create($data);
+                }
+                else {
+                    $this->model_judicial_radicados->edit($data, $document_id);
+                }
+                
+                $this->db->trans_commit();
+
+                $this->session->set_flashdata('success', 'Creado con éxito');
+        		redirect('documents/judicial_radicados', 'refresh');
+            } catch (Exception $e) {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
+        		redirect('documents/judicial_radicados', 'refresh');
+            }
+        }
+        else {
+			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+
+            $this->render_template('documents/judicial_radicados', $this->data);
         }
 	}
 
