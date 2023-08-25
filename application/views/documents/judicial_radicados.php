@@ -47,7 +47,7 @@
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="document_number">Numero de documento</label>
+                      <label for="document_number">Número de documento</label>
                       <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" value="77128391"/>
                     </div>
                   </div>

@@ -56,7 +56,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="document_number">Numero de documento</label>
+                      <label for="document_number">Número de documento</label>
                       <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off"/>
                     </div>
                   </div>
@@ -132,7 +132,7 @@
                     <div class="form-group">
                       <label for="product_name">Departamento</label>
                       <select class="form-control select_group department_id" id="department_id" name="department_id">
-                        <option value="">Seleccione el departamento</option>
+                        <option value="">Seleccione el Departamento</option>
                       </select>
                     </div>
                   </div>
@@ -140,20 +140,20 @@
                     <div class="form-group">
                       <label for="product_name">Provincia</label>
                       <select class="form-control select_group province_id" id="province_id" name="province_id">
-                        <option value="">Seleccione la provincia</option>
+                        <option value="">Seleccione la Provincia</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div class="form-grouppmb-0">
-                  <label>Lugar de residencia</label>
+                  <label>Lugar de Residencia</label>
                 </div>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="country_id2">País</label>
                       <select class="form-control select_group country_id2" id="country_id2" name="country_id2">
-                        <option value="">Seleccione el país</option>
+                        <option value="">Seleccione el País</option>
                         <?php foreach ($countries as $k => $v): ?>
                           <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                         <?php endforeach ?>
@@ -164,7 +164,7 @@
                     <div class="form-group">
                       <label for="product_name">Departamento</label>
                       <select class="form-control select_group department_id2" id="department_id2" name="department_id2">
-                        <option value="">Seleccione el departamento</option>
+                        <option value="">Seleccione el Departamento</option>
                       </select>
                     </div>
                   </div>
@@ -178,21 +178,21 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="sku">Direccion Residencia</label>
+                  <label for="sku">Dirección de Residencia</label>
                   <input type="text" class="form-control" id="address" name="address" autocomplete="off" />
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="sku">Telefono móvil</label>
+                      <label for="sku">Teléfono móvil</label>
                       <input type="text" class="form-control" id="mobile_phone" name="mobile_phone"autocomplete="off" />
                     </div>
                     <div class="form-group">
-                      <label for="sku">Telefono fijo</label>
+                      <label for="sku">Teléfono Fijo</label>
                       <input type="text" class="form-control" id="telephone" name="telephone"autocomplete="off" />
                     </div>
                     <div class="form-group">
-                      <label for="sku">Correo electronico</label>
+                      <label for="sku">Correo Electrónico</label>
                       <input type="email" class="form-control" id="email" name="email"autocomplete="off" />
                     </div>
                   </div>
@@ -213,7 +213,7 @@
                 </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <button type="submit" class="btn btn-success">Guardar Cambios</button>
                 <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
               </div>
             </form>

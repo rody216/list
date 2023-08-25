@@ -41,7 +41,7 @@
                 <?php echo validation_errors(); ?>
 
                 <div class="form-group">
-                  <label for="groups">Roll del Usuario</label>
+                  <label for="groups">Rol del Usuario</label>
                   <select class="form-control" id="groups" name="groups">
                     <option value="">Seleccionar Roll</option>
                     <?php foreach ($group_data as $k => $v): ?>
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="email">Correo Electronico</label>
+                  <label for="email">Correo Electrónico</label>
                   <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $user_data['email'] ?>" autocomplete="off">
                 </div>                
 

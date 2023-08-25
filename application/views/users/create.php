@@ -10,7 +10,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Administrador de usuarios</li>
+        <li class="active">Administración de Usuarios</li>
       </ol>
     </section>
 
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="username">Nombre de usuario</label>
+                  <label for="username">Nombre de Usuario</label>
                   <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off">
                 </div>
 
@@ -63,7 +63,7 @@
 
                 <div class="form-group">
                   <label for="password">Contraseña</label>
-                  <input type="text" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
                 </div>
 
                 <div class="form-group">

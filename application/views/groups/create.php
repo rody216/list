@@ -10,7 +10,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Administrar de usuarios</li>
+        <li class="active">Administración de Usuarios</li>
       </ol>
     </section>
 
@@ -34,7 +34,7 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Agregar rol</h3>
+              <h3 class="box-title">Agregar Rol</h3>
             </div>
             <form role="form" action="<?php base_url('groups/create') ?>" method="post">
               <div class="box-body">
