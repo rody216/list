@@ -1,5 +1,3 @@
-
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -22,12 +20,12 @@
 
         <div id="messages"></div>
 
-        <?php if($this->session->flashdata('success')): ?>
+        <?php if ($this->session->flashdata('success')) : ?>
           <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo $this->session->flashdata('success'); ?>
           </div>
-        <?php elseif($this->session->flashdata('error')): ?>
+        <?php elseif ($this->session->flashdata('error')) : ?>
           <div class="alert alert-error alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <?php echo $this->session->flashdata('error'); ?>
@@ -41,182 +39,182 @@
           </div>
           <!-- /.box-header -->
           <form role="form" action="<?php echo base_url('employees/create') ?>" method="post" enctype="multipart/form-data">
-              <div class="box-body">
-                <?php echo validation_errors(); ?>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_type_id">Tipo de documento</label>
-                      <select class="form-control select_group" id="document_type_id" name="document_type_id">
-                        <?php foreach ($document_types as $k => $v): ?>
-                          <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_number">Número de documento</label>
-                      <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '')"/>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="product_name">Nombre</label>
-                      <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="this.value = this.value.toUpperCase()"/>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="product_name">Apellido</label>
-                      <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="this.value = this.value.toUpperCase()"/>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
+            <div class="box-body">
+              <?php echo validation_errors(); ?>
+              <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_type_id">Estado civil</label>
-                      <select class="form-control select_group" id="civil_status_id" name="civil_status_id">
-                        <option value="">Seleccione el estado civil</option>
-                        <?php foreach ($civil_status as $k => $v): ?>
-                          <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_type_id">Fecha de Nacimiento</label>
-                      <input type="date" class="form-control" id="birthdate" name="birthdate" autocomplete="off"/>
-                    </div>
+                  <div class="form-group">
+                    <label for="document_type_id">Tipo de documento</label>
+                    <select class="form-control select_group" id="document_type_id" name="document_type_id">
+                      <?php foreach ($document_types as $k => $v) : ?>
+                        <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
+                      <?php endforeach ?>
+                    </select>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_type_id">Estatura</label>
-                      <input type="text" class="form-control" id="height" name="height" autocomplete="off" placeholder="Ingrese la estatura en centimetros"/>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_number">Tipo de sangre</label>
-                      <select class="form-control select_group" id="blood_type_id" name="blood_type_id">
-                        <option value="">Seleccionar</option>
-                        <?php foreach ($blood_types as $k => $v): ?>
-                          <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="document_number">Numero de documento</label>
+                    <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)" />
                   </div>
                 </div>
-                <div class="form-grouppmb-0">
-                  <label>Lugar de nacimiento</label>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="country_id">País</label>
-                      <select class="form-control select_group country_id" id="country_id" name="country_id">
-                        <option value="">Seleccione el país</option>
-                        <?php foreach ($countries as $k => $v): ?>
-                          <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="product_name">Departamento</label>
-                      <select class="form-control select_group department_id" id="department_id" name="department_id">
-                        <option value="">Seleccione el Departamento</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="product_name">Provincia</label>
-                      <select class="form-control select_group province_id" id="province_id" name="province_id">
-                        <option value="">Seleccione la Provincia</option>
-                      </select>
-                    </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="product_name">Nombre</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" />
                   </div>
                 </div>
-                <div class="form-grouppmb-0">
-                  <label>Lugar de Residencia</label>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="country_id2">País</label>
-                      <select class="form-control select_group country_id2" id="country_id2" name="country_id2">
-                        <option value="">Seleccione el País</option>
-                        <?php foreach ($countries as $k => $v): ?>
-                          <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="product_name">Departamento</label>
-                      <select class="form-control select_group department_id2" id="department_id2" name="department_id2">
-                        <option value="">Seleccione el Departamento</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="product_name">Provincia</label>
-                      <select class="form-control select_group province_id2" id="province_id2" name="province_id2">
-                        <option value="">Seleccione la provincia</option>
-                      </select>
-                    </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="product_name">Apellido</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" />
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="sku">Dirección de Residencia</label>
-                  <input type="text" class="form-control" id="address" name="address" autocomplete="off" oninput="this.value = this.value.toUpperCase()"/>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="sku">Teléfono móvil</label>
-                      <input type="text" class="form-control" id="mobile_phone" name="mobile_phone"autocomplete="off" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Digite solo Números"/>
-                    </div>
-                    <div class="form-group">
-                      <label for="sku">Teléfono Fijo</label>
-                      <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Digite solo Números"/>
-                    </div>
-                    <div class="form-group">
-                      <label for="sku">Correo Electrónico</label>
-                      <input type="email" class="form-control" id="email" name="email"autocomplete="off" />
-                    </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="document_type_id">Estado civil</label>
+                    <select class="form-control select_group" id="civil_status_id" name="civil_status_id">
+                      <option value="">Seleccione el estado civil</option>
+                      <?php foreach ($civil_status as $k => $v) : ?>
+                        <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
+                      <?php endforeach ?>
+                    </select>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="image">Image</label>
-                      <div class="kv-avatar">
-                        <div class="file-loading">
-                          <input id="image" name="image" type="file">
-                        </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="document_type_id">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="birthdate" name="birthdate" autocomplete="off" onchange="validateDate(this)" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="document_type_id">Estatura</label>
+                    <input type="text" class="form-control" id="height" name="height" autocomplete="off" placeholder="Ingrese la estatura en centimetros" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="document_number">Tipo de sangre</label>
+                    <select class="form-control select_group" id="blood_type_id" name="blood_type_id">
+                      <option value="">Seleccione el país</option>
+                      <?php foreach ($blood_types as $k => $v) : ?>
+                        <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-grouppmb-0">
+                <label>Lugar de nacimiento</label>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="country_id">País</label>
+                    <select class="form-control select_group country_id" id="country_id" name="country_id">
+                      <option value="">Seleccione el país</option>
+                      <?php foreach ($countries as $k => $v) : ?>
+                        <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="product_name">Departamento</label>
+                    <select class="form-control select_group department_id" id="department_id" name="department_id">
+                      <option value="">Seleccione el departamento</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="product_name">Provincia</label>
+                    <select class="form-control select_group province_id" id="province_id" name="province_id">
+                      <option value="">Seleccione la provincia</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-grouppmb-0">
+                <label>Lugar de residencia</label>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="country_id2">País</label>
+                    <select class="form-control select_group country_id2" id="country_id2" name="country_id2">
+                      <option value="">Seleccione el país</option>
+                      <?php foreach ($countries as $k => $v) : ?>
+                        <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="product_name">Departamento</label>
+                    <select class="form-control select_group department_id2" id="department_id2" name="department_id2">
+                      <option value="">Seleccione el departamento</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="product_name">Provincia</label>
+                    <select class="form-control select_group province_id2" id="province_id2" name="province_id2">
+                      <option value="">Seleccione la provincia</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sku">Direccion Residencia</label>
+                <input type="text" class="form-control" id="address" name="address" autocomplete="off" />
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sku">Telefono móvil</label>
+                    <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" autocomplete="off" />
+                  </div>
+                  <div class="form-group">
+                    <label for="sku">Telefono fijo</label>
+                    <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" />
+                  </div>
+                  <div class="form-group">
+                    <label for="sku">Correo electronico</label>
+                    <input type="email" class="form-control" id="email" name="email" autocomplete="off" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <div class="kv-avatar">
+                      <div class="file-loading">
+                        <input id="image" name="image" type="file">
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="sku">Fecha de Foto</label>
-                      <input type="date" class="form-control" id="photo_date" name="photo_date"autocomplete="off" max="<?php echo date('Y-m-d'); ?>/>
-                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="image_date">Fecha de la Imagen</label>
+                    <input type="date" class="form-control" id="image_date" name="image_date" autocomplete="off" onchange="validateDate(this)" />
                   </div>
                 </div>
               </div>
-              <div class="box-footer">
-                <button type="submit" class="btn btn-success">Guardar Cambios</button>
-                <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
-              </div>
-            </form>
+            </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-success">Guardar cambios</button>
+              <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -235,17 +233,17 @@
 
     $("#country_id").change(function() {
       var selectedCountryId = $(this).val();
-      
+
       if (!selectedCountryId) {
         $("#department_id").empty().append('<option value="">Seleccione el departamento</option>');
         return;
       }
 
       $.ajax({
-        url: 'fetchDepartmentByCountry/'+selectedCountryId,
+        url: 'fetchDepartmentByCountry/' + selectedCountryId,
         method: "GET",
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
           var $departmentSelect = $("#department_id");
           $departmentSelect.empty().append('<option value="">Seleccione el departamento</option>');
 
@@ -255,7 +253,7 @@
             });
           }
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error) {
           console.error(error);
         }
       });
@@ -263,17 +261,17 @@
 
     $("#department_id").change(function() {
       var selectedDepartmentId = $(this).val();
-      
+
       if (!selectedDepartmentId) {
         $("#province_id").empty().append('<option value="">Seleccione la provincia</option>');
         return;
       }
 
       $.ajax({
-        url: 'fetchProvincesByDepartmentId/'+selectedDepartmentId,
+        url: 'fetchProvincesByDepartmentId/' + selectedDepartmentId,
         method: "GET",
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
           var $provinceSelect = $("#province_id");
           $provinceSelect.empty().append('<option value="">Seleccione la provincia</option>');
 
@@ -283,7 +281,7 @@
             });
           }
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error) {
           console.error(error);
         }
       });
@@ -291,17 +289,17 @@
 
     $("#country_id2").change(function() {
       var selectedCountryId = $(this).val();
-      
+
       if (!selectedCountryId) {
         $("#department_id2").empty().append('<option value="">Seleccione el departamento</option>');
         return;
       }
 
       $.ajax({
-        url: 'fetchDepartmentByCountry/'+selectedCountryId,
+        url: 'fetchDepartmentByCountry/' + selectedCountryId,
         method: "GET",
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
           var $departmentSelect = $("#department_id2");
           $departmentSelect.empty().append('<option value="">Seleccione el departamento</option>');
 
@@ -311,7 +309,7 @@
             });
           }
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error) {
           console.error(error);
         }
       });
@@ -319,17 +317,17 @@
 
     $("#department_id2").change(function() {
       var selectedDepartmentId = $(this).val();
-      
+
       if (!selectedDepartmentId) {
         $("#province_id2").empty().append('<option value="">Seleccione la provincia</option>');
         return;
       }
 
       $.ajax({
-        url: 'fetchProvincesByDepartmentId/'+selectedDepartmentId,
+        url: 'fetchProvincesByDepartmentId/' + selectedDepartmentId,
         method: "GET",
         dataType: "json",
-        success: function (response) {
+        success: function(response) {
           var $provinceSelect = $("#province_id2");
           $provinceSelect.empty().append('<option value="">Seleccione la provincia</option>');
 
@@ -339,29 +337,58 @@
             });
           }
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error) {
           console.error(error);
         }
       });
     });
-    
-    var btnCust = ''; 
-    $("#image").fileinput({
-        overwriteInitial: true,
-        maxFileSize: 1500,
-        showClose: false,
-        showCaption: false,
-        browseLabel: '',
-        removeLabel: '',
-        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
-        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-        removeTitle: 'Cancel or reset changes',
-        elErrorContainer: '#kv-avatar-errors-1',
-        msgErrorClass: 'alert alert-block alert-danger',
-        // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
-        layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
-        allowedFileExtensions: ["jpg", "png", "gif"]
-    });
 
+    var btnCust = '';
+    $("#image").fileinput({
+      overwriteInitial: true,
+      maxFileSize: 1500,
+      showClose: false,
+      showCaption: false,
+      browseLabel: '',
+      removeLabel: '',
+      browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+      removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+      removeTitle: 'Cancel or reset changes',
+      elErrorContainer: '#kv-avatar-errors-1',
+      msgErrorClass: 'alert alert-block alert-danger',
+      // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
+      layoutTemplates: {
+        main2: '{preview} ' + btnCust + ' {remove} {browse}'
+      },
+      allowedFileExtensions: ["jpg", "png", "gif"]
+    });
   });
+
+  function validateAndUppercase(input) {
+  const inputValue = input.value;
+  const restrictedChars = /[*\-+\[\]{}|,.!?¿/]/g; // Caracteres especiales restringidos
+  const regex = /^[A-Za-z0-9]*$/; // Expresión regular para letras mayúsculas, minúsculas y números
+
+  if (restrictedChars.test(inputValue)) {
+    input.setCustomValidity("No se permiten ciertos caracteres especiales.");
+    input.value = input.value.replace(restrictedChars, ''); // Eliminar caracteres no permitidos
+  } else if (!regex.test(inputValue)) {
+    input.setCustomValidity("El campo solo puede contener letras mayúsculas números.");
+    input.value = inputValue.replace(/[^A-Za-z0-9]/g, ''); // Eliminar otros caracteres no permitidos
+  } else {
+    input.setCustomValidity("");
+    input.value = inputValue.toUpperCase(); // Convertir a mayúsculas
+  }
+}
+
+  function validateDate(input) {
+    const selectedDate = new Date(input.value);
+    const currentDate = new Date();
+
+    if (selectedDate > currentDate) {
+      input.setCustomValidity("No se permite ingresar una fecha futura.");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
 </script>
