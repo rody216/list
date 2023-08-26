@@ -89,6 +89,10 @@
                   <label for="detail">Resultados</label>
                   <textarea class="form-control" id="results" name="results" autocomplete="off"></textarea>
                 </div>
+                <div class="form-group">
+                  <label for="pdf">Subir documento</label>
+                  <input type="file" class="form-control" id="pdf" name="pdf"/>
+                </div>
               </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-success">Guardar cambios</button>

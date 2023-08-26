@@ -74,7 +74,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="product_name">Número de certificado</label>
+                      <label for="product_name">Número de Certificado</label>
                       <input type="number" class="form-control" id="certificate_number" name="certificate_number" autocomplete="off"/>
                     </div>
                   </div>
@@ -116,6 +116,10 @@
                       <input type="number" class="form-control" id="providence" name="providence" autocomplete="off"/>
                     </div>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label for="pdf">Subir documento</label>
+                  <input type="file" class="form-control" id="pdf" name="pdf"/>
                 </div>
               </div>
               <div class="box-footer">

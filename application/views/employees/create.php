@@ -57,7 +57,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="document_number">Número de documento</label>
-                      <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off"/>
+                      <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '')"/>
                     </div>
                   </div>
                 </div>
@@ -65,13 +65,13 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="product_name">Nombre</label>
-                      <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off"/>
+                      <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="this.value = this.value.toUpperCase()"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="product_name">Apellido</label>
-                      <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off"/>
+                      <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="this.value = this.value.toUpperCase()"/>
                     </div>
                   </div>
                 </div>
@@ -179,17 +179,17 @@
                 </div>
                 <div class="form-group">
                   <label for="sku">Dirección de Residencia</label>
-                  <input type="text" class="form-control" id="address" name="address" autocomplete="off" />
+                  <input type="text" class="form-control" id="address" name="address" autocomplete="off" oninput="this.value = this.value.toUpperCase()"/>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="sku">Teléfono móvil</label>
-                      <input type="text" class="form-control" id="mobile_phone" name="mobile_phone"autocomplete="off" />
+                      <input type="text" class="form-control" id="mobile_phone" name="mobile_phone"autocomplete="off" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Digite solo Números"/>
                     </div>
                     <div class="form-group">
                       <label for="sku">Teléfono Fijo</label>
-                      <input type="text" class="form-control" id="telephone" name="telephone"autocomplete="off" />
+                      <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Digite solo Números"/>
                     </div>
                     <div class="form-group">
                       <label for="sku">Correo Electrónico</label>
@@ -206,8 +206,8 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="sku">Fecha de foto</label>
-                      <input type="date" class="form-control" id="photo_date" name="photo_date"autocomplete="off" />
+                      <label for="sku">Fecha de Foto</label>
+                      <input type="date" class="form-control" id="photo_date" name="photo_date"autocomplete="off" max="<?php echo date('Y-m-d'); ?>/>
                     </div>
                   </div>
                 </div>

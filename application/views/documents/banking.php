@@ -90,12 +90,16 @@
                     <div class="form-group">
                       <label for="product_number">Número Producto</label>
                       <input type="text" class="form-control" id="product_number" name="product_number" autocomplete="off"/>
-                    </div>
-                  </div>
+                    </div>                    
+                    </div>                    
                 </div>
+                <div class="form-group">
+                     <label for="pdf">Subir documento</label>
+                    <input type="file" class="form-control" id="pdf" name="pdf"/>
+                    </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <button type="submit" class="btn btn-success">Guardar Cambios</button>
               </div>
             </form>
           </div>

@@ -99,6 +99,10 @@
                     </div>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="pdf">Subir documento</label>
+                  <input type="file" class="form-control" id="pdf" name="pdf"/>
+                </div>
               </div>
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
