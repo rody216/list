@@ -151,18 +151,6 @@ class Employees extends Admin_Controller
             redirect('dashboard', 'refresh');
         }
 
-        $this->form_validation->set_rules('document_type_id', 'Tipo de documento', 'trim|required');
-        $this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
-        $this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
-        $this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
-        $this->form_validation->set_rules('blood_type_id', 'Apellido', 'trim|required');
-        $this->form_validation->set_rules('country_id', 'Pais de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('department_id', 'Departamento de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('province_id', 'Provincia de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('country_id2', 'Pais de residencia', 'trim|required');
-        $this->form_validation->set_rules('department_id2', 'Departamento de residencia', 'trim|required');
-        $this->form_validation->set_rules('province_id2', 'Provincia de residencia', 'trim|required');
-
 
         if ($this->form_validation->run() == TRUE) {
             $country_id = $this->input->post('country_id');
@@ -252,13 +240,7 @@ class Employees extends Admin_Controller
         $this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
         $this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
         $this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
-        $this->form_validation->set_rules('blood_type_id', 'Tipo de sangre', 'trim|required');
-        $this->form_validation->set_rules('country_id', 'Pais de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('department_id', 'Departamento de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('province_id', 'Provincia de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('country_id2', 'Pais de residencia', 'trim|required');
-        $this->form_validation->set_rules('department_id2', 'Departamento de residencia', 'trim|required');
-        $this->form_validation->set_rules('province_id2', 'Provincia de residencia', 'trim|required');
+
 
         if ($this->form_validation->run() == TRUE) {
             $employee_id = $this->input->post('employee_id');
@@ -370,12 +352,7 @@ class Employees extends Admin_Controller
         $this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
         $this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
         $this->form_validation->set_rules('blood_type_id', 'Apellido', 'trim|required');
-        $this->form_validation->set_rules('country_id', 'Pais de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('department_id', 'Departamento de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('province_id', 'Provincia de nacimiento', 'trim|required');
-        $this->form_validation->set_rules('country_id2', 'Pais de residencia', 'trim|required');
-        $this->form_validation->set_rules('department_id2', 'Departamento de residencia', 'trim|required');
-        $this->form_validation->set_rules('province_id2', 'Provincia de residencia', 'trim|required');
+
 
 
         if ($this->form_validation->run() == TRUE) {
@@ -458,110 +435,4 @@ class Employees extends Admin_Controller
             $this->render_template('employees/update', $this->data);
         }
     }
-
-
-    // public function update($product_id)
-    // {      
-    //     if(!in_array('updateEmployee', $this->permission)) {
-    //         redirect('dashboard', 'refresh');
-    //     }
-
-    //     if(!$product_id) {
-    //         redirect('dashboard', 'refresh');
-    //     }
-
-    //     $this->form_validation->set_rules('product_name', 'Employee name', 'trim|required');
-    //     $this->form_validation->set_rules('sku', 'SKU', 'trim|required');
-    //     $this->form_validation->set_rules('price', 'Price', 'trim|required');
-    //     $this->form_validation->set_rules('qty', 'Qty', 'trim|required');
-    //     $this->form_validation->set_rules('store', 'Store', 'trim|required');
-    //     $this->form_validation->set_rules('availability', 'Availability', 'trim|required');
-
-    //     if ($this->form_validation->run() == TRUE) {
-    //         // true case
-
-    //         $data = array(
-    //             'name' => $this->input->post('product_name'),
-    //             'sku' => $this->input->post('sku'),
-    //             'price' => $this->input->post('price'),
-    //             'qty' => $this->input->post('qty'),
-    //             'description' => $this->input->post('description'),
-    //             'attribute_value_id' => json_encode($this->input->post('attributes_value_id')),
-    //             'document_type_id' => json_encode($this->input->post('brands')),
-    //             'category_id' => json_encode($this->input->post('category')),
-    //             'store_id' => $this->input->post('store'),
-    //             'availability' => $this->input->post('availability'),
-    //         );
-
-
-    //         if($_FILES['product_image']['size'] > 0) {
-    //             $upload_image = $this->upload_image();
-    //             $upload_image = array('image' => $upload_image);
-
-    //             $this->model_products->update($upload_image, $product_id);
-    //         }
-
-    //         $update = $this->model_products->update($data, $product_id);
-    //         if($update == true) {
-    //             $this->session->set_flashdata('success', 'Successfully updated');
-    //             redirect('employees/', 'refresh');
-    //         }
-    //         else {
-    //             $this->session->set_flashdata('errors', 'Error occurred!!');
-    //             redirect('employees/update/'.$product_id, 'refresh');
-    //         }
-    //     }
-    //     else {
-    //         // attributes 
-    //         $attribute_data = $this->model_attributes->getActiveAttributeData();
-
-    //         $attributes_final_data = array();
-    //         foreach ($attribute_data as $k => $v) {
-    //             $attributes_final_data[$k]['attribute_data'] = $v;
-
-    //             $value = $this->model_attributes->getAttributeValueData($v['id']);
-
-    //             $attributes_final_data[$k]['attribute_value'] = $value;
-    //         }
-
-    //         // false case
-    //         $this->data['attributes'] = $attributes_final_data;
-    //         $this->data['brands'] = $this->model_brands->getActiveBrands();         
-    //         $this->data['category'] = $this->model_category->getActiveCategroy();           
-    //         $this->data['stores'] = $this->model_stores->getActiveStore();          
-
-    //         $product_data = $this->model_products->getEmployeeData($product_id);
-    //         $this->data['product_data'] = $product_data;
-    //         $this->render_template('employees/edit', $this->data); 
-    //     }   
-    // }
-
-    // public function remove()
-    // {
-    //     if(!in_array('deleteEmployee', $this->permission)) {
-    //         redirect('dashboard', 'refresh');
-    //     }
-
-    //     $product_id = $this->input->post('product_id');
-
-    //     $response = array();
-    //     if($product_id) {
-    //         $delete = $this->model_products->remove($product_id);
-    //         if($delete == true) {
-    //             $response['success'] = true;
-    //             $response['messages'] = "Successfully removed"; 
-    //         }
-    //         else {
-    //             $response['success'] = false;
-    //             $response['messages'] = "Error in the database while removing the product information";
-    //         }
-    //     }
-    //     else {
-    //         $response['success'] = false;
-    //         $response['messages'] = "Refersh the page again!!";
-    //     }
-
-    //     echo json_encode($response);
-    // }
-
 }

@@ -55,21 +55,21 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="document_number">Numero de documento</label>
-                    <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)" />
+                    <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)" required>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="product_name">Nombre</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="validateAndUppercase(this)" />
-                  </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="first_name">Nombre</label>
+                  <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="validateAndUppercase(this)" required>
                 </div>
+              </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="product_name">Apellido</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="validateAndUppercase(this)" />
+                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="validateAndUppercase(this)" required>
                   </div>
                 </div>
               </div>
@@ -110,14 +110,11 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="form-grouppmb-0">
-                <label>Lugar de nacimiento</label>
-              </div>
+              </div>             
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="country_id">País</label>
+                    <label for="country_id">País de nacimiento</label>
                     <select class="form-control select_group country_id" id="country_id" name="country_id">
                       <option value="">Seleccione el país</option>
                       <?php foreach ($countries as $k => $v) : ?>
@@ -142,14 +139,11 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="form-grouppmb-0">
-                <label>Lugar de residencia</label>
-              </div>
+              </div>              
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="country_id2">País</label>
+                    <label for="country_id2">País de residencia</label>
                     <select class="form-control select_group country_id2" id="country_id2" name="country_id2">
                       <option value="">Seleccione el país</option>
                       <?php foreach ($countries as $k => $v) : ?>
@@ -432,4 +426,6 @@ function validateDate(input) {
 function convertToUppercase(input) {
   input.value = input.value.toUpperCase(); // Convertir a mayúsculas
 }
+
+
 </script>
