@@ -63,13 +63,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="product_name">Nombre</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" />
+                    <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="validateAndUppercase(this)" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="product_name">Apellido</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" />
+                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="validateAndUppercase(this)" />
                   </div>
                 </div>
               </div>
@@ -177,17 +177,17 @@
               </div>
               <div class="form-group">
                 <label for="sku">Direccion Residencia</label>
-                <input type="text" class="form-control" id="address" name="address" autocomplete="off" />
+                <input type="text" class="form-control" id="address" name="address" autocomplete="off" oninput="convertToUppercase(this)" />
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="sku">Telefono móvil</label>
-                    <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" autocomplete="off" />
+                    <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" autocomplete="off" oninput="validateNumberInput(this)" />
                   </div>
                   <div class="form-group">
                     <label for="sku">Telefono fijo</label>
-                    <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" />
+                    <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" oninput="validateNumberInput(this)" />
                   </div>
                   <div class="form-group">
                     <label for="sku">Correo electronico</label>
@@ -195,21 +195,21 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="image">Image</label>
-                    <div class="kv-avatar">
-                      <div class="file-loading">
-                        <input id="image" name="image" type="file">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="image_date">Fecha de la Imagen</label>
-                    <input type="date" class="form-control" id="image_date" name="image_date" autocomplete="off" onchange="validateDate(this)" />
+              <div class="form-group">
+                <label for="image">Image</label>
+                <div class="kv-avatar">
+                  <div class="file-loading">
+                    <input id="image" name="image" type="file" onchange="setCreationDate(this)">
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="image_date">Fecha de la Imagen</label>
+                <input type="date" class="form-control" id="image_date" name="image_date" autocomplete="off" onchange="validateDate(this)" />
+              </div>
             </div>
+              </div>
+              </div>
             <div class="box-footer">
               <button type="submit" class="btn btn-success">Guardar cambios</button>
               <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
@@ -381,6 +381,36 @@
   }
 }
 
+function setCreationDate(input) {
+  const imageDateInput = document.getElementById("image_date");
+  
+  if (input.files && input.files[0]) {
+    const selectedFile = input.files[0];
+    
+    // Obtener el metadato de tiempo de creación (si está disponible)
+    const creationTime = selectedFile.lastModified;
+    const selectedDate = new Date(creationTime).toISOString().split('T')[0];
+    imageDateInput.value = selectedDate;
+  } else {
+    // Si no se selecciona una imagen, establecer la fecha actual
+    const currentDate = new Date().toISOString().split('T')[0];
+    imageDateInput.value = currentDate;
+  }
+
+  validateDate(imageDateInput); // Validar la fecha automáticamente
+}
+
+function validateDate(input) {
+  const selectedDate = new Date(input.value);
+  const currentDate = new Date();
+
+  if (selectedDate > currentDate) {
+    input.setCustomValidity("No se permite ingresar una fecha futura.");
+  } else {
+    input.setCustomValidity("");
+  }
+}
+
   function validateDate(input) {
     const selectedDate = new Date(input.value);
     const currentDate = new Date();
@@ -391,4 +421,15 @@
       input.setCustomValidity("");
     }
   }
+ 
+  function validateNumberInput(input) {
+  const inputValue = input.value;
+  const numericValue = inputValue.replace(/\D/g, ''); // Filtrar caracteres no numéricos
+
+  input.value = numericValue; // Actualizar el valor del campo solo con números
+}
+
+function convertToUppercase(input) {
+  input.value = input.value.toUpperCase(); // Convertir a mayúsculas
+}
 </script>
