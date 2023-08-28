@@ -11,7 +11,6 @@ class Employees extends Admin_Controller
         $this->not_logged_in();
 
         $this->data['page_title'] = 'Employees';
-
         $this->load->model('model_document_types');
         $this->load->model('model_countries');
         $this->load->model('model_departments');
@@ -150,6 +149,11 @@ class Employees extends Admin_Controller
         if (!in_array('createEmployee', $this->permission)) {
             redirect('dashboard', 'refresh');
         }
+        $this->form_validation->set_rules('document_type_id', 'Tipo de documento', 'trim|required');
+        $this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
+        $this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
+        $this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
+        $this->form_validation->set_message('required', 'El campo {field} es obligatorio.');
 
 
         if ($this->form_validation->run() == TRUE) {
@@ -209,15 +213,37 @@ class Employees extends Admin_Controller
 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully created');
+                $this->session->set_flashdata('success', 'Creado con éxito');
                 redirect('employees/', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred!!');
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
                 redirect('employees/create', 'refresh');
             }
         } else {
-            // false case
+            // ... (código en caso de validación fallida)
+            $fields_empty = array();
+
+
+            if (empty($this->input->post('document_type_id'))) {
+                $fields_empty[] = '<span style="color: black;">Tipo de documento</span>';
+            }
+            if (empty($this->input->post('document_number'))) {
+                $fields_empty[] = '<span style="color: black;">Número de documento</span>';
+            }
+            if (empty($this->input->post('first_name'))) {
+                $fields_empty[] = '<span style="color: black;">Nombre</span>';
+            }
+            if (empty($this->input->post('last_name'))) {
+                $fields_empty[] = '<span style="color: black;">Apellido</span>';
+            }
+
+            if (!empty($fields_empty)) {
+                $error_message = 'LOS CAMPOS NO PUEDEN ESTAR VACIOS: ' . implode(', ', $fields_empty);
+                $this->session->set_flashdata('errors', $error_message);
+            }
+
+            // Caso en que la validación falla o no se proporcionan valores en los campos
             $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
             $this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
             $this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
@@ -228,6 +254,12 @@ class Employees extends Admin_Controller
             $this->render_template('employees/create', $this->data);
         }
     }
+
+
+
+
+
+
 
     public function family()
     {
@@ -408,11 +440,11 @@ class Employees extends Admin_Controller
 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Successfully updated');
+                $this->session->set_flashdata('success', 'Actualizado exitosamente');
                 redirect('employees/', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', 'Error occurred while updating');
+                $this->session->set_flashdata('errors', 'Se produjo un error al actualizar');
                 redirect('employees/update/' . $employee_id, 'refresh');
             }
         } else {
@@ -431,7 +463,6 @@ class Employees extends Admin_Controller
             $this->data['countries'] = $this->model_countries->getAllCountries();
             $this->data['departments'] = $this->model_departments->getDepartments();
             $this->data['provinces'] = $this->model_provinces->getProvinces();
-
             $this->render_template('employees/update', $this->data);
         }
     }
