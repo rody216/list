@@ -61,16 +61,16 @@
                 </div>
               </div>
               <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="first_name">Nombre</label>
-                  <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="validateAndUppercase(this)">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="first_name">Nombre</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="validateTextInput(this)">
+                  </div>
                 </div>
-              </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="product_name">Apellido</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="validateAndUppercase(this)">
+                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="validateTextInput(this)">
                   </div>
                 </div>
               </div>
@@ -88,11 +88,12 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="document_type_id">Fecha de Nacimiento</label>
+                    <label for="birthdate">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="birthdate" name="birthdate" autocomplete="off" onchange="validateDate(this)" />
                   </div>
                 </div>
               </div>
+
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -100,6 +101,15 @@
                     <input type="text" class="form-control" id="height" name="height" autocomplete="off" placeholder="Ingrese la estatura en centimetros" />
                   </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="edad">Edad</label>
+                    <input type="text" class="form-control" id="edad" name="edad" readonly placeholder="Calculando..." />
+                  </div>
+                </div>
+
+
+
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="document_number">Tipo de sangre</label>
@@ -111,7 +121,7 @@
                     </select>
                   </div>
                 </div>
-              </div>             
+              </div>
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
@@ -140,7 +150,7 @@
                     </select>
                   </div>
                 </div>
-              </div>              
+              </div>
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
@@ -190,21 +200,21 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-              <div class="form-group">
-                <label for="image">Image</label>
-                <div class="kv-avatar">
-                  <div class="file-loading">
-                    <input id="image" name="image" type="file" onchange="setCreationDate(this)">
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <div class="kv-avatar">
+                      <div class="file-loading">
+                        <input id="image" name="image" type="file" onchange="setCreationDate(this)">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="image_date">Fecha de la Imagen</label>
+                    <input type="date" class="form-control" id="image_date" name="image_date" autocomplete="off" onchange="validateDate(this)" />
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="image_date">Fecha de la Imagen</label>
-                <input type="date" class="form-control" id="image_date" name="image_date" autocomplete="off" onchange="validateDate(this)" />
-              </div>
             </div>
-              </div>
-              </div>
             <div class="box-footer">
               <button type="submit" class="btn btn-success">Guardar cambios</button>
               <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
@@ -359,55 +369,44 @@
     });
   });
 
-  
+
   function validateAndUppercase(input) {
-  const inputValue = input.value;
-  const restrictedChars = /[*\-+\[\]{}|,.!?¿/]/g; // Caracteres especiales restringidos
-  const regex = /^[A-Za-z0-9\s]*$/; // Expresión regular para letras mayúsculas, minúsculas, números y espacios en blanco
+    const inputValue = input.value;
+    const restrictedChars = /[*\-+\[\]{}|,.!?¿/]/g; // Caracteres especiales restringidos
+    const regex = /^[A-Za-z0-9\s]*$/; // Expresión regular para letras mayúsculas, minúsculas, números y espacios en blanco
 
-  if (restrictedChars.test(inputValue)) {
-    input.setCustomValidity("No se permiten ciertos caracteres especiales.");
-    input.value = input.value.replace(restrictedChars, ''); // Eliminar caracteres no permitidos
-  } else if (!regex.test(inputValue)) {
-    input.setCustomValidity("El campo solo puede contener letras mayúsculas, minúsculas, números y espacios en blanco.");
-    input.value = inputValue.replace(/[^A-Za-z0-9\s]/g, ''); // Eliminar otros caracteres no permitidos
-  } else {
-    input.setCustomValidity("");
-    input.value = inputValue.toUpperCase(); // Convertir a mayúsculas
-  }
-}
-
-
-
-function setCreationDate(input) {
-  const imageDateInput = document.getElementById("image_date");
-  
-  if (input.files && input.files[0]) {
-    const selectedFile = input.files[0];
-    
-    // Obtener el metadato de tiempo de creación (si está disponible)
-    const creationTime = selectedFile.lastModified;
-    const selectedDate = new Date(creationTime).toISOString().split('T')[0];
-    imageDateInput.value = selectedDate;
-  } else {
-    // Si no se selecciona una imagen, establecer la fecha actual
-    const currentDate = new Date().toISOString().split('T')[0];
-    imageDateInput.value = currentDate;
+    if (restrictedChars.test(inputValue)) {
+      input.setCustomValidity("No se permiten ciertos caracteres especiales.");
+      input.value = input.value.replace(restrictedChars, ''); // Eliminar caracteres no permitidos
+    } else if (!regex.test(inputValue)) {
+      input.setCustomValidity("El campo solo puede contener letras mayúsculas, minúsculas, números y espacios en blanco.");
+      input.value = inputValue.replace(/[^A-Za-z0-9\s]/g, ''); // Eliminar otros caracteres no permitidos
+    } else {
+      input.setCustomValidity("");
+      input.value = inputValue.toUpperCase(); // Convertir a mayúsculas
+    }
   }
 
-  validateDate(imageDateInput); // Validar la fecha automáticamente
-}
 
-function validateDate(input) {
-  const selectedDate = new Date(input.value);
-  const currentDate = new Date();
 
-  if (selectedDate > currentDate) {
-    input.setCustomValidity("No se permite ingresar una fecha futura.");
-  } else {
-    input.setCustomValidity("");
+  function setCreationDate(input) {
+    const imageDateInput = document.getElementById("image_date");
+
+    if (input.files && input.files[0]) {
+      const selectedFile = input.files[0];
+
+      // Obtener el metadato de tiempo de creación (si está disponible)
+      const creationTime = selectedFile.lastModified;
+      const selectedDate = new Date(creationTime).toISOString().split('T')[0];
+      imageDateInput.value = selectedDate;
+    } else {
+      // Si no se selecciona una imagen, establecer la fecha actual
+      const currentDate = new Date().toISOString().split('T')[0];
+      imageDateInput.value = currentDate;
+    }
+
+    validateDate(imageDateInput); // Validar la fecha automáticamente
   }
-}
 
   function validateDate(input) {
     const selectedDate = new Date(input.value);
@@ -419,17 +418,40 @@ function validateDate(input) {
       input.setCustomValidity("");
     }
   }
- 
-  function validateNumberInput(input) {
-  const inputValue = input.value;
-  const numericValue = inputValue.replace(/\D/g, ''); // Filtrar caracteres no numéricos
 
-  input.value = numericValue; // Actualizar el valor del campo solo con números
+  
+
+  function validateTextInput(input) {
+    const inputValue = input.value;
+    const filteredValue = inputValue.replace(/[^a-zA-Z\s]/g, '').toUpperCase();
+
+    input.value = filteredValue;
 }
 
-function convertToUppercase(input) {
-  input.value = input.value.toUpperCase(); // Convertir a mayúsculas
-}
 
 
+
+  function convertToUppercase(input) {
+    input.value = input.value.toUpperCase(); // Convertir a mayúsculas
+  }
+
+  const fechaNacimientoInput = document.getElementById("birthdate");
+  const edadInput = document.getElementById("edad");
+
+  fechaNacimientoInput.addEventListener("input", function() {
+    const fechaNacimiento = new Date(this.value);
+    const fechaActual = new Date();
+
+    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+
+    if (
+      fechaNacimiento.getMonth() > fechaActual.getMonth() ||
+      (fechaNacimiento.getMonth() === fechaActual.getMonth() &&
+        fechaNacimiento.getDate() > fechaActual.getDate())
+    ) {
+      edad--;
+    }
+
+    edadInput.placeholder = `${edad} años`;
+  });
 </script>
