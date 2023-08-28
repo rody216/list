@@ -149,7 +149,7 @@
     $("#description").wysihtml5();
 
     $("#mainEmployeeNav").addClass('active');
-    $("#documentContraloriaNav").addClass('active');
+    $("#manageContraloriaNav").addClass('active');
 
     //buscar persona
     $("#btnSearchPerson").click(function() {

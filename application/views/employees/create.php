@@ -46,6 +46,7 @@
                   <div class="form-group">
                     <label for="document_type_id">Tipo de documento</label>
                     <select class="form-control select_group" id="document_type_id" name="document_type_id">
+                      <option value="">Seleccione el Tipo de Documento</option>
                       <?php foreach ($document_types as $k => $v) : ?>
                         <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                       <?php endforeach ?>
@@ -54,7 +55,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="document_number">Numero de documento</label>
+                    <label for="document_number">Número de Documento</label>
                     <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)" required>
                   </div>
                 </div>
@@ -78,7 +79,7 @@
                   <div class="form-group">
                     <label for="document_type_id">Estado civil</label>
                     <select class="form-control select_group" id="civil_status_id" name="civil_status_id">
-                      <option value="">Seleccione el estado civil</option>
+                      <option value="">Seleccione el Estado Civil</option>
                       <?php foreach ($civil_status as $k => $v) : ?>
                         <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                       <?php endforeach ?>
@@ -103,7 +104,7 @@
                   <div class="form-group">
                     <label for="document_number">Tipo de sangre</label>
                     <select class="form-control select_group" id="blood_type_id" name="blood_type_id">
-                      <option value="">Seleccione el país</option>
+                      <option value="">Seleccione el Grupo Sanguíneo</option>
                       <?php foreach ($blood_types as $k => $v) : ?>
                         <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                       <?php endforeach ?>

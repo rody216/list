@@ -131,7 +131,7 @@
     $("#description").wysihtml5();
 
     $("#mainEmployeeNav").addClass('active');
-    $("#documentPonalNav").addClass('active');
+    $("#documentRadicadosNav").addClass('active');
 
     //buscar persona
     $("#btnSearchPerson").click(function() {

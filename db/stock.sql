@@ -1,133 +1,118 @@
-CREATE DATABASE  IF NOT EXISTS `bli_np` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `bli_np`;
--- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: bli_np
--- ------------------------------------------------------
--- Server version	5.7.39
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-08-2023 a las 19:06:03
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 7.4.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `banking`
+-- Base de datos: `stock`
 --
 
-DROP TABLE IF EXISTS `banking`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `banking`
+--
+
 CREATE TABLE `banking` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `financial_entity` varchar(200) DEFAULT NULL,
   `product_type` varchar(200) DEFAULT NULL,
-  `product_number` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `banking_employee_id_foreign_idx` (`employee_id`),
-  CONSTRAINT `banking_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `product_number` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `banking`
+-- Volcado de datos para la tabla `banking`
 --
 
-LOCK TABLES `banking` WRITE;
-/*!40000 ALTER TABLE `banking` DISABLE KEYS */;
-INSERT INTO `banking` VALUES (1,3,'2133123','123123','123123123');
-/*!40000 ALTER TABLE `banking` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `banking` (`id`, `employee_id`, `financial_entity`, `product_type`, `product_number`) VALUES
+(1, 3, '2133123', '123123', '123123123');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `blood_types`
+-- Estructura de tabla para la tabla `blood_types`
 --
 
-DROP TABLE IF EXISTS `blood_types`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `blood_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `blood_types`
+-- Volcado de datos para la tabla `blood_types`
 --
 
-LOCK TABLES `blood_types` WRITE;
-/*!40000 ALTER TABLE `blood_types` DISABLE KEYS */;
-INSERT INTO `blood_types` VALUES (1,'A +'),(2,'A-'),(3,'B +'),(4,'B-'),(5,'AB+'),(6,'AB-'),(7,'O+'),(8,'O-');
-/*!40000 ALTER TABLE `blood_types` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `blood_types` (`id`, `name`) VALUES
+(1, 'A +'),
+(2, 'A-'),
+(3, 'B +'),
+(4, 'B-'),
+(5, 'AB+'),
+(6, 'AB-'),
+(7, 'O+'),
+(8, 'O-');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `brands`
+-- Estructura de tabla para la tabla `brands`
 --
 
-DROP TABLE IF EXISTS `brands`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `brands` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `active` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `brands`
+-- Volcado de datos para la tabla `brands`
 --
 
-LOCK TABLES `brands` WRITE;
-/*!40000 ALTER TABLE `brands` DISABLE KEYS */;
-INSERT INTO `brands` VALUES (4,'ABC Inc.',1);
-/*!40000 ALTER TABLE `brands` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `brands` (`id`, `name`, `active`) VALUES
+(4, 'ABC Inc.', 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `civil_status`
+-- Estructura de tabla para la tabla `civil_status`
 --
 
-DROP TABLE IF EXISTS `civil_status`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `civil_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `civil_status`
+-- Volcado de datos para la tabla `civil_status`
 --
 
-LOCK TABLES `civil_status` WRITE;
-/*!40000 ALTER TABLE `civil_status` DISABLE KEYS */;
-INSERT INTO `civil_status` VALUES (1,'Soltero(a)'),(2,'Casado(a)');
-/*!40000 ALTER TABLE `civil_status` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `civil_status` (`id`, `name`) VALUES
+(1, 'Soltero(a)'),
+(2, 'Casado(a)');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `company`
+-- Estructura de tabla para la tabla `company`
 --
 
-DROP TABLE IF EXISTS `company`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `company` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `company_name` varchar(255) NOT NULL,
   `service_charge_value` varchar(255) NOT NULL,
   `vat_charge_value` varchar(255) NOT NULL,
@@ -135,72 +120,53 @@ CREATE TABLE `company` (
   `phone` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `message` text NOT NULL,
-  `currency` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `currency` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `company`
+-- Volcado de datos para la tabla `company`
 --
 
-LOCK TABLES `company` WRITE;
-/*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (1,'ABC Inc.','13','10','1234 Main St. Los Angeles, CA 98765 U.S.A.','(123) 456-7890','United States of America','Sample message<br>','USD');
-/*!40000 ALTER TABLE `company` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `company` (`id`, `company_name`, `service_charge_value`, `vat_charge_value`, `address`, `phone`, `country`, `message`, `currency`) VALUES
+(1, 'ABC Inc.', '13', '10', '1234 Main St. Los Angeles, CA 98765 U.S.A.', '(123) 456-7890', 'United States of America', 'Sample message<br>', 'USD');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `countries`
+-- Estructura de tabla para la tabla `countries`
 --
 
-DROP TABLE IF EXISTS `countries`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `countries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `countries`
+-- Volcado de datos para la tabla `countries`
 --
 
-LOCK TABLES `countries` WRITE;
-/*!40000 ALTER TABLE `countries` DISABLE KEYS */;
-INSERT INTO `countries` VALUES
-(1,'Colombia'),
-(2,'Ecuador'),
-(3,'Venezuela');
-/*!40000 ALTER TABLE `countries` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `countries` (`id`, `name`) VALUES
+(1, 'Colombia'),
+(2, 'Ecuador'),
+(3, 'Venezuela');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `departments`
+-- Estructura de tabla para la tabla `departments`
 --
 
-DROP TABLE IF EXISTS `departments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `departments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `country_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `country_id` (`country_id`),
-  CONSTRAINT `departments_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `country_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `departments`
+-- Volcado de datos para la tabla `departments`
 --
 
-LOCK TABLES `departments` WRITE;
-/*!40000 ALTER TABLE `departments` DISABLE KEYS */;
-INSERT INTO `departments` VALUES 
+INSERT INTO `departments` (`id`, `name`, `country_id`) VALUES
 (1, 'Amazonas', 1),
 (2, 'Antioquia', 1),
 (3, 'Arauca', 1),
@@ -288,190 +254,155 @@ INSERT INTO `departments` VALUES
 (85, 'Venezuela', 3),
 (86, 'Yaracuy', 3),
 (87, 'Zulia', 3);
-/*!40000 ALTER TABLE `departments` ENABLE KEYS */;
-UNLOCK TABLES;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `document_types`
+-- Estructura de tabla para la tabla `document_types`
 --
 
-DROP TABLE IF EXISTS `document_types`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `document_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `document_types`
+-- Volcado de datos para la tabla `document_types`
 --
 
-LOCK TABLES `document_types` WRITE;
-/*!40000 ALTER TABLE `document_types` DISABLE KEYS */;
-INSERT INTO `document_types` VALUES (1,'Cedula'),(6,'Carnet de extranjeria');
-/*!40000 ALTER TABLE `document_types` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `document_types` (`id`, `name`) VALUES
+(1, 'Registro Civíl de Nacimiento'),
+(6, 'Tarjeta de Identidad'),
+(7, 'Cédula de Ciudadanía'),
+(8, 'Tarjeta de Extrajería'),
+(9, 'Cedula de Extrajería'),
+(10, 'Pasaporte'),
+(11, 'Documento de Identificación Extranjero'),
+(12, 'Carné Diplomático'),
+(13, 'Permiso Especial de Permanencia (PEP)'),
+(14, 'Permiso de Protección Temporal (PPT)');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `employees`
+-- Estructura de tabla para la tabla `employees`
 --
 
-DROP TABLE IF EXISTS `employees`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `employees` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `employees_person_id_foreign_idx` (`person_id`),
-  CONSTRAINT `employees_person_id_foreign` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `active` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `employees`
+-- Volcado de datos para la tabla `employees`
 --
 
-LOCK TABLES `employees` WRITE;
-/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (3,5,1),(5,8,1),(6,9,1);
-/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `employees` (`id`, `person_id`, `active`) VALUES
+(3, 5, 1),
+(5, 8, 1),
+(6, 9, 1),
+(7, 10, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `families`
+-- Estructura de tabla para la tabla `families`
 --
 
-DROP TABLE IF EXISTS `families`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `families` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL,
   `relationship_id` int(11) NOT NULL,
-  `value` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `families_employee_id_foreign_idx` (`employee_id`),
-  KEY `families_person_id_foreign_idx` (`person_id`),
-  KEY `families_relationship_id_foreign_idx` (`relationship_id`),
-  CONSTRAINT `families_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
-  CONSTRAINT `families_person_id_foreign` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`),
-  CONSTRAINT `families_relationship_id_foreign` FOREIGN KEY (`relationship_id`) REFERENCES `relationship` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `value` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `families`
+-- Volcado de datos para la tabla `families`
 --
 
-LOCK TABLES `families` WRITE;
-/*!40000 ALTER TABLE `families` DISABLE KEYS */;
-INSERT INTO `families` VALUES (1,3,6,2,NULL);
-/*!40000 ALTER TABLE `families` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `families` (`id`, `employee_id`, `person_id`, `relationship_id`, `value`) VALUES
+(1, 3, 6, 2, NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Estructura de tabla para la tabla `groups`
 --
 
-DROP TABLE IF EXISTS `groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `group_name` varchar(255) NOT NULL,
-  `permission` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `permission` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `groups`
+-- Volcado de datos para la tabla `groups`
 --
 
-LOCK TABLES `groups` WRITE;
-/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
-INSERT INTO `groups` VALUES (1,'Administrator','a:23:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:18:\"createDocumentType\";i:9;s:18:\"updateDocumentType\";i:10;s:16:\"viewDocumentType\";i:11;s:18:\"deleteDocumentType\";i:12;s:14:\"createEmployee\";i:13;s:14:\"updateEmployee\";i:14;s:12:\"viewEmployee\";i:15;s:14:\"deleteEmployee\";i:16;s:14:\"createDocument\";i:17;s:14:\"updateDocument\";i:18;s:12:\"viewDocument\";i:19;s:14:\"deleteDocument\";i:20;s:11:\"viewReports\";i:21;s:11:\"viewProfile\";i:22;s:13:\"updateSetting\";}'),(4,'Owners','a:23:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:18:\"createDocumentType\";i:9;s:18:\"updateDocumentType\";i:10;s:16:\"viewDocumentType\";i:11;s:18:\"deleteDocumentType\";i:12;s:14:\"createEmployee\";i:13;s:14:\"updateEmployee\";i:14;s:12:\"viewEmployee\";i:15;s:14:\"deleteEmployee\";i:16;s:14:\"createDocument\";i:17;s:14:\"updateDocument\";i:18;s:12:\"viewDocument\";i:19;s:14:\"deleteDocument\";i:20;s:11:\"viewReports\";i:21;s:11:\"viewProfile\";i:22;s:13:\"updateSetting\";}');
-/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `groups` (`id`, `group_name`, `permission`) VALUES
+(1, 'Administrator', 'a:23:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:18:\"createDocumentType\";i:9;s:18:\"updateDocumentType\";i:10;s:16:\"viewDocumentType\";i:11;s:18:\"deleteDocumentType\";i:12;s:14:\"createEmployee\";i:13;s:14:\"updateEmployee\";i:14;s:12:\"viewEmployee\";i:15;s:14:\"deleteEmployee\";i:16;s:14:\"createDocument\";i:17;s:14:\"updateDocument\";i:18;s:12:\"viewDocument\";i:19;s:14:\"deleteDocument\";i:20;s:11:\"viewReports\";i:21;s:11:\"viewProfile\";i:22;s:13:\"updateSetting\";}'),
+(4, 'Owners', 'a:21:{i:0;s:10:\"createUser\";i:1;s:10:\"updateUser\";i:2;s:8:\"viewUser\";i:3;s:10:\"deleteUser\";i:4;s:11:\"createGroup\";i:5;s:11:\"updateGroup\";i:6;s:9:\"viewGroup\";i:7;s:11:\"deleteGroup\";i:8;s:18:\"createDocumentType\";i:9;s:18:\"updateDocumentType\";i:10;s:16:\"viewDocumentType\";i:11;s:18:\"deleteDocumentType\";i:12;s:14:\"createEmployee\";i:13;s:14:\"updateEmployee\";i:14;s:12:\"viewEmployee\";i:15;s:14:\"deleteEmployee\";i:16;s:14:\"createDocument\";i:17;s:12:\"viewDocument\";i:18;s:11:\"viewReports\";i:19;s:11:\"viewProfile\";i:20;s:13:\"updateSetting\";}'),
+(5, 'Visit', 'a:3:{i:0;s:16:\"viewDocumentType\";i:1;s:12:\"viewEmployee\";i:2;s:12:\"viewDocument\";}');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `judicial`
+-- Estructura de tabla para la tabla `judicial`
 --
 
-DROP TABLE IF EXISTS `judicial`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `judicial` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `processes_number` int(11) DEFAULT NULL,
   `date_issue` date DEFAULT NULL,
   `class` varchar(45) DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `judicial_employee_id_foreign_idx` (`employee_id`),
-  CONSTRAINT `judicial_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `status` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `judicial`
+-- Volcado de datos para la tabla `judicial`
 --
 
-LOCK TABLES `judicial` WRITE;
-/*!40000 ALTER TABLE `judicial` DISABLE KEYS */;
-INSERT INTO `judicial` VALUES (1,3,12323,'2023-08-01','1233','1232');
-/*!40000 ALTER TABLE `judicial` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `judicial` (`id`, `employee_id`, `processes_number`, `date_issue`, `class`, `status`) VALUES
+(1, 3, 12323, '2023-08-01', '567', '1232');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `mmp`
+-- Estructura de tabla para la tabla `mmp`
 --
 
-DROP TABLE IF EXISTS `mmp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mmp` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `date_issue` date DEFAULT NULL,
   `ubigeo_id` int(11) DEFAULT NULL,
   `article` varchar(45) DEFAULT NULL,
   `numeral` varchar(45) DEFAULT NULL,
-  `detail` text,
-  `arguments` text,
-  `reconciliations` text,
-  `pdf` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `mmp_employee_id_foreign_idx` (`employee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `detail` text DEFAULT NULL,
+  `arguments` text DEFAULT NULL,
+  `reconciliations` text DEFAULT NULL,
+  `pdf` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `mmp`
+-- Volcado de datos para la tabla `mmp`
 --
 
-LOCK TABLES `mmp` WRITE;
-/*!40000 ALTER TABLE `mmp` DISABLE KEYS */;
-INSERT INTO `mmp` VALUES (1,3,'0000-00-00',NULL,'sd1223','123','123213','213123','123123',NULL);
-/*!40000 ALTER TABLE `mmp` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `mmp` (`id`, `employee_id`, `date_issue`, `ubigeo_id`, `article`, `numeral`, `detail`, `arguments`, `reconciliations`, `pdf`) VALUES
+(1, 3, '0000-00-00', NULL, 'sd1223', '123', '123213', '213123', '123123', NULL),
+(2, 7, '2023-08-15', NULL, '123456', '10', 'SE COMIO LA COMIDA DE LA MUJER Y AHORA ESTA EN GRANDES PROBLEMAS.', 'TENIA MUCHA HAMBRE', 'INVITARLA A COMER A KFC', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `persons`
+-- Estructura de tabla para la tabla `persons`
 --
 
-DROP TABLE IF EXISTS `persons`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `persons` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `document_type_id` int(11) NOT NULL,
   `document_number` varchar(15) NOT NULL,
   `first_name` varchar(200) DEFAULT NULL,
@@ -484,183 +415,139 @@ CREATE TABLE `persons` (
   `blood_type_id` int(11) DEFAULT NULL,
   `telephone` varchar(200) DEFAULT NULL,
   `mobile_phone` varchar(200) DEFAULT NULL,
-  `email` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `persons_document_type_id_foreign_idx` (`document_type_id`),
-  KEY `persons_civil_status_id_foreign_idx` (`civil_status_id`),
-  KEY `persons_blood_type_id_foreign_idx` (`blood_type_id`),
-  CONSTRAINT `persons_blood_type_id_foreign` FOREIGN KEY (`blood_type_id`) REFERENCES `blood_types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `persons_civil_status_id_foreign` FOREIGN KEY (`civil_status_id`) REFERENCES `civil_status` (`id`),
-  CONSTRAINT `persons_document_type_id_foreign` FOREIGN KEY (`document_type_id`) REFERENCES `document_types` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `email` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `persons`
+-- Volcado de datos para la tabla `persons`
 --
 
-LOCK TABLES `persons` WRITE;
-/*!40000 ALTER TABLE `persons` DISABLE KEYS */;
-INSERT INTO `persons` VALUES (5,1,'77128391','Aurora Soledad','Guerra Ugas',1,'1995-06-30','1','4','ASASAS',7,'','',''),(6,1,'05325931','Doris Mariela','Ugas Arevalo',2,'0000-00-00',NULL,'1','\"Urbanizacion Santa Rosa Mz I lt 18\"',7,'','',''),(8,1,'11111110','12312312','21312321',1,'2023-08-04','1','1','21312',1,'1231','12321',''),(9,1,'11111111','23123','123123',1,'2023-08-01','1','1','',1,'','','');
-/*!40000 ALTER TABLE `persons` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `persons` (`id`, `document_type_id`, `document_number`, `first_name`, `last_name`, `civil_status_id`, `birthdate`, `ubigeous_birth`, `ubigeous_residence`, `address`, `blood_type_id`, `telephone`, `mobile_phone`, `email`) VALUES
+(5, 1, '77128391', 'Aurora Soledad', 'Guerra Ugas', 1, '1995-06-30', '1', '4', 'ASASAS', 7, '', '', ''),
+(6, 1, '05325931', 'Doris Mariela', 'Ugas Arevalo', 2, '0000-00-00', NULL, '1', '\"Urbanizacion Santa Rosa Mz I lt 18\"', 7, '', '', ''),
+(8, 1, '11111110', '12312312', '21312321', 1, '2023-08-04', '1', '1', '21312', 1, '1231', '12321', ''),
+(9, 1, '11111111', '23123', '123123', 1, '2023-08-01', '1', '1', '', 1, '', '', ''),
+(10, 6, 'AN8770175', 'RODOLFO', 'ALVAREZ', 2, '1970-01-21', NULL, NULL, 'LA MISMA', 7, '', '1234567891', 'elmismo@gmail.com');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `photos`
+-- Estructura de tabla para la tabla `photos`
 --
 
-DROP TABLE IF EXISTS `photos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `photos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `person_id` int(11) NOT NULL,
   `photo` varchar(45) DEFAULT NULL,
   `photo_date` date DEFAULT NULL,
-  `updated_date` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `photos_person_id_foreign_idx` (`person_id`),
-  CONSTRAINT `photos_person_id_foreign` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `updated_date` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `photos`
+-- Volcado de datos para la tabla `photos`
 --
 
-LOCK TABLES `photos` WRITE;
-/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-INSERT INTO `photos` VALUES (2,9,'assets/images/person_image/64cef94e96bb6.jpg','2023-08-01',NULL);
-/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `photos` (`id`, `person_id`, `photo`, `photo_date`, `updated_date`) VALUES
+(2, 9, 'assets/images/person_image/64cef94e96bb6.jpg', '2023-08-01', NULL),
+(3, 10, 'assets/images/person_image/64daae07bf294.jpg', '2023-08-13', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `ponal`
+-- Estructura de tabla para la tabla `ponal`
 --
 
-DROP TABLE IF EXISTS `ponal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ponal` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `date_issue` date DEFAULT NULL,
-  `time_issue` text,
-  `results` text,
-  `update_date` text,
-  PRIMARY KEY (`id`),
-  KEY `ponal_employee_id_foreign_idx` (`employee_id`),
-  CONSTRAINT `ponal_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `time_issue` text DEFAULT NULL,
+  `results` text DEFAULT NULL,
+  `update_date` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `ponal`
+-- Volcado de datos para la tabla `ponal`
 --
 
-LOCK TABLES `ponal` WRITE;
-/*!40000 ALTER TABLE `ponal` DISABLE KEYS */;
-INSERT INTO `ponal` VALUES (1,3,'2023-08-04','02:12','Para crear múltiples páginas en un PDF generado con TCPDF y contenido proveniente de un archivo HTML externo, necesitarás dividir el contenido del archivo HTML en las diferentes páginas de','2023-08-06 08:06:27');
-/*!40000 ALTER TABLE `ponal` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `ponal` (`id`, `employee_id`, `date_issue`, `time_issue`, `results`, `update_date`) VALUES
+(1, 3, '2023-08-04', '02:12', 'Para crear múltiples páginas en un PDF generado con TCPDF y contenido proveniente de un archivo HTML externo, necesitarás dividir el contenido del archivo HTML en las diferentes páginas de', '2023-08-06 08:06:27'),
+(2, 7, '2023-08-22', '10:00', 'TODO LO ANTERIOR', '2023-08-23 16:14:06');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `procuradoria`
+-- Estructura de tabla para la tabla `procuradoria`
 --
 
-DROP TABLE IF EXISTS `procuradoria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `procuradoria` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `certificate_number` int(11) DEFAULT NULL,
   `date_issue` date DEFAULT NULL,
   `time_issue` time DEFAULT NULL,
-  `results` text,
+  `results` text DEFAULT NULL,
   `siri` int(11) DEFAULT NULL,
-  `sanction` text,
+  `sanction` text DEFAULT NULL,
   `providence` varchar(200) DEFAULT NULL,
-  `update_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `procuradoria_employee_id_foreign_idx` (`employee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `update_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `procuradoria`
+-- Volcado de datos para la tabla `procuradoria`
 --
 
-LOCK TABLES `procuradoria` WRITE;
-/*!40000 ALTER TABLE `procuradoria` DISABLE KEYS */;
-INSERT INTO `procuradoria` VALUES (1,3,12321323,'2023-08-01','23:05:00','123213',213123,'123213','213123','2023-08-02 04:04:55');
-/*!40000 ALTER TABLE `procuradoria` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `procuradoria` (`id`, `employee_id`, `certificate_number`, `date_issue`, `time_issue`, `results`, `siri`, `sanction`, `providence`, `update_date`) VALUES
+(1, 3, 12321323, '2023-08-01', '23:05:00', '123213', 213123, '123213', '213123', '2023-08-02 04:04:55');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `properties`
+-- Estructura de tabla para la tabla `properties`
 --
 
-DROP TABLE IF EXISTS `properties`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `properties` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) DEFAULT NULL,
   `city` varchar(45) DEFAULT NULL,
   `office` varchar(250) DEFAULT NULL,
   `plate` varchar(45) DEFAULT NULL,
-  `pdf` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `properties_employee_id_foreign_idx` (`employee_id`),
-  CONSTRAINT `properties_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `pdf` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `properties`
+-- Volcado de datos para la tabla `properties`
 --
 
-LOCK TABLES `properties` WRITE;
-/*!40000 ALTER TABLE `properties` DISABLE KEYS */;
-INSERT INTO `properties` VALUES (1,3,'23123','213123','213123',NULL),(2,3,'adsd','asdasd','rggdfdf',NULL);
-/*!40000 ALTER TABLE `properties` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `properties` (`id`, `employee_id`, `city`, `office`, `plate`, `pdf`) VALUES
+(1, 3, '23123', '213123', '213123', NULL),
+(2, 3, 'adsd', 'asdasd', 'rggdfdf', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `provinces`
+-- Estructura de tabla para la tabla `provinces`
 --
 
-DROP TABLE IF EXISTS `provinces`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `provinces` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `department_id` int(11) DEFAULT NULL,
-  `country_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `department_id` (`department_id`),
-  KEY `country_id` (`country_id`),
-  CONSTRAINT `provinces_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
-  CONSTRAINT `provinces_ibfk_2` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `country_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `provinces`
+-- Volcado de datos para la tabla `provinces`
 --
 
-LOCK TABLES `provinces` WRITE;
-/*!40000 ALTER TABLE `provinces` DISABLE KEYS */;
-INSERT INTO `provinces` VALUES 
+INSERT INTO `provinces` (`id`, `name`, `department_id`, `country_id`) VALUES
 (1, 'El Encanto', 1, 1),
 (2, 'La Chorrera', 1, 1),
 (3, 'La Pedrera', 1, 1),
 (4, 'La Victoria', 1, 1),
-(5, 'Leticia', 1,1),
-(6, 'Miriti  ( Paraná)', 1,1),
-(7, 'Puerto Alegría', 1,1),
+(5, 'Leticia', 1, 1),
+(6, 'Miriti  ( Paraná)', 1, 1),
+(7, 'Puerto Alegría', 1, 1),
 (8, 'Puerto Arica', 1, 1),
 (9, 'Puerto Nariño', 1, 1),
 (10, 'Puerto Santander', 1, 1),
@@ -853,7 +740,7 @@ INSERT INTO `provinces` VALUES
 (197, 'Pinillos', 7, 1),
 (198, 'Regidor', 7, 1),
 (199, 'Río Viejo', 7, 1),
-(200, 'San Cristóbal', 7, 1), 
+(200, 'San Cristóbal', 7, 1),
 (201, 'San Estanislao', 7, 1),
 (202, 'San Fernando', 7, 1),
 (203, 'San Jacinto', 7, 1),
@@ -2369,221 +2256,166 @@ INSERT INTO `provinces` VALUES
 (1713, 'Simón Bolívar (Tía Juana)', 87, 3),
 (1714, 'Sucre (Bobures)', 87, 3),
 (1715, 'Valmore Rodríguez (Bachaquero)', 87, 3);
-/*!40000 ALTER TABLE `provinces` ENABLE KEYS */;
-UNLOCK TABLES;
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `relationship`
+-- Estructura de tabla para la tabla `relationship`
 --
 
-DROP TABLE IF EXISTS `relationship`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `relationship` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `id` int(11) NOT NULL,
+  `name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `relationship`
+-- Volcado de datos para la tabla `relationship`
 --
 
-LOCK TABLES `relationship` WRITE;
-/*!40000 ALTER TABLE `relationship` DISABLE KEYS */;
-INSERT INTO `relationship` VALUES (1,'Padre'),(2,'Madre'),(3,'Hijo(a)'),(4,'Hermano(a)');
-/*!40000 ALTER TABLE `relationship` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `relationship` (`id`, `name`) VALUES
+(1, 'Padre'),
+(2, 'Madre'),
+(3, 'Hijo(a)'),
+(4, 'Hermano(a)');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `rnmc`
+-- Estructura de tabla para la tabla `rnmc`
 --
 
-DROP TABLE IF EXISTS `rnmc`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rnmc` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `file_number` varchar(45) DEFAULT NULL,
   `date_issue` date DEFAULT NULL,
   `ubigeo_id` varchar(45) DEFAULT NULL,
   `article` varchar(45) DEFAULT NULL,
   `numeral` varchar(45) DEFAULT NULL,
-  `detail` text,
-  `arguments` text,
-  `measures` text,
-  `pdf` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `rnmc_employee_id_foreign_idx` (`employee_id`),
-  CONSTRAINT `rnmc_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `detail` text DEFAULT NULL,
+  `arguments` text DEFAULT NULL,
+  `measures` text DEFAULT NULL,
+  `pdf` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `rnmc`
+-- Volcado de datos para la tabla `rnmc`
 --
 
-LOCK TABLES `rnmc` WRITE;
-/*!40000 ALTER TABLE `rnmc` DISABLE KEYS */;
-INSERT INTO `rnmc` VALUES (1,3,'21323','2023-07-05',NULL,'21323wewewe','123','23123','123123','123123',NULL),(4,6,'123213','2023-08-01','1','123123','21312','123123','123','123','assets/images/file_documents/64cf0ba07d7f9.pdf');
-/*!40000 ALTER TABLE `rnmc` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `rnmc` (`id`, `employee_id`, `file_number`, `date_issue`, `ubigeo_id`, `article`, `numeral`, `detail`, `arguments`, `measures`, `pdf`) VALUES
+(1, 7, '21323', '0000-00-00', '1', '21323wewewe', '123', '23123', '123123', '123123', '<p>You did not select a file to upload.</p>'),
+(4, 6, '123213', '2023-08-01', '1', '123123', '21312', '123123', '123', '123', 'assets/images/file_documents/64cf0ba07d7f9.pdf');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `spoa`
+-- Estructura de tabla para la tabla `spoa`
 --
 
-DROP TABLE IF EXISTS `spoa`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `spoa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `notice_number` varchar(45) DEFAULT NULL,
   `quality` varchar(45) DEFAULT NULL,
   `crime` varchar(45) DEFAULT NULL,
   `date_issue` varchar(45) DEFAULT NULL,
-  `detail` text,
-  `pdf` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `spoa_employee_id_foreign_idx` (`employee_id`),
-  CONSTRAINT `spoa_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `detail` text DEFAULT NULL,
+  `pdf` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `spoa`
+-- Volcado de datos para la tabla `spoa`
 --
 
-LOCK TABLES `spoa` WRITE;
-/*!40000 ALTER TABLE `spoa` DISABLE KEYS */;
-INSERT INTO `spoa` VALUES (1,3,'12323','213','213213we','2023-07-26','12323',NULL),(2,6,'123123213','12312321','123123','2023-08-02','sdasdasdas','assets/images/file_documents/64cf039b6d2ee.pdf');
-/*!40000 ALTER TABLE `spoa` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `spoa` (`id`, `employee_id`, `notice_number`, `quality`, `crime`, `date_issue`, `detail`, `pdf`) VALUES
+(1, 3, '12323', '213', '213213we', '2023-07-26', '12323', NULL),
+(2, 6, '123123213', '12312321', '123123', '2023-08-02', 'sdasdasdas', 'assets/images/file_documents/64cf039b6d2ee.pdf'),
+(3, 7, '123456', 'BARRANQUILLA', 'HURTO CALIFICADO', '2023-08-07', 'SSGGS SSSSSS SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS SDDDDDDDDDDDDDDDDDDDDDD SDDDDDDDDDDDDDDD FFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', 'assets/images/file_documents/64dab1211c52c.jpg'),
+(4, 7, '147258', 'MONTERIA', 'COBRAR MUY POCO', '2023-08-21', 'NUNCA COBRA LO QUE DEBE', 'assets/images/file_documents/64e4e6a7eb9dc.jpg'),
+(5, 7, '963', 'imputado', 'abandono de hogar', '2023-08-23', 'le quedo grande el pote de leche de los niños', 'assets/images/file_documents/64e66f28035bb.png');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `ubigeos`
+-- Estructura de tabla para la tabla `ubigeos`
 --
 
-DROP TABLE IF EXISTS `ubigeos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ubigeos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `country_id` int(11) DEFAULT NULL,
   `department_id` int(11) DEFAULT NULL,
   `province_id` int(11) DEFAULT NULL,
-  `ubigeo` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `country_id` (`country_id`),
-  KEY `department_id` (`department_id`),
-  KEY `province_id` (`province_id`),
-  CONSTRAINT `ubigeos_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
-  CONSTRAINT `ubigeos_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
-  CONSTRAINT `ubigeos_ibfk_3` FOREIGN KEY (`province_id`) REFERENCES `provinces` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `ubigeo` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `ubigeos`
+-- Volcado de datos para la tabla `ubigeos`
 --
 
-LOCK TABLES `ubigeos` WRITE;
-/*!40000 ALTER TABLE `ubigeos` DISABLE KEYS */;
-INSERT INTO `ubigeos` VALUES (1,1,1,1,'05001'),(2,1,1,2,'08001'),(3,1,1,3,'11001'),(4,2,4,4,'1701'),(5,2,4,5,'0901'),(6,2,4,6,'0101'),(7,3,7,7,'0201'),(8,3,7,8,'0401'),(9,3,7,9,'1501');
-/*!40000 ALTER TABLE `ubigeos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `ubigeos` (`id`, `country_id`, `department_id`, `province_id`, `ubigeo`) VALUES
+(1, 1, 1, 1, '05001'),
+(2, 1, 1, 2, '08001'),
+(3, 1, 1, 3, '11001'),
+(4, 2, 4, 4, '1701'),
+(5, 2, 4, 5, '0901'),
+(6, 2, 4, 6, '0101'),
+(7, 3, 7, 7, '0201'),
+(8, 3, 7, 8, '0401'),
+(9, 3, 7, 9, '1501');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `user_group`
+-- Estructura de tabla para la tabla `users`
 --
 
-DROP TABLE IF EXISTS `user_group`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_group` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_group`
---
-
-LOCK TABLES `user_group` WRITE;
-/*!40000 ALTER TABLE `user_group` DISABLE KEYS */;
-INSERT INTO `user_group` VALUES (1,1,1);
-/*!40000 ALTER TABLE `user_group` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `gender` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `gender` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','$2y$10$ZrBk2zWOLhPAaOhncDBJv.pKAfhFYywahFQXY4NXDmhOcaRtLdAfS','admin@admin.com','admin','a','12345678910',1);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `firstname`, `lastname`, `phone`, `gender`) VALUES
+(1, 'admin', '$2y$10$FquFKdw5VWfVgojB9XuvcOc4dTL2G7mgXmFRQJ4DADzySRleFoqdO', 'rody216@gmail.com', 'Rodolfo', 'Alvarez', '3122636422', 1),
+(2, 'david', '$2y$10$4AAzNz75umHxeXipWWtQtO1si0MHnjEQ/5iEdUY17JJ/bnDVA68de', 'david@gmail.com', 'david', 'alvarez montes', '3008001128', 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `vehicle_types`
+-- Estructura de tabla para la tabla `user_group`
 --
 
-DROP TABLE IF EXISTS `vehicle_types`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vehicle_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE `user_group` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `vehicle_types`
+-- Volcado de datos para la tabla `user_group`
 --
 
-LOCK TABLES `vehicle_types` WRITE;
-/*!40000 ALTER TABLE `vehicle_types` DISABLE KEYS */;
-INSERT INTO `vehicle_types` VALUES (1,'Moto'),(2,'Automovil'),(3,'Camioneta'),(4,'Camión'),(5,'Volqueta'),(6,'Retroescabadora');
-/*!40000 ALTER TABLE `vehicle_types` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `user_group` (`id`, `user_id`, `group_id`) VALUES
+(1, 1, 1),
+(2, 2, 5);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `vehicles`
+-- Estructura de tabla para la tabla `vehicles`
 --
 
-DROP TABLE IF EXISTS `vehicles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `vehicles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `vehicle_type_id` int(11) DEFAULT NULL,
   `plate` varchar(45) DEFAULT NULL,
@@ -2591,32 +2423,506 @@ CREATE TABLE `vehicles` (
   `mark` varchar(45) DEFAULT NULL,
   `line` varchar(45) DEFAULT NULL,
   `traffic_secretary` varchar(200) DEFAULT NULL,
-  `pdf` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `vehicles_vehicicle_type_id_foreign_idx` (`vehicle_type_id`),
-  KEY `vehicles_employee_id_foreign_idx` (`employee_id`),
-  CONSTRAINT `vehicles_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `vehicles_vehicle_type_id_foreign` FOREIGN KEY (`vehicle_type_id`) REFERENCES `vehicle_types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `pdf` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `vehicles`
+-- Volcado de datos para la tabla `vehicles`
 --
 
-LOCK TABLES `vehicles` WRITE;
-/*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
-INSERT INTO `vehicles` VALUES (2,3,NULL,'123','123','12312','21321','123123','assets/images/file_documents/64cf14f05776c.pdf'),(3,3,NULL,'23213','213123','123123','213123','123213','<p>You did not select a file to upload.</p>');
-/*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `vehicles` (`id`, `employee_id`, `vehicle_type_id`, `plate`, `model`, `mark`, `line`, `traffic_secretary`, `pdf`) VALUES
+(2, 3, NULL, '123', '123', '12312', '21321', '123123', 'assets/images/file_documents/64cf14f05776c.pdf'),
+(3, 3, NULL, '23213', '213123', '123123', '213123', '123213', '<p>You did not select a file to upload.</p>'),
+(4, 7, NULL, 'KDI213', '2024', 'SUSUKI', 'ENDURO', 'PLANETA RICA', 'assets/images/file_documents/64dafa3ba55b0.png');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vehicle_types`
+--
+
+CREATE TABLE `vehicle_types` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `vehicle_types`
+--
+
+INSERT INTO `vehicle_types` (`id`, `name`) VALUES
+(1, 'Moto'),
+(2, 'Automovil'),
+(3, 'Camioneta'),
+(4, 'Camión'),
+(5, 'Volqueta'),
+(6, 'Retroescabadora');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `banking`
+--
+ALTER TABLE `banking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `banking_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `blood_types`
+--
+ALTER TABLE `blood_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `civil_status`
+--
+ALTER TABLE `civil_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `country_id` (`country_id`);
+
+--
+-- Indices de la tabla `document_types`
+--
+ALTER TABLE `document_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employees_person_id_foreign_idx` (`person_id`);
+
+--
+-- Indices de la tabla `families`
+--
+ALTER TABLE `families`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `families_employee_id_foreign_idx` (`employee_id`),
+  ADD KEY `families_person_id_foreign_idx` (`person_id`),
+  ADD KEY `families_relationship_id_foreign_idx` (`relationship_id`);
+
+--
+-- Indices de la tabla `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `judicial`
+--
+ALTER TABLE `judicial`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `judicial_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `mmp`
+--
+ALTER TABLE `mmp`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mmp_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `persons`
+--
+ALTER TABLE `persons`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `persons_document_type_id_foreign_idx` (`document_type_id`),
+  ADD KEY `persons_civil_status_id_foreign_idx` (`civil_status_id`),
+  ADD KEY `persons_blood_type_id_foreign_idx` (`blood_type_id`);
+
+--
+-- Indices de la tabla `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `photos_person_id_foreign_idx` (`person_id`);
+
+--
+-- Indices de la tabla `ponal`
+--
+ALTER TABLE `ponal`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ponal_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `procuradoria`
+--
+ALTER TABLE `procuradoria`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `procuradoria_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `properties`
+--
+ALTER TABLE `properties`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `properties_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `provinces`
+--
+ALTER TABLE `provinces`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `department_id` (`department_id`),
+  ADD KEY `country_id` (`country_id`);
+
+--
+-- Indices de la tabla `relationship`
+--
+ALTER TABLE `relationship`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `rnmc`
+--
+ALTER TABLE `rnmc`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rnmc_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `spoa`
+--
+ALTER TABLE `spoa`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `spoa_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `ubigeos`
+--
+ALTER TABLE `ubigeos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `country_id` (`country_id`),
+  ADD KEY `department_id` (`department_id`),
+  ADD KEY `province_id` (`province_id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `user_group`
+--
+ALTER TABLE `user_group`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vehicles_vehicicle_type_id_foreign_idx` (`vehicle_type_id`),
+  ADD KEY `vehicles_employee_id_foreign_idx` (`employee_id`);
+
+--
+-- Indices de la tabla `vehicle_types`
+--
+ALTER TABLE `vehicle_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `banking`
+--
+ALTER TABLE `banking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `blood_types`
+--
+ALTER TABLE `blood_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `civil_status`
+--
+ALTER TABLE `civil_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `company`
+--
+ALTER TABLE `company`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+
+--
+-- AUTO_INCREMENT de la tabla `document_types`
+--
+ALTER TABLE `document_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `families`
+--
+ALTER TABLE `families`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `judicial`
+--
+ALTER TABLE `judicial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `mmp`
+--
+ALTER TABLE `mmp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `persons`
+--
+ALTER TABLE `persons`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `ponal`
+--
+ALTER TABLE `ponal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `procuradoria`
+--
+ALTER TABLE `procuradoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `properties`
+--
+ALTER TABLE `properties`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `provinces`
+--
+ALTER TABLE `provinces`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1716;
+
+--
+-- AUTO_INCREMENT de la tabla `relationship`
+--
+ALTER TABLE `relationship`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `rnmc`
+--
+ALTER TABLE `rnmc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `spoa`
+--
+ALTER TABLE `spoa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `ubigeos`
+--
+ALTER TABLE `ubigeos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `user_group`
+--
+ALTER TABLE `user_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `vehicles`
+--
+ALTER TABLE `vehicles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `vehicle_types`
+--
+ALTER TABLE `vehicle_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `banking`
+--
+ALTER TABLE `banking`
+  ADD CONSTRAINT `banking_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `departments`
+--
+ALTER TABLE `departments`
+  ADD CONSTRAINT `departments_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`);
+
+--
+-- Filtros para la tabla `employees`
+--
+ALTER TABLE `employees`
+  ADD CONSTRAINT `employees_person_id_foreign` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`);
+
+--
+-- Filtros para la tabla `families`
+--
+ALTER TABLE `families`
+  ADD CONSTRAINT `families_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
+  ADD CONSTRAINT `families_person_id_foreign` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`),
+  ADD CONSTRAINT `families_relationship_id_foreign` FOREIGN KEY (`relationship_id`) REFERENCES `relationship` (`id`);
+
+--
+-- Filtros para la tabla `judicial`
+--
+ALTER TABLE `judicial`
+  ADD CONSTRAINT `judicial_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `mmp`
+--
+ALTER TABLE `mmp`
+  ADD CONSTRAINT `mmp_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `persons`
+--
+ALTER TABLE `persons`
+  ADD CONSTRAINT `persons_blood_type_id_foreign` FOREIGN KEY (`blood_type_id`) REFERENCES `blood_types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `persons_civil_status_id_foreign` FOREIGN KEY (`civil_status_id`) REFERENCES `civil_status` (`id`),
+  ADD CONSTRAINT `persons_document_type_id_foreign` FOREIGN KEY (`document_type_id`) REFERENCES `document_types` (`id`);
+
+--
+-- Filtros para la tabla `photos`
+--
+ALTER TABLE `photos`
+  ADD CONSTRAINT `photos_person_id_foreign` FOREIGN KEY (`person_id`) REFERENCES `persons` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `ponal`
+--
+ALTER TABLE `ponal`
+  ADD CONSTRAINT `ponal_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`);
+
+--
+-- Filtros para la tabla `procuradoria`
+--
+ALTER TABLE `procuradoria`
+  ADD CONSTRAINT `procuradoria_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`);
+
+--
+-- Filtros para la tabla `properties`
+--
+ALTER TABLE `properties`
+  ADD CONSTRAINT `properties_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`);
+
+--
+-- Filtros para la tabla `provinces`
+--
+ALTER TABLE `provinces`
+  ADD CONSTRAINT `provinces_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
+  ADD CONSTRAINT `provinces_ibfk_2` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`);
+
+--
+-- Filtros para la tabla `rnmc`
+--
+ALTER TABLE `rnmc`
+  ADD CONSTRAINT `rnmc_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`);
+
+--
+-- Filtros para la tabla `spoa`
+--
+ALTER TABLE `spoa`
+  ADD CONSTRAINT `spoa_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `ubigeos`
+--
+ALTER TABLE `ubigeos`
+  ADD CONSTRAINT `ubigeos_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
+  ADD CONSTRAINT `ubigeos_ibfk_2` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`),
+  ADD CONSTRAINT `ubigeos_ibfk_3` FOREIGN KEY (`province_id`) REFERENCES `provinces` (`id`);
+
+--
+-- Filtros para la tabla `vehicles`
+--
+ALTER TABLE `vehicles`
+  ADD CONSTRAINT `vehicles_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `vehicles_vehicle_type_id_foreign` FOREIGN KEY (`vehicle_type_id`) REFERENCES `vehicle_types` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-08-06 20:06:40
