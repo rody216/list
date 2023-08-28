@@ -150,12 +150,12 @@ class Employees extends Admin_Controller
             redirect('dashboard', 'refresh');
         }
         $this->form_validation->set_rules('document_type_id', 'Tipo de documento', 'trim|required');
-        $this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
-        $this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
-        $this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
-        $this->form_validation->set_message('required', 'El campo {field} es obligatorio.');
+		$this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
+		$this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
+		$this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
+		$this->form_validation->set_message('required', '<span style="color: red;">El campo {field} es obligatorio.</span>');
 
-
+		
         if ($this->form_validation->run() == TRUE) {
             $country_id = $this->input->post('country_id');
             $department_id = $this->input->post('department_id');
@@ -221,37 +221,16 @@ class Employees extends Admin_Controller
                 redirect('employees/create', 'refresh');
             }
         } else {
-            // ... (código en caso de validación fallida)
-            $fields_empty = array();
+            
+              // Caso en que la validación falla o no se proporcionan valores en los campos
+        $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+        $this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
+        $this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
+        $this->data['countries'] = $this->model_countries->getAllCountries();
+        $this->data['departments'] = $this->model_departments->getDepartments();
+        $this->data['provinces'] = $this->model_provinces->getProvinces();
 
-
-            if (empty($this->input->post('document_type_id'))) {
-                $fields_empty[] = '<span style="color: black;">Tipo de documento</span>';
-            }
-            if (empty($this->input->post('document_number'))) {
-                $fields_empty[] = '<span style="color: black;">Número de documento</span>';
-            }
-            if (empty($this->input->post('first_name'))) {
-                $fields_empty[] = '<span style="color: black;">Nombre</span>';
-            }
-            if (empty($this->input->post('last_name'))) {
-                $fields_empty[] = '<span style="color: black;">Apellido</span>';
-            }
-
-            if (!empty($fields_empty)) {
-                $error_message = 'LOS CAMPOS NO PUEDEN ESTAR VACIOS: ' . implode(', ', $fields_empty);
-                $this->session->set_flashdata('errors', $error_message);
-            }
-
-            // Caso en que la validación falla o no se proporcionan valores en los campos
-            $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
-            $this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
-            $this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
-            $this->data['countries'] = $this->model_countries->getAllCountries();
-            $this->data['departments'] = $this->model_departments->getDepartments();
-            $this->data['provinces'] = $this->model_provinces->getProvinces();
-
-            $this->render_template('employees/create', $this->data);
+        $this->render_template('employees/create', $this->data);
         }
     }
 
@@ -259,7 +238,7 @@ class Employees extends Admin_Controller
 
 
 
-
+    
 
     public function family()
     {
