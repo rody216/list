@@ -20,17 +20,20 @@
 
         <div id="messages"></div>
 
-        <?php if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        <?php elseif ($this->session->flashdata('error')) : ?>
-          <div class="alert alert-error alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?php echo $this->session->flashdata('error'); ?>
-          </div>
-        <?php endif; ?>
+        <?php if ($this->session->flashdata('errors')) : ?>
+    <div class="alert alert-error alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo $this->session->flashdata('errors'); ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('success') && !$this->session->flashdata('errors')) : ?>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?php echo $this->session->flashdata('success'); ?>
+    </div>
+<?php endif; ?>
+
 
 
         <div class="box">
@@ -55,7 +58,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="document_number">Numero de documento</label>
-                    <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)" required>
+                    <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)">
                   </div>
                 </div>
               </div>
@@ -63,13 +66,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="first_name">Nombre</label>
-                  <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="validateAndUppercase(this)" required>
+                  <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" oninput="validateAndUppercase(this)">
                 </div>
               </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="product_name">Apellido</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="validateAndUppercase(this)" required>
+                    <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" oninput="validateAndUppercase(this)">
                   </div>
                 </div>
               </div>
@@ -358,22 +361,26 @@
     });
   });
 
+  
   function validateAndUppercase(input) {
   const inputValue = input.value;
   const restrictedChars = /[*\-+\[\]{}|,.!?¿/]/g; // Caracteres especiales restringidos
-  const regex = /^[A-Za-z0-9]*$/; // Expresión regular para letras mayúsculas, minúsculas y números
+  const regex = /^[A-Za-z0-9\s]*$/; // Expresión regular para letras mayúsculas, minúsculas, números y espacios en blanco
 
   if (restrictedChars.test(inputValue)) {
     input.setCustomValidity("No se permiten ciertos caracteres especiales.");
     input.value = input.value.replace(restrictedChars, ''); // Eliminar caracteres no permitidos
   } else if (!regex.test(inputValue)) {
-    input.setCustomValidity("El campo solo puede contener letras mayúsculas números.");
-    input.value = inputValue.replace(/[^A-Za-z0-9]/g, ''); // Eliminar otros caracteres no permitidos
+    input.setCustomValidity("El campo solo puede contener letras mayúsculas, minúsculas, números y espacios en blanco.");
+    input.value = inputValue.replace(/[^A-Za-z0-9\s]/g, ''); // Eliminar otros caracteres no permitidos
   } else {
     input.setCustomValidity("");
     input.value = inputValue.toUpperCase(); // Convertir a mayúsculas
   }
 }
+
+
+
 
 function setCreationDate(input) {
   const imageDateInput = document.getElementById("image_date");
