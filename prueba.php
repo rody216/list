@@ -1,390 +1,448 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Administrar
-      <small>Empleados</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Empleados</li>
-    </ol>
-  </section>
+<?php
 
-  <!-- Main content -->
-  <section class="content">
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
+defined('BASEPATH') or exit('No direct script access allowed');
 
-        <div id="messages"></div>
+class Employees extends Admin_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
 
-        <?php if ($this->session->flashdata('success')) : ?>
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?php echo $this->session->flashdata('success'); ?>
-          </div>
-        <?php elseif ($this->session->flashdata('error')) : ?>
-          <div class="alert alert-error alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?php echo $this->session->flashdata('error'); ?>
-          </div>
-        <?php endif; ?>
+        $this->not_logged_in();
 
-
-        <div class="box">
-          <div class="box-header">
-            <h3 class="box-title">Agregar empleados</h3>
-          </div>
-          <!-- /.box-header -->
-          <form role="form" action="<?php echo base_url('employees/create') ?>" method="post" enctype="multipart/form-data">
-            <div class="box-body">
-              <?php echo validation_errors(); ?>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="document_type_id">Tipo de documento</label>
-                    <select class="form-control select_group" id="document_type_id" name="document_type_id">
-                      <?php foreach ($document_types as $k => $v) : ?>
-                        <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                      <?php endforeach ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="document_number">Numero de documento</label>
-                    <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="product_name">Nombre</label>
-                      <input type="text" class="form-control" id="first_name" name="first_name" autocomplete="off" />
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="product_name">Apellido</label>
-                      <input type="text" class="form-control" id="last_name" name="last_name" autocomplete="off" />
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_type_id">Estado civil</label>
-                      <select class="form-control select_group" id="civil_status_id" name="civil_status_id">
-                        <option value="">Seleccione el estado civil</option>
-                        <?php foreach ($civil_status as $k => $v) : ?>
-                          <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                        <?php endforeach ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="document_type_id">Fecha de Nacimiento</label>
-                      <input type="date" class="form-control" id="birthdate" name="birthdate" autocomplete="off" onchange="validateDate(this)" />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="document_type_id">Estatura</label>
-                        <input type="text" class="form-control" id="height" name="height" autocomplete="off" placeholder="Ingrese la estatura en centimetros" />
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="document_number">Tipo de sangre</label>
-                        <select class="form-control select_group" id="blood_type_id" name="blood_type_id">
-                          <option value="">Seleccionar</option>
-                          <?php foreach ($blood_types as $k => $v) : ?>
-                            <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                          <?php endforeach ?>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-grouppmb-0">
-                    <label>Lugar de nacimiento</label>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="country_id">País</label>
-                        <select class="form-control select_group country_id" id="country_id" name="country_id">
-                          <option value="">Seleccione el país</option>
-                          <?php foreach ($countries as $k => $v) : ?>
-                            <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                          <?php endforeach ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="product_name">Departamento</label>
-                        <select class="form-control select_group department_id" id="department_id" name="department_id">
-                          <option value="">Seleccione el departamento</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="product_name">Provincia</label>
-                        <select class="form-control select_group province_id" id="province_id" name="province_id">
-                          <option value="">Seleccione la provincia</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-grouppmb-0">
-                    <label>Lugar de residencia</label>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="country_id2">País</label>
-                        <select class="form-control select_group country_id2" id="country_id2" name="country_id2">
-                          <option value="">Seleccione el país</option>
-                          <?php foreach ($countries as $k => $v) : ?>
-                            <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
-                          <?php endforeach ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="product_name">Departamento</label>
-                        <select class="form-control select_group department_id2" id="department_id2" name="department_id2">
-                          <option value="">Seleccione el departamento</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="product_name">Provincia</label>
-                        <select class="form-control select_group province_id2" id="province_id2" name="province_id2">
-                          <option value="">Seleccione la provincia</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="sku">Direccion Residencia</label>
-                    <input type="text" class="form-control" id="address" name="address" autocomplete="off" />
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="sku">Telefono móvil</label>
-                        <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" autocomplete="off" />
-                      </div>
-                      <div class="form-group">
-                        <label for="sku">Telefono fijo</label>
-                        <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" />
-                      </div>
-                      <div class="form-group">
-                        <label for="sku">Correo electronico</label>
-                        <input type="email" class="form-control" id="email" name="email" autocomplete="off" />
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="image">Image</label>
-                        <div class="kv-avatar">
-                          <div class="file-loading">
-                            <input id="image" name="image" type="file">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="image_date">Fecha de la Imagen</label>
-                        <input type="date" class="form-control" id="image_date" name="image_date" autocomplete="off" onchange="validateDate(this)" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="box-footer">
-                  <button type="submit" class="btn btn-success">Guardar cambios</button>
-                  <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
-                </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $(".select_group").select2();
-    $("#description").wysihtml5();
-
-    $("#mainEmployeeNav").addClass('active');
-    $("#addEmployeeNav").addClass('active');
-
-    $("#country_id").change(function() {
-      var selectedCountryId = $(this).val();
-
-      if (!selectedCountryId) {
-        $("#department_id").empty().append('<option value="">Seleccione el departamento</option>');
-        return;
-      }
-
-      $.ajax({
-        url: 'fetchDepartmentByCountry/' + selectedCountryId,
-        method: "GET",
-        dataType: "json",
-        success: function(response) {
-          var $departmentSelect = $("#department_id");
-          $departmentSelect.empty().append('<option value="">Seleccione el departamento</option>');
-
-          if (response.length > 0) {
-            $.each(response, function(index, department) {
-              $departmentSelect.append('<option value="' + department.id + '">' + department.name + '</option>');
-            });
-          }
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
-
-    $("#department_id").change(function() {
-      var selectedDepartmentId = $(this).val();
-
-      if (!selectedDepartmentId) {
-        $("#province_id").empty().append('<option value="">Seleccione la provincia</option>');
-        return;
-      }
-
-      $.ajax({
-        url: 'fetchProvincesByDepartmentId/' + selectedDepartmentId,
-        method: "GET",
-        dataType: "json",
-        success: function(response) {
-          var $provinceSelect = $("#province_id");
-          $provinceSelect.empty().append('<option value="">Seleccione la provincia</option>');
-
-          if (response.length > 0) {
-            $.each(response, function(index, province) {
-              $provinceSelect.append('<option value="' + province.id + '">' + province.name + '</option>');
-            });
-          }
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
-
-    $("#country_id2").change(function() {
-      var selectedCountryId = $(this).val();
-
-      if (!selectedCountryId) {
-        $("#department_id2").empty().append('<option value="">Seleccione el departamento</option>');
-        return;
-      }
-
-      $.ajax({
-        url: 'fetchDepartmentByCountry/' + selectedCountryId,
-        method: "GET",
-        dataType: "json",
-        success: function(response) {
-          var $departmentSelect = $("#department_id2");
-          $departmentSelect.empty().append('<option value="">Seleccione el departamento</option>');
-
-          if (response.length > 0) {
-            $.each(response, function(index, department) {
-              $departmentSelect.append('<option value="' + department.id + '">' + department.name + '</option>');
-            });
-          }
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
-
-    $("#department_id2").change(function() {
-      var selectedDepartmentId = $(this).val();
-
-      if (!selectedDepartmentId) {
-        $("#province_id2").empty().append('<option value="">Seleccione la provincia</option>');
-        return;
-      }
-
-      $.ajax({
-        url: 'fetchProvincesByDepartmentId/' + selectedDepartmentId,
-        method: "GET",
-        dataType: "json",
-        success: function(response) {
-          var $provinceSelect = $("#province_id2");
-          $provinceSelect.empty().append('<option value="">Seleccione la provincia</option>');
-
-          if (response.length > 0) {
-            $.each(response, function(index, province) {
-              $provinceSelect.append('<option value="' + province.id + '">' + province.name + '</option>');
-            });
-          }
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      });
-    });
-
-    var btnCust = '';
-    $("#image").fileinput({
-      overwriteInitial: true,
-      maxFileSize: 1500,
-      showClose: false,
-      showCaption: false,
-      browseLabel: '',
-      removeLabel: '',
-      browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
-      removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-      removeTitle: 'Cancel or reset changes',
-      elErrorContainer: '#kv-avatar-errors-1',
-      msgErrorClass: 'alert alert-block alert-danger',
-      // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
-      layoutTemplates: {
-        main2: '{preview} ' + btnCust + ' {remove} {browse}'
-      },
-      allowedFileExtensions: ["jpg", "png", "gif"]
-    });
-
-  });
-
-  function validateAndUppercase(input) {
-    const inputValue = input.value;
-    const restrictedChars = /[*\-+\[\]{}|,.^!?¿/]/g; // Caracteres especiales restringidos
-    const regex = /^[A-Za-z0-9]*$/; // Expresión regular para letras mayúsculas, minúsculas y números
-    if (restrictedChars.test(inputValue)) {
-      input.setCustomValidity("No se permiten ciertos caracteres especiales.");
-    } else if (!regex.test(inputValue)) {
-      input.setCustomValidity("El campo solo puede contener letras mayúsculas, minúsculas y números.");
-    } else {
-      input.setCustomValidity("");
-      input.value = inputValue.toUpperCase(); // Convertir a mayúsculas
+        $this->data['page_title'] = 'Employees';
+        $this->load->model('model_document_types');
+        $this->load->model('model_countries');
+        $this->load->model('model_departments');
+        $this->load->model('model_provinces');
+        $this->load->model('model_ubigeos');
+        $this->load->model('model_blood_types');
+        $this->load->model('model_civil_status');
+        $this->load->model('model_relationship');
+        $this->load->model('model_persons');
+        $this->load->model('model_employees');
+        $this->load->model('model_families');
+        $this->load->model('model_photos');
+        $this->load->model('model_users');
     }
-  }
 
-  function validateDate(input) {
-    const selectedDate = new Date(input.value);
-    const currentDate = new Date();
+    public function index()
+    {
+        if (!in_array('viewEmployee', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
 
-    if (selectedDate > currentDate) {
-      input.setCustomValidity("No se permite ingresar una fecha futura.");
-    } else {
-      input.setCustomValidity("");
+        $user_id = $this->session->userdata('id');
+        $user_data = $this->model_users->getUserData($user_id);
+        $this->data['user_data'] = $user_data;
+        $this->render_template('employees/index', $this->data);
     }
-  }
-</script>
+
+    public function fetchEmployeeData()
+    {
+        $result = array('data' => array());
+        $data = $this->model_employees->getEmployees();
+
+        foreach ($data as $key => $value) {
+            $buttons = '';
+            if (in_array('updateEmployee', $this->permission)) {
+                // $buttons .= '<a href="'.base_url('employees/update/'.$value['id']).'" class="btn btn-default"><i class="fa fa-pencil"></i></a>';
+                $buttons .= '<a href="' . base_url('employees/family/' . $value['id']) . '" class="btn btn-succcess"><i class="fa fa-users"> Agregar Familiar</i></a>';
+                $buttons .= '<a href="' . base_url('documents/employee/' . $value['id']) . '" class="btn btn-success"><i class="fa fa-file"></i> PDF</a>';
+                $buttons .= '<a href="' . base_url('documents/report/' . $value['id']) . '" target="_blank" class="btn btn-primary"><i class="fa fa-print"> Imprimir</i></a>';
+            }
+
+            // if(in_array('deleteEmployee', $this->permission)) {
+            // 	$buttons .= ' <button type="button" class="btn btn-default" onclick="removeFunc('.$value['id'].')" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
+            // }
+
+            $photo = $this->model_photos->getPhotoByPersonId($value['person_id']);
+
+            if (is_null($photo)) {
+                $img = '';
+            } else {
+                $img = '<img src="' . base_url($photo['photo']) . '" alt="' . $photo['photo'] . '" class="img-circle" width="50" height="50" />';
+            }
+
+            $document_info = $value['document_type_name'] . ' ' . $value['document_number'];
+            $full_name = $value['first_name'] . ' ' . $value['last_name'];
+
+            $result['data'][$key] = array(
+                $img,
+                $document_info,
+                $full_name,
+                $buttons
+            );
+        }
+
+        echo json_encode($result);
+    }
+
+    public function fetchDepartmentByCountry($country_id)
+    {
+        $data = $this->model_departments->getDepartmentsByCountry($country_id);
+
+        echo json_encode($data);
+    }
+
+    public function fetchPersonByDocumentNumber($document_type_id, $document_number)
+    {
+        $data = $this->model_persons->getPersonByDocumentNumber($document_type_id, $document_number);
+
+        if (isset($data['ubigeous_birth'])) {
+            $data['ubigeos_birthdate'] = $this->model_ubigeos->getUbigeoDetail($data['ubigeous_birth']);
+        }
+
+        if (isset($data['ubigeous_residence'])) {
+            $data['ubigeos_residence'] = $this->model_ubigeos->getUbigeoDetail($data['ubigeous_residence']);
+        }
+
+
+        echo json_encode($data);
+    }
+
+    public function fetchProvincesByDepartmentId($province_id)
+    {
+        $data = $this->model_provinces->getProvincesByDepartmentId($province_id);
+
+        echo json_encode($data);
+    }
+
+    public function fetchFamiliesByEmployeeId($employee_id)
+    {
+        $result = array('data' => array());
+
+        $data = $this->model_families->getFamiliesByEmployeeId($employee_id);
+
+        foreach ($data as $key => $value) {
+            $buttons = '';
+            if (in_array('updateEmployee', $this->permission)) {
+                $buttons .= '<a href="' . base_url('employees/update/' . $value['id']) . '" class="btn btn-default"><i class="fa fa-pencil"></i></a>';
+                $buttons .= '<a href="' . base_url('employees/family/' . $value['id']) . '" class="btn btn-default"><i class="fa fa-users"></i></a>';
+            }
+
+            if (in_array('deleteEmployee', $this->permission)) {
+                $buttons .= ' <button type="button" class="btn btn-default" onclick="removeFunc(' . $value['id'] . ')" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
+            }
+
+            // $photo = $this->model_photos->getPhotoByPersonId($value['person_id']);
+
+            // $img = '<img src="'.base_url($photo['photo']).'" alt="'.$photo['photo'].'" class="img-circle" width="50" height="50" />';
+
+            $document_info = $value['document_type_name'] . ' ' . $value['document_number'];
+            $full_name = $value['first_name'] . ' ' . $value['last_name'];
+
+
+            $result['data'][$key] = array(
+                '',
+                $document_info,
+                $full_name,
+                $value['relationship_name'],
+            );
+        }
+
+        echo json_encode($result);
+    }
+
+    public function create()
+    {
+        if (!in_array('createEmployee', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
+        $this->form_validation->set_rules('document_type_id', 'Tipo de documento', 'trim|required');
+		$this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
+		$this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
+		$this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
+		$this->form_validation->set_message('required', '<span style="color: red;">El campo {field} es obligatorio.</span>');
+
+		
+        if ($this->form_validation->run() == TRUE) {
+            $country_id = $this->input->post('country_id');
+            $department_id = $this->input->post('department_id');
+            $province_id = $this->input->post('province_id');
+            $country_id2 = $this->input->post('country_id2');
+            $department_id2 = $this->input->post('department_id2');
+            $province_id2 = $this->input->post('province_id2');
+
+            $ubigeous_birth = $this->model_ubigeos->getUbigeo($country_id, $department_id, $province_id);
+            $ubigeous_residence = $this->model_ubigeos->getUbigeo($country_id2, $department_id2, $province_id2);
+
+            $person_data = array(
+                'document_type_id' => $this->input->post('document_type_id'),
+                'document_number' => $this->input->post('document_number'),
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'civil_status_id' => $this->input->post('civil_status_id'),
+                'birthdate' => $this->input->post('birthdate'),
+                'ubigeous_birth' => $ubigeous_birth['id'],
+                'ubigeous_residence' => $ubigeous_residence['id'],
+                'address' => $this->input->post('address'),
+                'blood_type_id' => $this->input->post('blood_type_id'),
+                'telephone' => $this->input->post('telephone'),
+                'mobile_phone' => $this->input->post('mobile_phone'),
+                'email' => $this->input->post('email'),
+            );
+
+            $this->db->trans_start();
+
+            try {
+                $person_create_id = $this->model_persons->create($person_data);
+
+                if ($person_create_id) {
+                    $employee_data = array(
+                        'person_id' => $person_create_id,
+                    );
+
+                    $this->model_employees->create($employee_data);
+                }
+
+                if ($_FILES['image']['size'] > 0) {
+                    $upload_image = $this->upload_image();
+
+                    $photo_date = $this->input->post('photo_date');
+
+                    $upload_data = array(
+                        'person_id' => $person_create_id,
+                        'photo' => $upload_image,
+                        'photo_date' => $photo_date,
+                    );
+
+
+                    $this->model_photos->create($upload_data);
+                }
+
+                $this->db->trans_commit();
+
+                $this->session->set_flashdata('success', 'Creado con éxito');
+                redirect('employees/', 'refresh');
+            } catch (Exception $e) {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
+                redirect('employees/create', 'refresh');
+            }
+        } else {
+            
+              // Caso en que la validación falla o no se proporcionan valores en los campos
+        $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+        $this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
+        $this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
+        $this->data['countries'] = $this->model_countries->getAllCountries();
+        $this->data['departments'] = $this->model_departments->getDepartments();
+        $this->data['provinces'] = $this->model_provinces->getProvinces();
+
+        $this->render_template('employees/create', $this->data);
+        }
+    }
+
+
+
+
+
+    
+
+    public function family()
+    {
+        if (!in_array('createEmployee', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
+
+        $this->form_validation->set_rules('employee_id', 'Agregue el empleado', 'trim|required');
+        $this->form_validation->set_rules('document_type_id', 'Tipo de documento', 'trim|required');
+        $this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
+        $this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
+        $this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
+
+
+        if ($this->form_validation->run() == TRUE) {
+            $employee_id = $this->input->post('employee_id');
+            $country_id = $this->input->post('country_id');
+            $department_id = $this->input->post('department_id');
+            $province_id = $this->input->post('province_id');
+            $country_id2 = $this->input->post('country_id2');
+            $department_id2 = $this->input->post('department_id2');
+            $province_id2 = $this->input->post('province_id2');
+            $is_employee = $this->input->post('is_employee');
+            $relationship_id = $this->input->post('relationship_id');
+
+            $ubigeous_birth = $this->model_ubigeos->getUbigeo($country_id, $department_id, $province_id);
+            $ubigeous_residence = $this->model_ubigeos->getUbigeo($country_id2, $department_id2, $province_id2);
+
+            $person_data = array(
+                'document_type_id' => $this->input->post('document_type_id'),
+                'document_number' => $this->input->post('document_number'),
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'civil_status_id' => $this->input->post('civil_status_id'),
+                'birthdate' => json_encode($this->input->post('birthdate')),
+                'ubigeous_birth' => $ubigeous_birth['id'],
+                'ubigeous_residence' => $ubigeous_residence['id'],
+                'address' => json_encode($this->input->post('address')),
+                'blood_type_id' => $this->input->post('blood_type_id'),
+                'telephone' => $this->input->post('telephone'),
+                'mobile_phone' => $this->input->post('mobile_phone'),
+                'email' => $this->input->post('email'),
+            );
+
+            $this->db->trans_start();
+
+            try {
+                $person_create_id = $this->model_persons->create($person_data);
+
+                if (isset($is_employee) && $is_employee == '1') {
+                    if ($person_create_id) {
+                        $employee_data = array(
+                            'person_id' => $person_create_id,
+                        );
+
+                        $this->model_employees->create($employee_data);
+                    }
+                }
+
+                $family_data = array(
+                    'employee_id' => $employee_id,
+                    'person_id' => $person_create_id,
+                    'relationship_id' => $relationship_id,
+                );
+
+                $this->model_families->create($family_data);
+
+                $this->db->trans_commit();
+
+                $this->session->set_flashdata('success', 'Creado con éxito');
+                redirect('employees/family/', 'refresh');
+            } catch (Exception $e) {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
+                redirect('employees/family/', 'refresh');
+            }
+        } else {
+            // false case
+            $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+            $this->data['countries'] = $this->model_countries->getAllCountries();
+            $this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
+            $this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
+            $this->data['relationship'] = $this->model_relationship->getRelationship();
+
+            $this->render_template('employees/family', $this->data);
+        }
+    }
+
+    public function upload_image()
+    {
+        // assets/images/product_image
+        $config['upload_path'] = 'assets/images/person_image';
+        $config['file_name'] =  uniqid();
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '1000';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('image')) {
+            $error = $this->upload->display_errors();
+            return $error;
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $type = explode('.', $_FILES['image']['name']);
+            $type = $type[count($type) - 1];
+
+            $path = $config['upload_path'] . '/' . $config['file_name'] . '.' . $type;
+            return ($data == true) ? $path : false;
+        }
+    }
+
+
+    public function update($employee_id)
+    {
+        // Check permissions and redirect if necessary
+        if (!in_array('updateEmployee', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
+
+        $this->form_validation->set_rules('document_type_id', 'Tipo de documento', 'trim|required');
+        $this->form_validation->set_rules('document_number', 'Número de documento', 'trim|required');
+        $this->form_validation->set_rules('first_name', 'Nombre', 'trim|required');
+        $this->form_validation->set_rules('last_name', 'Apellido', 'trim|required');
+        $this->form_validation->set_rules('blood_type_id', 'Apellido', 'trim|required');
+
+
+
+        if ($this->form_validation->run() == TRUE) {
+            $country_id = $this->input->post('country_id');
+            $department_id = $this->input->post('department_id');
+            $province_id = $this->input->post('province_id');
+            $country_id2 = $this->input->post('country_id2');
+            $department_id2 = $this->input->post('department_id2');
+            $province_id2 = $this->input->post('province_id2');
+
+            $ubigeous_birth = $this->model_ubigeos->getUbigeo($country_id, $department_id, $province_id);
+            $ubigeous_residence = $this->model_ubigeos->getUbigeo($country_id2, $department_id2, $province_id2);
+
+
+
+            // Get ubigeous_residence...
+
+            $person_data = array(
+                'document_type_id' => $this->input->post('document_type_id'),
+                'document_number' => $this->input->post('document_number'),
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'civil_status_id' => $this->input->post('civil_status_id'),
+                'birthdate' => $this->input->post('birthdate'),
+                'ubigeous_birth' => $ubigeous_birth['id'],
+                'ubigeous_residence' => $ubigeous_residence['id'],
+                'address' => $this->input->post('address'),
+                'blood_type_id' => $this->input->post('blood_type_id'),
+                'telephone' => $this->input->post('telephone'),
+                'mobile_phone' => $this->input->post('mobile_phone'),
+                'email' => $this->input->post('email'),
+            );
+
+            $this->db->trans_start();
+
+            try {
+                // Update person and employee data
+                $this->model_persons->update($employee_id, $person_data);
+                // Update other related tables...
+
+                if ($_FILES['image']['size'] > 0) {
+                    $upload_image = $this->upload_image();
+                    $photo_date = $this->input->post('photo_date');
+
+                    $upload_data = array(
+                        'person_id' => $employee_id,
+                        'photo' => $upload_image,
+                        'photo_date' => $photo_date,
+                    );
+
+                    $this->model_photos->update($employee_id, $upload_data);
+                }
+
+                $this->db->trans_commit();
+
+                $this->session->set_flashdata('success', 'Actualizado exitosamente');
+                redirect('employees/', 'refresh');
+            } catch (Exception $e) {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('errors', 'Se produjo un error al actualizar');
+                redirect('employees/update/' . $employee_id, 'refresh');
+            }
+        } else {
+            // Load existing employee data and related info
+            $employee_data = $this->model_employees->getEmployeeById($employee_id);
+            $photo_data = $this->model_photos->getPhotoByPersonId($employee_id);
+            // Load other related data...
+
+            $this->data['employee_data'] = $employee_data;
+            $this->data['photo_data'] = $photo_data;
+            // Set other related data...
+
+            $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+            $this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
+            $this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
+            $this->data['countries'] = $this->model_countries->getAllCountries();
+            $this->data['departments'] = $this->model_departments->getDepartments();
+            $this->data['provinces'] = $this->model_provinces->getProvinces();
+            $this->render_template('employees/update', $this->data);
+        }
+    }
+}
