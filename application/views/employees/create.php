@@ -190,10 +190,29 @@
                     <label for="sku">Telefono móvil</label>
                     <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" autocomplete="off" oninput="validateNumberInput(this)" />
                   </div>
-                  <div class="form-group">
-                    <label for="sku">Telefono fijo</label>
-                    <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" oninput="validateNumberInput(this)" />
+                  <!-- Modal para seleccionar país -->
+                  <div id="countryModal" class="col-md-6">
+                    <div class="form-group">
+                      <span class="close" onclick="closeCountryModal()">&times;</span>
+                      <label for="telephone">Indicativo del Pais</label>
+                      <select class="form-control" id="telephone" name="telephone" onchange="updateCountryCode(); closeCountryModal();">
+                        <option value="57">Colombia (+57)</option>
+                        <option value="593">Ecuador (+593)</option>
+                        <option value="58">Venezuela (+58)</option>
+                      </select>
+                    </div>
                   </div>
+
+                  <div class="col-md-6">
+                    <label for="sku">Telefono fijo</label>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" oninput="validateNumberInput(this)" />
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" onclick="openCountryModal()">+</button>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <label for="sku">Correo electronico</label>
                     <input type="email" class="form-control" id="email" name="email" autocomplete="off" />
@@ -419,14 +438,14 @@
     }
   }
 
-  
+
 
   function validateTextInput(input) {
     const inputValue = input.value;
     const filteredValue = inputValue.replace(/[^a-zA-Z\s]/g, '').toUpperCase();
 
     input.value = filteredValue;
-}
+  }
 
 
 
@@ -453,5 +472,73 @@
     }
 
     edadInput.placeholder = `${edad} años`;
+  });
+
+  function validateNumberInput(inputElement) {
+    const phoneNumber = inputElement.value;
+    const countryCode = getCountryCode(phoneNumber);
+
+    let countryCodeLabel = '';
+    if (countryCode) {
+      countryCodeLabel = `(${countryCode}) `;
+    }
+
+    inputElement.value = `${countryCodeLabel}${phoneNumber}`;
+  }
+
+  function updatePhoneNumber(inputElement) {
+    const phoneNumber = inputElement.value.replace(/\D/g, ''); // Elimina cualquier carácter no numérico
+    const countryCode = getCountryCode(phoneNumber);
+
+    let formattedPhoneNumber = phoneNumber;
+    if (countryCode) {
+      formattedPhoneNumber = `(${countryCode}) ${phoneNumber}`;
+    }
+
+    inputElement.value = formattedPhoneNumber;
+  }
+
+  function updateCountryCode() {
+    const countrySelect = document.getElementById('country');
+    const selectedCountryCode = countrySelect.value;
+    localStorage.setItem('selectedCountryCode', selectedCountryCode);
+    updatePhoneNumber();
+
+  }
+
+  let isCountryModalOpen = false;
+
+  function openCountryModal() {
+    const countryModal = document.getElementById('countryModal');
+    countryModal.style.display = 'block';
+    isCountryModalOpen = true;
+  }
+
+  function closeCountryModal() {
+    const countryModal = document.getElementById('countryModal');
+    countryModal.style.display = 'none';
+    isCountryModalOpen = false;
+  }
+
+  function updateCountryCode() {
+    const countrySelect = document.getElementById('country');
+    const selectedCountryCode = countrySelect.value;
+    localStorage.setItem('selectedCountryCode', selectedCountryCode);
+  }
+
+  function validateNumberInput(input) {
+    const inputValue = input.value;
+    const numericValue = inputValue.replace(/\D/g, ''); // Filtrar caracteres no numéricos
+
+    input.value = numericValue; // Actualizar el valor del campo solo con números
+  }
+
+  // Load previously selected country code if available
+  document.addEventListener('DOMContentLoaded', function() {
+    const storedCountryCode = localStorage.getItem('selectedCountryCode');
+    if (storedCountryCode) {
+      const countrySelect = document.getElementById('country');
+      countrySelect.value = storedCountryCode;
+    }
   });
 </script>

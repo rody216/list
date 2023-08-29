@@ -235,11 +235,6 @@ class Employees extends Admin_Controller
     }
 
 
-
-
-
-    
-
     public function family()
     {
         if (!in_array('createEmployee', $this->permission)) {
