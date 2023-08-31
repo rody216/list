@@ -27,7 +27,7 @@
               <?php endif; ?>
               <?php if(in_array('updateEmployee', $user_permission) || in_array('viewEmployee', $user_permission) || in_array('deleteEmployee', $user_permission)): ?>
               <li id="manageEmployeeNav"><a href="<?php echo base_url('employees/family') ?>"><i class="fa fa-circle-o"> Agregar familiares</i> </a></li>
-              <?php endif; ?>
+              <?php endif; ?>              
               <?php if(in_array('createDocument', $user_permission)): ?>
               <li id="documentSpoaNav"><a href="<?php echo base_url('documents/spoa') ?>"><i class="fa fa-circle-o"></i>Spoa</a></li>
               <li id="documentRnmcNav"><a href="<?php echo base_url('documents/rnmc') ?>"><i class="fa fa-circle-o"> Rnmc</i> </a></li>

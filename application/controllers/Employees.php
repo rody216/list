@@ -46,10 +46,10 @@ class Employees extends Admin_Controller
         foreach ($data as $key => $value) {
             $buttons = '';
             if (in_array('updateEmployee', $this->permission)) {
-                // $buttons .= '<a href="'.base_url('employees/update/'.$value['id']).'" class="btn btn-default"><i class="fa fa-pencil"></i></a>';
+                 $buttons .= '<a href="'.base_url('employees/update/'.$value['id']).'" class="btn btn-default"><i class="fa fa-pencil"></i></a>';
                 $buttons .= '<a href="' . base_url('employees/family/' . $value['id']) . '" class="btn btn-succcess"><i class="fa fa-users"> Agregar Familiar</i></a>';
                 $buttons .= '<a href="' . base_url('documents/employee/' . $value['id']) . '" class="btn btn-success"><i class="fa fa-file"></i> PDF</a>';
-                $buttons .= '<a href="' . base_url('documents/report/' . $value['id']) . '" target="_blank" class="btn btn-primary"><i class="fa fa-print"> Imprimir</i></a>';
+               // $buttons .= '<a href="' . base_url('documents/report/' . $value['id']) . '" target="_blank" class="btn btn-primary"><i class="fa fa-print"> Imprimir</i></a>';
             }
 
             // if(in_array('deleteEmployee', $this->permission)) {
@@ -168,27 +168,49 @@ class Employees extends Admin_Controller
             $ubigeous_residence = $this->model_ubigeos->getUbigeo($country_id2, $department_id2, $province_id2);
 
             $person_data = array(
-                'document_type_id' => $this->input->post('document_type_id'),
-                'document_number' => $this->input->post('document_number'),
-                'first_name' => $this->input->post('first_name'),
-                'last_name' => $this->input->post('last_name'),
-                'civil_status_id' => $this->input->post('civil_status_id'),
-                'birthdate' => $this->input->post('birthdate'),
-                'ubigeous_birth' => $ubigeous_birth['id'],
-                'ubigeous_residence' => $ubigeous_residence['id'],
-                'address' => $this->input->post('address'),
-                'blood_type_id' => $this->input->post('blood_type_id'),
-                'telephone' => $this->input->post('telephone'),
-                'mobile_phone' => $this->input->post('mobile_phone'),
-                'email' => $this->input->post('email'),
-            );
+        		'document_type_id' => $this->input->post('document_type_id'),
+        		'document_number' => $this->input->post('document_number'),
+        		'first_name' => $this->input->post('first_name'),
+        		'last_name' => $this->input->post('last_name'),
+        		
+        	);
+
+              // Agregar los otros campos si se proporcionan
+        if ($this->input->post('civil_status_id')) {
+            $person_data['civil_status_id'] = $this->input->post('civil_status_id');
+        }
+        if ($this->input->post('birthdate')) {
+            $person_data['birthdate'] = $this->input->post('birthdate');
+        }
+        if ($this->input->post('ubigeous_birth')) {
+            $person_data['ubigeous_birth'] = $this->input->post('id');
+        }
+         if ($this->input->post('ubigeous_residence')) {
+            $person_data['ubigeous_residence'] = $this->input->post('id');
+        }
+        if ($this->input->post('address')) {
+            $person_data['address'] = $this->input->post('address');
+        }
+        if ($this->input->post('blood_type_id')) {
+            $person_data['blood_type_id'] = $this->input->post('blood_type_id');
+        }
+        if ($this->input->post('telephone')) {
+            $person_data['telephone'] = $this->input->post('telephone');
+        }
+        if ($this->input->post('mobile_phone')) {
+            $person_data['mobile_phone'] = $this->input->post('mobile_phone');
+        }
+        if ($this->input->post('email')) {
+            $person_data['email'] = $this->input->post('email');
+        }
+        // Agregar más campos aquí
 
             $this->db->trans_start();
 
             try {
                 $person_create_id = $this->model_persons->create($person_data);
 
-                if ($person_create_id) {
+                if($person_create_id) {
                     $employee_data = array(
                         'person_id' => $person_create_id,
                     );
@@ -196,7 +218,7 @@ class Employees extends Admin_Controller
                     $this->model_employees->create($employee_data);
                 }
 
-                if ($_FILES['image']['size'] > 0) {
+                if($_FILES['image']['size'] > 0) {
                     $upload_image = $this->upload_image();
 
                     $photo_date = $this->input->post('photo_date');
@@ -207,32 +229,33 @@ class Employees extends Admin_Controller
                         'photo_date' => $photo_date,
                     );
 
-
+                    
                     $this->model_photos->create($upload_data);
                 }
 
                 $this->db->trans_commit();
 
-                $this->session->set_flashdata('success', 'Creado con éxito');
-                redirect('employees/', 'refresh');
+                $this->session->set_flashdata('success', 'Empleado Creado con Exito');
+        		redirect('employees/', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('errors', '¡¡Se produjo un error!!');
-                redirect('employees/create', 'refresh');
+                $this->session->set_flashdata('errors', 'Error occurred!!');
+        		redirect('employees/create', 'refresh');
             }
-        } else {
-            
-              // Caso en que la validación falla o no se proporcionan valores en los campos
-        $this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
-        $this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
-        $this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
-        $this->data['countries'] = $this->model_countries->getAllCountries();
-        $this->data['departments'] = $this->model_departments->getDepartments();
-        $this->data['provinces'] = $this->model_provinces->getProvinces();
-
-        $this->render_template('employees/create', $this->data);
         }
-    }
+        else {
+            // false case
+			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+			$this->data['blood_types'] = $this->model_blood_types->getBloodTypes();
+			$this->data['civil_status'] = $this->model_civil_status->getCivilStatus();
+			$this->data['countries'] = $this->model_countries->getAllCountries();
+			$this->data['departments'] = $this->model_departments->getDepartments();
+			$this->data['provinces'] = $this->model_provinces->getProvinces();
+
+            $this->render_template('employees/create', $this->data);
+        }
+	}
+
 
 
     public function family()
