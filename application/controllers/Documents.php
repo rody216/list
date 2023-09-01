@@ -539,7 +539,7 @@ class Documents extends Admin_Controller
         }
 	}
 
-    public function judicial()
+    public function simit()
 	{
 		if(!in_array('createDocument', $this->permission)) {
             redirect('dashboard', 'refresh');
@@ -566,26 +566,26 @@ class Documents extends Admin_Controller
                 $document_id = $this->input->post('document_id');
 
                 if($document_id == '') {
-                    $this->model_judicial->create($data);
+                    $this->model_simit->create($data);
                 }
                 else {
-                    $this->model_judicial->edit($data, $document_id);
+                    $this->model_simit->edit($data, $document_id);
                 }
                 
                 $this->db->trans_commit();
 
                 $this->session->set_flashdata('success', 'Successfully created');
-        		redirect('documents/judicial', 'refresh');
+        		redirect('documents/simit', 'refresh');
             } catch (Exception $e) {
                 $this->db->trans_rollback();
                 $this->session->set_flashdata('errors', 'Error occurred!!');
-        		redirect('documents/judicial', 'refresh');
+        		redirect('documents/simit', 'refresh');
             }
         }
         else {
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
 
-            $this->render_template('documents/judicial', $this->data);
+            $this->render_template('documents/simit', $this->data);
         }
 	}
 
@@ -636,6 +636,56 @@ class Documents extends Admin_Controller
 			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
 
             $this->render_template('documents/judicial_radicados', $this->data);
+        }
+	}
+
+    public function judicial()
+	{
+		if(!in_array('createDocument', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
+
+		$this->form_validation->set_rules('employee_id', 'Id de empleado', 'trim|required');
+		$this->form_validation->set_rules('processes_number', 'Número de Procesos', 'trim|required');
+		$this->form_validation->set_rules('date_issue', 'Fecha Radificación', 'trim|required');
+		$this->form_validation->set_rules('class', 'Clase', 'trim|required');
+		$this->form_validation->set_rules('status', 'Status', 'trim|required');
+		
+        if ($this->form_validation->run() == TRUE) {
+            $data = array(
+        		'employee_id' => $this->input->post('employee_id'),
+        		'processes_number' => $this->input->post('processes_number'),
+        		'date_issue' => $this->input->post('date_issue'),
+        		'class' => $this->input->post('class'),
+        		'status' => $this->input->post('status')
+        	);
+
+            $this->db->trans_start();
+
+            try {
+                $document_id = $this->input->post('document_id');
+
+                if($document_id == '') {
+                    $this->model_judicial->create($data);
+                }
+                else {
+                    $this->model_judicial->edit($data, $document_id);
+                }
+                
+                $this->db->trans_commit();
+
+                $this->session->set_flashdata('success', 'Successfully created');
+        		redirect('documents/judicial', 'refresh');
+            } catch (Exception $e) {
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('errors', 'Error occurred!!');
+        		redirect('documents/judicial', 'refresh');
+            }
+        }
+        else {
+			$this->data['document_types'] = $this->model_document_types->getAllDocumentTypes();
+
+            $this->render_template('documents/judicial', $this->data);
         }
 	}
 

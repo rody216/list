@@ -371,6 +371,30 @@ INSERT INTO `judicial` (`id`, `employee_id`, `processes_number`, `date_issue`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `simit`
+--
+
+CREATE TABLE `simit` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `comparendo` int(20) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `secretaria` varchar(45) DEFAULT NULL,
+  `infraccion` varchar(45) DEFAULT NULL,
+  `valor` float(20) DEFAULT NULL,
+  `pdf` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `simit`
+--
+
+INSERT INTO `simit` (`id`, `employee_id`, `comparendo`, `date`, `secretaria`, `infraccion`, `valor`, `pdf`) VALUES
+(1, 3, 12323, '2023-08-01', 'Montería', 'semaforo en rojo', '880.200', 'NULL');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `mmp`
 --
 
@@ -2540,6 +2564,14 @@ ALTER TABLE `groups`
 ALTER TABLE `judicial`
   ADD PRIMARY KEY (`id`),
   ADD KEY `judicial_employee_id_foreign_idx` (`employee_id`);
+
+
+--
+-- Indices de la tabla `simit`
+--
+ALTER TABLE `simit`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `simit_employee_id_foreign_idx` (`employee_id`);
 
 --
 -- Indices de la tabla `mmp`

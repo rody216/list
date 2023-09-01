@@ -26,7 +26,7 @@
                 <li id="addEmployeeNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"></i> Agregar Empleados</a></li>
               <?php endif; ?>
               <?php if(in_array('updateEmployee', $user_permission) || in_array('viewEmployee', $user_permission) || in_array('deleteEmployee', $user_permission)): ?>
-              <li id="manageEmployeeNav"><a href="<?php echo base_url('employees/family') ?>"><i class="fa fa-circle-o"> Agregar familiares</i> </a></li>
+              <li id="addFamilyNav"><a href="<?php echo base_url('employees/family') ?>"><i class="fa fa-circle-o"> Agregar familiares</i> </a></li>
               <?php endif; ?>              
               <?php if(in_array('createDocument', $user_permission)): ?>
               <li id="documentSpoaNav"><a href="<?php echo base_url('documents/spoa') ?>"><i class="fa fa-circle-o"></i>Spoa</a></li>
@@ -36,7 +36,7 @@
               <li id="documentProcuraduriaNav"><a href="<?php echo base_url('documents/procuraduria') ?>"><i class="fa fa-circle-o"> Procuraduría</i> </a></li>
               <li id="documentJudicialNav"><a href="<?php echo base_url('documents/judicial') ?>"><i class="fa fa-circle-o"></i> Rama Judicial Procesos</a></li>
               <li id="documentRadicadosNav"><a href="<?php echo base_url('documents/judicial_radicados') ?>"><i class="fa fa-circle-o"> Rama Judicial Radicados</i> </a></li>
-              <li id="manageSimitNav"><a href="<?php echo base_url('employees') ?>"><i class="fa fa-circle-o"> Simit</i> </a></li>
+              <li id="documentSimitNav"><a href="<?php echo base_url('documents/simit') ?>"><i class="fa fa-circle-o"> Simit</i> </a></li>
               <li id="manageContraloriaNav"><a href="<?php echo base_url('documents/contraloria') ?>"><i class="fa fa-circle-o"> Contraloría</i> </a></li>
               <li id="documentPropertyNav"><a href="<?php echo base_url('documents/property') ?>"><i class="fa fa-circle-o"></i>Propiedades Inmuebles</a></li>
               <li id="documentVehiclesNav"><a href="<?php echo base_url('documents/vehicles') ?>"><i class="fa fa-circle-o"> Vehiculos</i> </a></li>

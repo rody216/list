@@ -298,7 +298,7 @@
     $("#description").wysihtml5();
 
     $("#mainEmployeeNav").addClass('active');
-    $("#addEmployeeNav").addClass('active');
+    $("#addFamilyNav").addClass('active');
 
     $("#country_id").change(function() {
       var selectedCountryId = $(this).val();

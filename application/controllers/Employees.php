@@ -24,6 +24,7 @@ class Employees extends Admin_Controller
         $this->load->model('model_families');
         $this->load->model('model_photos');
         $this->load->model('model_users');
+        $this->load->model('model_simit');
     }
 
     public function index()
