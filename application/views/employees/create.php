@@ -35,7 +35,7 @@
 
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Agregar empleados</h3>
+            <h3 class="box-title">Agregar Empleados</h3>
           </div>
           <!-- /.box-header -->
           <form role="form" action="<?php echo base_url('employees/create') ?>" method="post" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="document_type_id">Tipo de documento</label>
+                    <label for="document_type_id">Tipo de Documento</label>
                     <select class="form-control select_group" id="document_type_id" name="document_type_id">
                       <option value="">Seleccione el Tipo de Documento</option>
                       <?php foreach ($document_types as $k => $v) : ?>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="document_number">Numero de documento</label>
+                    <label for="document_number">Número de Documento</label>
                     <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" oninput="validateAndUppercase(this)">
                   </div>
                 </div>
@@ -77,7 +77,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="document_type_id">Estado civil</label>
+                    <label for="document_type_id">Estado Civíl</label>
                     <select class="form-control select_group" id="civil_status_id" name="civil_status_id">
                       <option value="">Seleccione el Estado Civil</option>
                       <?php foreach ($civil_status as $k => $v) : ?>
@@ -110,9 +110,9 @@
 
 
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <div class="form-group">
-                    <label for="document_number">Tipo de sangre</label>
+                    <label for="document_number">Tipo de Sangre</label>
                     <select class="form-control select_group" id="blood_type_id" name="blood_type_id">
                       <option value="">Seleccione el Grupo Sanguíneo</option>
                       <?php foreach ($blood_types as $k => $v) : ?>
@@ -125,9 +125,9 @@
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="country_id">País de nacimiento</label>
+                    <label for="country_id">País de Nacimiento</label>
                     <select class="form-control select_group country_id" id="country_id" name="country_id">
-                      <option value="">Seleccione el país</option>
+                      <option value="">Seleccione el País</option>
                       <?php foreach ($countries as $k => $v) : ?>
                         <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                       <?php endforeach ?>
@@ -138,15 +138,15 @@
                   <div class="form-group">
                     <label for="product_name">Departamento</label>
                     <select class="form-control select_group department_id" id="department_id" name="department_id">
-                      <option value="">Seleccione el departamento</option>
+                      <option value="">Seleccione el Departamento</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="product_name">Provincia</label>
+                    <label for="product_name">Ciudad/Municipio</label>
                     <select class="form-control select_group province_id" id="province_id" name="province_id">
-                      <option value="">Seleccione la provincia</option>
+                      <option value="">Seleccione la Ciudad/Municipio</option>
                     </select>
                   </div>
                 </div>
@@ -154,9 +154,9 @@
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="country_id2">País de residencia</label>
+                    <label for="country_id2">País de Residencia</label>
                     <select class="form-control select_group country_id2" id="country_id2" name="country_id2">
-                      <option value="">Seleccione el país</option>
+                      <option value="">Seleccione el País</option>
                       <?php foreach ($countries as $k => $v) : ?>
                         <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                       <?php endforeach ?>
@@ -167,7 +167,7 @@
                   <div class="form-group">
                     <label for="product_name">Departamento</label>
                     <select class="form-control select_group department_id2" id="department_id2" name="department_id2">
-                      <option value="">Seleccione el departamento</option>
+                      <option value="">Seleccione el Departamento</option>
                     </select>
                   </div>
                 </div>
@@ -175,7 +175,7 @@
                   <div class="form-group">
                     <label for="product_name">Provincia</label>
                     <select class="form-control select_group province_id2" id="province_id2" name="province_id2">
-                      <option value="">Seleccione la provincia</option>
+                      <option value="">Seleccione la Ciudad/Municipio</option>
                     </select>
                   </div>
                 </div>
@@ -187,14 +187,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="sku">Telefono móvil</label>
+                    <label for="sku">Teléfono Móvil</label>
                     <input type="text" class="form-control" id="mobile_phone" name="mobile_phone" autocomplete="off" oninput="validateNumberInput(this)" />
                   </div>
                   <!-- Modal para seleccionar país -->
                   <div id="countryModal" class="col-md-6">
                     <div class="form-group">
                       <span class="close" onclick="closeCountryModal()">&times;</span>
-                      <label for="telephone">Indicativo del Pais</label>
+                      <label for="telephone">Indicativo del País</label>
                       <select class="form-control" id="telephone" name="telephone" onchange="updateCountryCode(); closeCountryModal();">
                         <option value="57">Colombia (+57)</option>
                         <option value="593">Ecuador (+593)</option>
@@ -204,7 +204,7 @@
                   </div>
 
                   <div class="col-md-6">
-                    <label for="sku">Telefono fijo</label>
+                    <label for="sku">Teléfono Fijo</label>
                     <div class="form-group">
                       <input type="text" class="form-control" id="telephone" name="telephone" autocomplete="off" oninput="validateNumberInput(this)" />
                       <div class="input-group-append">
@@ -214,7 +214,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="sku">Correo electronico</label>
+                    <label for="sku">Correo Electrónico</label>
                     <input type="email" class="form-control" id="email" name="email" autocomplete="off" />
                   </div>
                 </div>
@@ -235,7 +235,7 @@
               </div>
             </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-success">Guardar cambios</button>
+              <button type="submit" class="btn btn-success">Guardar Cambios</button>
               <a href="<?php echo base_url('employees/') ?>" class="btn btn-primary">Regresar</a>
             </div>
           </form>

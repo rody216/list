@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Agregar familia
+      Agregar Familiar
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -36,7 +36,7 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="document_type_id">Tipo de documento</label>
+                      <label for="document_type_id">Tipo de Documento</label>
                       <select class="form-control" id="document_type_id_employee" name="document_type_id_employee">
                         <?php foreach ($document_types as $k => $v) : ?>
                           <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
@@ -46,13 +46,13 @@
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="document_number">Numero de documento</label>
+                      <label for="document_number">Número de Documento</label>
                       <input type="text" class="form-control" id="document_number_employee" name="document_number_employee" autocomplete="off" value="77128391" />
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group ">
-                      <button class="btn btn-outline-secondary" style="margin-top: 25px" type="button" id="btnSearchEmployee">Buscar empleado</button>
+                      <button class="btn btn-outline-secondary" style="margin-top: 25px" type="button" id="btnSearchEmployee">Buscar Empleado</button>
                     </div>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                   </div>
                 </div>
                 <hr>
-                <h4>Ingrese datos del familiar</h4>
+                <h4>Ingrese Datos del Familiar</h4>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
@@ -132,7 +132,7 @@
                     <div class="form-group">
                       <label for="document_type_id">Estado civil</label>
                       <select class="form-control" id="civil_status_id" name="civil_status_id">
-                        <option value="">Seleccione el estado civil</option>
+                        <option value="">Seleccione el Estado Civíl</option>
                         <?php foreach ($civil_status as $k => $v) : ?>
                           <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                         <?php endforeach ?>
@@ -155,7 +155,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="blood_type_id">Tipo de sangre</label>
+                      <label for="blood_type_id">Tipo de Sangre</label>
                       <select class="form-control" id="blood_type_id" name="blood_type_id">
                         <option value="">Seleccione el Grupo Sanguíneo.</option>
                         <?php foreach ($blood_types as $k => $v) : ?>
@@ -186,21 +186,21 @@
                     <div class="form-group">
                       <label for="product_name">Departamento</label>
                       <select class="form-control select_group department_id" id="department_id" name="department_id">
-                        <option value="">Seleccione el departamento</option>
+                        <option value="">Seleccione el Departamento</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="product_name">Provincia</label>
+                      <label for="product_name">Ciudad/Municipio</label>
                       <select class="form-control select_group province_id" id="province_id" name="province_id">
-                        <option value="">Seleccione la provincia</option>
+                        <option value="">Seleccione la Ciudad/Municipio</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div class="form-grouppmb-0">
-                  <label>Lugar de residencia</label>
+                  <label>Lugar de Residencia</label>
                   <br>
                   <span id="ubigeos_residence" class="text-primary"></span>
                 </div>
@@ -209,7 +209,7 @@
                     <div class="form-group">
                       <label for="country_id2">País</label>
                       <select class="form-control select_group country_id2" id="country_id2" name="country_id2">
-                        <option value="">Seleccione el país</option>
+                        <option value="">Seleccione el País</option>
                         <?php foreach ($countries as $k => $v) : ?>
                           <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                         <?php endforeach ?>
@@ -220,13 +220,13 @@
                     <div class="form-group">
                       <label for="product_name">Departamento</label>
                       <select class="form-control select_group department_id2" id="department_id2" name="department_id2">
-                        <option value="">Seleccione el departamento</option>
+                        <option value="">Seleccione el Departamento</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="product_name">Provincia</label>
+                      <label for="product_name">Ciudad/Municipio</label>
                       <select class="form-control select_group province_id2" id="province_id2" name="province_id2">
                         <option value="">Seleccione la provincia</option>
                       </select>

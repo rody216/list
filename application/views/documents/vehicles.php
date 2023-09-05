@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Vehiculos
+      Vehículos
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -36,8 +36,9 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="document_type_id">Tipo de documento</label>
+                      <label for="document_type_id">Tipo de Documento</label>
                       <select class="form-control" id="document_type_id" name="document_type_id">
+                      <option value="">Seleccione el Tipo de Documento</option>
                         <?php foreach ($document_types as $k => $v): ?>
                           <option value="<?php echo $v['id'] ?>"><?php echo $v['name'] ?></option>
                         <?php endforeach ?>
@@ -46,7 +47,7 @@
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="document_number">Numero de documento</label>
+                      <label for="document_number">Número de Documento</label>
                       <input type="text" class="form-control" id="document_number" name="document_number" autocomplete="off" value="77128391"/>
                     </div>
                   </div>
@@ -73,7 +74,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="vehicle_type_id">Tipo de vehiculo</label>
+                      <label for="vehicle_type_id">Tipo de vehículo</label>
                       <select class="form-control" id="vehicle_type_id" name="vehicle_type_id">
                         <option value="">Seleccione</option>
                         <?php foreach ($vehicle_types as $k => $v): ?>
@@ -107,24 +108,24 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="crime">Linea</label>
+                      <label for="crime">Línea</label>
                       <input type="text" class="form-control" id="line" name="line" autocomplete="off"/>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="pdf">Secretaria de Tránsito</label>
+                      <label for="pdf">Secretaría de Tránsito</label>
                       <input type="text" class="form-control" id="traffic_secretary" name="traffic_secretary" autocomplete="off"/>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="pdf">Subir documento</label>
+                  <label for="pdf">Subir Documento</label>
                   <input type="file" class="form-control" id="pdf" name="pdf"/>
                 </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <button type="submit" class="btn btn-success">Guardar Cambios</button>
               </div>
             </form>
           </div>
